@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "NIP",
+			"Path": "..\\Source\\NIP.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "NIPEditor",
+			"Path": "..\\Source\\NIPEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
