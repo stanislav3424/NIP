@@ -22,7 +22,7 @@ void UInventoryUserWidget::SetupBackground()
     Background->SetBrush(Brush);
 }
 
-void UInventoryUserWidget::InitializeInventory(UInventory* NewInventory)
+void UInventoryUserWidget::InitializeUnit(UInventory* NewInventory)
 {
     Reset();
     if (!NewInventory)

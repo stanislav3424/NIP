@@ -25,6 +25,15 @@ void UItem::Initialization(const FDataTableRowHandle& InitializationDataTableRow
     bCanSelect = ItemData->bCanSelect;
 }
 
+void UItem::InitializationRepresented(AActor* SetRepresented)
+{
+    if (IsValid(Represented.GetObject()))
+        return;
+    if (!IsValid(SetRepresented))
+        return;
+    Represented = SetRepresented;
+}
+
 //
 
 void UItem::SetSelect(bool bNewSelect)

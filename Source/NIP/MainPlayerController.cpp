@@ -5,6 +5,8 @@
 #include "MainHUD.h"
 #include "Unit.h"
 #include "CharacterUnit.h"
+#include "MainGameState.h"
+#include "MenuUnitsUserWidget.h"
 
 AMainPlayerController::AMainPlayerController() {}
 
@@ -19,6 +21,15 @@ void AMainPlayerController::BeginPlay()
     {
         Subsystem->AddMappingContext(DefaultMappingContext, 0);
     }
+
+    if (!GetWorld())
+        return;
+
+    MainGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
+    if (!MainGameState)
+        return;
+
+    MenuUnitsUserWidget = CreateWidget<UMenuUnitsUserWidget>(this, MainGameState->GetClassMenuUnitsUserWidget());
 }
 
 void AMainPlayerController::SetupInputComponent()
@@ -110,6 +121,7 @@ void AMainPlayerController::UpdateUnitsSelection()
             Unit->SetSelect(false);
 
     SelectedUnits = NewSelectedUnits;
+    bSelectionChanged = true;
 
     if (SelectedUnits.IsEmpty())
     {
@@ -127,6 +139,7 @@ void AMainPlayerController::UpdateUnitsSelection()
             }
         }
     }
+    ProcessSelectionChanges();
 }
 
 bool AMainPlayerController::AreUnitSetsEqual()
@@ -165,7 +178,21 @@ void AMainPlayerController::SelectUnit()
 
 void AMainPlayerController::SetTargetSelectUnit(UUnit* Unit)
 {
+    if (UISelectedUnit == Unit)
+        return;
+
     UISelectedUnit = Unit;
+    bSelectionChanged = true;
+    ProcessSelectionChanges();
+}
+
+void AMainPlayerController::ProcessSelectionChanges()
+{
+    if (bSelectionChanged && MenuUnitsUserWidget)
+    {
+        MenuUnitsUserWidget->ChangeUnits();
+        bSelectionChanged = false;
+    }
 }
 
 bool AMainPlayerController::IsTargetISelectUnit(UUnit* Unit)

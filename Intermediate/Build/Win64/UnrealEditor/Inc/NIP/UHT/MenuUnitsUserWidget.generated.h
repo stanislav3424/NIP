@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NIP_MenuUnitsUserWidget_generated_h
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_11_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUMenuUnitsUserWidget(); \
 	friend struct Z_Construct_UClass_UMenuUnitsUserWidget_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(UMenuUnitsUserWidget)
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_11_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_20_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UMenuUnitsUserWidget(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -37,12 +37,12 @@ public: \
 	NO_API virtual ~UMenuUnitsUserWidget();
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_8_PROLOG
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_11_GENERATED_BODY \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_17_PROLOG
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_11_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_11_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_20_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -5,6 +5,7 @@
 #include "BaseUserWidget.generated.h"
 
 class AMainGameState;
+class AMainPlayerController;
 
 UCLASS()
 class NIP_API UBaseUserWidget : public UUserWidget
@@ -20,6 +21,9 @@ protected:
 protected:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     AMainGameState* MainGameState;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    AMainPlayerController* MainPlayerController;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     float InventoryCellSize = 25.f;

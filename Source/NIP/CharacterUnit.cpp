@@ -17,6 +17,10 @@ void ACharacterUnit::BeginPlay()
     AMainGameState* MainGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
     if (!MainGameState)
         return;
+    Unit = Cast<UUnit>(MainGameState->CreateItem(DataTableRowHandle));
+    if (!Unit)
+        Destroy();
+    Unit->InitializationRepresented(this);
 }
 
 void ACharacterUnit::Tick(float DeltaTime) { Super::Tick(DeltaTime); }

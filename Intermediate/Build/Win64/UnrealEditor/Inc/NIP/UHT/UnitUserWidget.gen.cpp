@@ -11,14 +11,66 @@ void EmptyLinkFunctionForGeneratedCodeUnitUserWidget() {}
 
 // Begin Cross Module References
 NIP_API UClass* Z_Construct_UClass_UBaseUserWidget();
+NIP_API UClass* Z_Construct_UClass_UUnit_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UUnitUserWidget();
 NIP_API UClass* Z_Construct_UClass_UUnitUserWidget_NoRegister();
+UMG_API UClass* Z_Construct_UClass_UBorder_NoRegister();
+UMG_API UClass* Z_Construct_UClass_UCanvasPanel_NoRegister();
+UMG_API UClass* Z_Construct_UClass_USizeBox_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
+
+// Begin Class UUnitUserWidget Function InitializeUnit
+struct Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics
+{
+	struct UnitUserWidget_eventInitializeUnit_Parms
+	{
+		UUnit* NewUnit;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Item" },
+		{ "ModuleRelativePath", "UnitUserWidget.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_NewUnit;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::NewProp_NewUnit = { "NewUnit", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UnitUserWidget_eventInitializeUnit_Parms, NewUnit), Z_Construct_UClass_UUnit_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::NewProp_NewUnit,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UUnitUserWidget, nullptr, "InitializeUnit", nullptr, nullptr, Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::PropPointers), sizeof(Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::UnitUserWidget_eventInitializeUnit_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::Function_MetaDataParams), Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::UnitUserWidget_eventInitializeUnit_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UUnitUserWidget_InitializeUnit()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UUnitUserWidget::execInitializeUnit)
+{
+	P_GET_OBJECT(UUnit,Z_Param_NewUnit);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->InitializeUnit(Z_Param_NewUnit);
+	P_NATIVE_END;
+}
+// End Class UUnitUserWidget Function InitializeUnit
 
 // Begin Class UUnitUserWidget
 void UUnitUserWidget::StaticRegisterNativesUUnitUserWidget()
 {
+	UClass* Class = UUnitUserWidget::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "InitializeUnit", &UUnitUserWidget::execInitializeUnit },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UUnitUserWidget);
 UClass* Z_Construct_UClass_UUnitUserWidget_NoRegister()
@@ -32,13 +84,53 @@ struct Z_Construct_UClass_UUnitUserWidget_Statics
 		{ "IncludePath", "UnitUserWidget.h" },
 		{ "ModuleRelativePath", "UnitUserWidget.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Unit_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Data" },
+		{ "ModuleRelativePath", "UnitUserWidget.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SizeBox_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "UnitUserWidget.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Background_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "UnitUserWidget.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CanvasPanel_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "UnitUserWidget.h" },
+	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Unit;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_SizeBox;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_Background;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_CanvasPanel;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UUnitUserWidget_InitializeUnit, "InitializeUnit" }, // 1196335450
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UUnitUserWidget>::IsAbstract,
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_Unit = { "Unit", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, Unit), Z_Construct_UClass_UUnit_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Unit_MetaData), NewProp_Unit_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_SizeBox = { "SizeBox", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, SizeBox), Z_Construct_UClass_USizeBox_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SizeBox_MetaData), NewProp_SizeBox_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_Background = { "Background", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, Background), Z_Construct_UClass_UBorder_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Background_MetaData), NewProp_Background_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_CanvasPanel = { "CanvasPanel", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, CanvasPanel), Z_Construct_UClass_UCanvasPanel_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CanvasPanel_MetaData), NewProp_CanvasPanel_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUnitUserWidget_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_Unit,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_SizeBox,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_Background,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_CanvasPanel,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UUnitUserWidget_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UUnitUserWidget_Statics::DependentSingletons[])() = {
 	(UObject* (*)())Z_Construct_UClass_UBaseUserWidget,
 	(UObject* (*)())Z_Construct_UPackage__Script_NIP,
@@ -49,12 +141,12 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UUnitUserWidget_Statics
 	nullptr,
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
-	nullptr,
+	FuncInfo,
+	Z_Construct_UClass_UUnitUserWidget_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
+	UE_ARRAY_COUNT(Z_Construct_UClass_UUnitUserWidget_Statics::PropPointers),
 	0,
 	0x00B010A0u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UUnitUserWidget_Statics::Class_MetaDataParams), Z_Construct_UClass_UUnitUserWidget_Statics::Class_MetaDataParams)
@@ -80,10 +172,10 @@ UUnitUserWidget::~UUnitUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUnitUserWidget, UUnitUserWidget::StaticClass, TEXT("UUnitUserWidget"), &Z_Registration_Info_UClass_UUnitUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitUserWidget), 1305814174U) },
+		{ Z_Construct_UClass_UUnitUserWidget, UUnitUserWidget::StaticClass, TEXT("UUnitUserWidget"), &Z_Registration_Info_UClass_UUnitUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitUserWidget), 4116136942U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_3385332066(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_4068015063(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

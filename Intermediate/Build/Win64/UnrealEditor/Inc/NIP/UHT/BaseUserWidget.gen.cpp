@@ -11,6 +11,7 @@ void EmptyLinkFunctionForGeneratedCodeBaseUserWidget() {}
 
 // Begin Cross Module References
 NIP_API UClass* Z_Construct_UClass_AMainGameState_NoRegister();
+NIP_API UClass* Z_Construct_UClass_AMainPlayerController_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UBaseUserWidget();
 NIP_API UClass* Z_Construct_UClass_UBaseUserWidget_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UUserWidget();
@@ -38,6 +39,11 @@ struct Z_Construct_UClass_UBaseUserWidget_Statics
 		{ "Category", "Data" },
 		{ "ModuleRelativePath", "BaseUserWidget.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainPlayerController_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Data" },
+		{ "ModuleRelativePath", "BaseUserWidget.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InventoryCellSize_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Data" },
@@ -45,6 +51,7 @@ struct Z_Construct_UClass_UBaseUserWidget_Statics
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainGameState;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainPlayerController;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_InventoryCellSize;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -54,9 +61,11 @@ struct Z_Construct_UClass_UBaseUserWidget_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UBaseUserWidget_Statics::NewProp_MainGameState = { "MainGameState", nullptr, (EPropertyFlags)0x0020080000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseUserWidget, MainGameState), Z_Construct_UClass_AMainGameState_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainGameState_MetaData), NewProp_MainGameState_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UBaseUserWidget_Statics::NewProp_MainPlayerController = { "MainPlayerController", nullptr, (EPropertyFlags)0x0020080000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseUserWidget, MainPlayerController), Z_Construct_UClass_AMainPlayerController_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainPlayerController_MetaData), NewProp_MainPlayerController_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UBaseUserWidget_Statics::NewProp_InventoryCellSize = { "InventoryCellSize", nullptr, (EPropertyFlags)0x0020080000020015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UBaseUserWidget, InventoryCellSize), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InventoryCellSize_MetaData), NewProp_InventoryCellSize_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UBaseUserWidget_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseUserWidget_Statics::NewProp_MainGameState,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseUserWidget_Statics::NewProp_MainPlayerController,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UBaseUserWidget_Statics::NewProp_InventoryCellSize,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UBaseUserWidget_Statics::PropPointers) < 2048);
@@ -101,10 +110,10 @@ UBaseUserWidget::~UBaseUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBaseUserWidget, UBaseUserWidget::StaticClass, TEXT("UBaseUserWidget"), &Z_Registration_Info_UClass_UBaseUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseUserWidget), 1718514896U) },
+		{ Z_Construct_UClass_UBaseUserWidget, UBaseUserWidget::StaticClass, TEXT("UBaseUserWidget"), &Z_Registration_Info_UClass_UBaseUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseUserWidget), 2267192238U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_897228985(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_4270970916(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

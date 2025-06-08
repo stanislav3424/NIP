@@ -12,6 +12,8 @@
       <Filter>Source</Filter>
     </None>
     <None Include="..\..\.clang-format" />
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
@@ -74,6 +76,12 @@
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\ItemUserWidget.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\MainGameMode.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\MainGameMode.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\MainGameState.cpp">

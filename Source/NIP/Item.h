@@ -67,6 +67,7 @@ public:
     // Initialization
 public:
     virtual void Initialization(const FDataTableRowHandle& InitializationDataTableRowHandle);
+    void InitializationRepresented(AActor* SetRepresented);
 
     // Spawn
 

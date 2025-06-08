@@ -13,6 +13,8 @@ class UInputMappingContext;
 class AMainHUD;
 class UUnit;
 class ACharacterUnit;
+class AMainGameState;
+class UMenuUnitsUserWidget;
 
 UCLASS()
 class NIP_API AMainPlayerController : public APlayerController
@@ -30,6 +32,17 @@ protected:
 
 public:
     virtual void Tick(float DeltaTime) override;
+
+    // Data
+private:
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    AMainGameState* MainGameState;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    UMenuUnitsUserWidget* MenuUnitsUserWidget;
+
+public:
+    UMenuUnitsUserWidget* GetMenuUnitsUserWidget() { return MenuUnitsUserWidget; }
 
     // Input
 private:
@@ -73,14 +86,15 @@ private:
     bool AreUnitSetsEqual();
     void SelectUnit();
 
+    bool bSelectionChanged = false;
+    void ProcessSelectionChanges();
+
 public:
-
-    UFUNCTION(BlueprintCallable)
+    TSet<UUnit*>& GetAddedUnits() { return AddedUnits; }
+    TSet<UUnit*>& GetRemovedUnits() { return RemovedUnits; }
+    UUnit* GetUISelectedUnit() { return UISelectedUnit; }
     void SetTargetSelectUnit(UUnit* Unit);
-
-    UFUNCTION(BlueprintCallable)
     bool IsTargetISelectUnit(UUnit* Unit);
-
     const TSet<UUnit*>& GetSelectedUnits() const { return SelectedUnits; };
 
     // HandleCommand
@@ -88,11 +102,6 @@ public:
     bool MoveToLocation();
 
     // UI
-private:
-    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Initialization", meta = (AllowPrivateAccess = "true"))
-    float SizeCell = 25.0f;
 
-public:
-    float GetSizeCell() { return SizeCell; }
 	
 };

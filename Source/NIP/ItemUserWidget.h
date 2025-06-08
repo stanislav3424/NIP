@@ -29,7 +29,7 @@ private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     UItem* Item;
 
-    // Slote
+    // Slate
 public:
     UPROPERTY(meta = (BindWidget))
     USizeBox* SizeBox;

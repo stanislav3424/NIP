@@ -32,7 +32,7 @@ private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     UInventory* Inventory;
 
-    // Slote
+    // Slate
 public:
     UPROPERTY(meta = (BindWidget))
     USizeBox* SizeBox;
@@ -46,7 +46,7 @@ public:
     // Initialization
 public:
     UFUNCTION(BlueprintCallable, Category = "Item")
-    void InitializeInventory(UInventory* NewInventory);
+    void InitializeUnit(UInventory* NewInventory);
 
 private:
     void SetupItems();
