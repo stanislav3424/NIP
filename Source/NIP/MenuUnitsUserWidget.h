@@ -27,13 +27,10 @@ private:
 
     // Data
 private:
-    
+    FDelegateHandle DelegateHandle;
 
     // Slate
 public:
-    UPROPERTY(meta = (BindWidget))
-    USizeBox* SizeBox;
-
     UPROPERTY(meta = (BindWidget))
     UBorder* Background;
 
@@ -54,4 +51,7 @@ public:
 
 private:
     void ChangeListView();
+
+private:
+    void UnitSelectionChanged();
 };

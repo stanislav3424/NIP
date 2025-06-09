@@ -10,7 +10,11 @@ void UMenuUnitsUserWidget::NativeConstruct()
 {
     Super::NativeConstruct();
     SetupBackground();
-    
+
+    if (MainPlayerController)
+        DelegateHandle =
+            MainPlayerController->OnUISelectedUnitChanged.AddUObject(this, &UMenuUnitsUserWidget::UnitSelectionChanged);
+    ChangeUnits();
 }
 
 void UMenuUnitsUserWidget::SetupBackground()
@@ -29,7 +33,7 @@ void UMenuUnitsUserWidget::ChangeUnits()
     if (!MainPlayerController || !ListView || !UnitUserWidget)
         return;
     ChangeListView();
-    UnitUserWidget->InitializeUnit(MainPlayerController->GetUISelectedUnit());
+    UnitSelectionChanged();
 }
 
 void UMenuUnitsUserWidget::ChangeListView()
@@ -48,4 +52,10 @@ void UMenuUnitsUserWidget::ChangeListView()
             ListView->RemoveItem(Unit);
     }
     
+}
+
+void UMenuUnitsUserWidget::UnitSelectionChanged() {
+    if (!MainPlayerController || !UnitUserWidget)
+        return;
+    UnitUserWidget->InitializeUnit(MainPlayerController->GetUISelectedUnit());
 }

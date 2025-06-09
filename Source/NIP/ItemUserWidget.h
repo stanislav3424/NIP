@@ -21,13 +21,16 @@ class NIP_API UItemUserWidget : public UBaseUserWidget
 protected:
     virtual void NativeConstruct() override;
 
-private:
-    void SetupBackground();
-
     // Data
 private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     UItem* Item;
+
+    UPROPERTY(BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    FLinearColor BackgroundColor = {0.f, 0.f, 0.f, 0.4f};
+
+    UPROPERTY(BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    FLinearColor ModifierMouseEnterColor = {0.f, 0.f, 0.f, -0.2f};
 
     // Slate
 public:
@@ -45,6 +48,9 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Item")
     void InitializeItem(UItem* NewItem);
 
+    // Visualization
+protected:
+    virtual void UpdateVisualization();
 
 private:
     void SetupMaterialInstanceDynamic();

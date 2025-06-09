@@ -1,6 +1,7 @@
 #include "UnitUserWidget.h"
 #include "MainGameState.h"
 #include "Inventory.h"
+#include "ItemUserWidget.h"
 #include "Unit.h"
 #include "InventoryUserWidget.h"
 

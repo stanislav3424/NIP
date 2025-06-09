@@ -7,6 +7,7 @@
 #include "Item.generated.h"
 
 class AMainGameState;
+class UUnit;
 
 UCLASS()
 class NIP_API UItem : public UObject
@@ -58,11 +59,13 @@ protected:
 public:
     const TSubclassOf<AActor>& GetClassRepresentedActor() const { return ClassRepresentedActor; };
     TScriptInterface<IRepresentableInterface> GetRepresented() const { return Represented; };
-    const FIntPoint& GetItemSize() const { return ItemSize; }
+    const FIntPoint& GetItemSize() const { return ItemSize; };
 
     void SetSelect(bool bNewSelect);
-    const bool IsSelect() const { return bSelect; }
-    const bool IsCanSelect() const { return bCanSelect; }
+    const bool IsSelect() const { return bSelect; };
+    const bool IsCanSelect() const { return bCanSelect; };
+
+    const FName& GetID() const { return ID; };
 
     // Initialization
 public:
@@ -71,10 +74,13 @@ public:
 
     // Spawn
 
+    void SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots);
+    void RemoveRepresented();
+
     // ContainerOwner
 public:
-    virtual void RemoveContainerFromOwner();
+    virtual void RemoveContainerFromOwner(UItem* Item = nullptr);
     void SetContainerOwner(UItem* NewContainerOwner);
-    bool IsCanPut() { return bCanPut; }
+    bool IsCanPut() { return bCanPut; };
     FIntPoint GetSizeItem() { return ItemSize; };
 };

@@ -16,6 +16,8 @@ class ACharacterUnit;
 class AMainGameState;
 class UMenuUnitsUserWidget;
 
+DECLARE_MULTICAST_DELEGATE(FOnUISelectedUnitChanged);
+
 UCLASS()
 class NIP_API AMainPlayerController : public APlayerController
 {
@@ -93,10 +95,11 @@ public:
     TSet<UUnit*>& GetAddedUnits() { return AddedUnits; }
     TSet<UUnit*>& GetRemovedUnits() { return RemovedUnits; }
     UUnit* GetUISelectedUnit() { return UISelectedUnit; }
-    void SetTargetSelectUnit(UUnit* Unit);
+    void SetUISelectedUnit(UUnit* Unit);
     bool IsTargetISelectUnit(UUnit* Unit);
     const TSet<UUnit*>& GetSelectedUnits() const { return SelectedUnits; };
 
+    FOnUISelectedUnitChanged OnUISelectedUnitChanged;
     // HandleCommand
 
     bool MoveToLocation();

@@ -26,7 +26,7 @@ public:
 
     // Data
 protected:
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     FDataTableRowHandle DataTableRowHandle;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
@@ -36,6 +36,8 @@ public:
     UUnit* GetUnit() { return Unit; }
 
     // RepresentableInterface
+protected:
     virtual void InitializationItem(UItem* Item) override;
     virtual AAIController* GetAIController() override;
+
 };

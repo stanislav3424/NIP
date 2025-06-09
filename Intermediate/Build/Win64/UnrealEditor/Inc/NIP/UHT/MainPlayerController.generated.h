@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NIP_MainPlayerController_generated_h
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_22_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_24_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMainPlayerController(); \
 	friend struct Z_Construct_UClass_AMainPlayerController_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(AMainPlayerController)
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_22_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_24_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AMainPlayerController(AMainPlayerController&&); \
@@ -35,12 +35,12 @@ public: \
 	NO_API virtual ~AMainPlayerController();
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_19_PROLOG
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_22_GENERATED_BODY \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_21_PROLOG
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_24_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_22_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_22_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_24_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_24_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

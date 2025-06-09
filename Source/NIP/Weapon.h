@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Item.h"
+#include "ItemData.h"
 #include "Weapon.generated.h"
 
 UCLASS()

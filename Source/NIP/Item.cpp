@@ -1,5 +1,6 @@
 #include "Item.h"
 #include "MainGameState.h"
+#include "Unit.h"
 #include "Engine/DataTable.h"
 
 // Initialization
@@ -43,10 +44,47 @@ void UItem::SetSelect(bool bNewSelect)
     bSelect = bNewSelect;
 }
 
-void UItem::RemoveContainerFromOwner() { ContainerOwner = nullptr; }
+void UItem::RemoveContainerFromOwner(UItem* Item) { ContainerOwner = nullptr; }
 
 void UItem::SetContainerOwner(UItem* NewContainerOwner)
 {
     RemoveContainerFromOwner();
     ContainerOwner = NewContainerOwner;
+}
+
+// Spawn
+
+void UItem::SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots)
+{
+    if (!IsValid(Unit))
+        return;
+    AActor* RepresentedActorTarget = Cast<AActor>(Unit->GetRepresented().GetObject());
+    if (!IsValid(RepresentedActorTarget))
+        return;
+    FActorSpawnParameters SpawnParameters;
+    SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+    SpawnParameters.Owner = RepresentedActorTarget;
+
+    USkeletalMeshComponent* MeshRef = Unit->GetRepresented().GetInterface()->GetMesh();
+    if (!MeshRef)
+        return;
+    FName SocketName = Unit->GetSocketName(EquipmentSlots);
+    if (!MeshRef->DoesSocketExist(SocketName))
+        return;
+
+    FTransform SpawnTransform = MeshRef->GetSocketTransform(SocketName);
+
+    Represented = GetWorld()->SpawnActor<AActor>(GetClassRepresentedActor(), SpawnTransform, SpawnParameters);
+
+    AActor* RepresentedActor = Cast<AActor>(Represented.GetObject());
+
+    if (IsValid(RepresentedActor))
+        RepresentedActor->AttachToComponent(MeshRef, FAttachmentTransformRules::SnapToTargetIncludingScale, SocketName);
+}
+
+void UItem::RemoveRepresented()
+{
+    AActor* RepresentedActor = Cast<AActor>(Represented.GetObject());
+    if (IsValid(RepresentedActor))
+        RepresentedActor->Destroy();
 }

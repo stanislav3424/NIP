@@ -43,6 +43,13 @@ struct FInventoryData : public FItemData
 };
 
 USTRUCT(BlueprintType)
+struct FWeaponData : public FItemData
+{
+    GENERATED_BODY()
+
+};
+
+USTRUCT(BlueprintType)
 struct FUnitData : public FItemData
 {
     GENERATED_BODY()
@@ -61,4 +68,11 @@ struct FItemPositionData
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly)
     FIntPoint Position = {0, 0};
+};
+
+UENUM(BlueprintType)
+enum class EEquipmentSlots : uint8
+{
+    Backpack UMETA(DisplayName = "Backpack"),
+    Weapon UMETA(DisplayName = "Weapon"),
 };

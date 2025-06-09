@@ -21,4 +21,5 @@ public:
     virtual void InitializationItem(UItem* Item) = 0;
     virtual void ChangeVisualization() {};
     virtual AAIController* GetAIController() { return nullptr; };
+    virtual USkeletalMeshComponent* GetMesh() { return nullptr; };
 };

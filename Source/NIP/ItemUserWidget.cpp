@@ -7,16 +7,7 @@
 void UItemUserWidget::NativeConstruct()
 {
     Super::NativeConstruct();
-    SetupBackground();
-}
-
-void UItemUserWidget::SetupBackground()
-{
-    if (!Background)
-        return;
-    FSlateBrush Brush;
-    Brush.TintColor = FLinearColor(0.f, 0.f, 0.f, 0.4f);
-    Background->SetBrush(Brush);
+    UpdateVisualization();
 }
 
 void UItemUserWidget::InitializeItem(UItem* NewItem)
@@ -28,9 +19,24 @@ void UItemUserWidget::InitializeItem(UItem* NewItem)
     }
 
     Item = NewItem;
-    SetupMaterialInstanceDynamic();
+    UpdateVisualization();
 }
 
+// Visualization
+
+void UItemUserWidget::UpdateVisualization()
+{
+    if (!Background)
+        return;
+
+    FLinearColor FinalColor = BackgroundColor;
+    if (bMouseEnter)
+        FinalColor += ModifierMouseEnterColor;
+    FSlateBrush Brush;
+    Brush.TintColor = FinalColor;
+    Background->SetBrush(Brush);
+    SetupMaterialInstanceDynamic();
+}
 
 void UItemUserWidget::SetupMaterialInstanceDynamic()
 {

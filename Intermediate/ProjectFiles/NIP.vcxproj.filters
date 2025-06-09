@@ -132,10 +132,22 @@
     <ClCompile Include="..\..\Source\NIP\Unit.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\UnitListItem.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\UnitListItem.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NIP\UnitUserWidget.cpp">
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\UnitUserWidget.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\Weapon.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\Weapon.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
   </ItemGroup>

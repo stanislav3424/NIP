@@ -1,7 +1,7 @@
+#include "MainPlayerController.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputAction.h"
-#include "MainPlayerController.h"
 #include "MainHUD.h"
 #include "Unit.h"
 #include "CharacterUnit.h"
@@ -30,6 +30,8 @@ void AMainPlayerController::BeginPlay()
         return;
 
     MenuUnitsUserWidget = CreateWidget<UMenuUnitsUserWidget>(this, MainGameState->GetClassMenuUnitsUserWidget());
+    if (MenuUnitsUserWidget)
+        MenuUnitsUserWidget->AddToViewport();
 }
 
 void AMainPlayerController::SetupInputComponent()
@@ -125,7 +127,7 @@ void AMainPlayerController::UpdateUnitsSelection()
 
     if (SelectedUnits.IsEmpty())
     {
-        SetTargetSelectUnit(nullptr);
+        SetUISelectedUnit(nullptr);
     }
     else if (!IsValid(UISelectedUnit) || !SelectedUnits.Contains(UISelectedUnit))
     {
@@ -134,7 +136,7 @@ void AMainPlayerController::UpdateUnitsSelection()
         {
             if (IsValid(Unit))
             {
-                SetTargetSelectUnit(Unit);
+                SetUISelectedUnit(Unit);
                 break;
             }
         }
@@ -176,13 +178,14 @@ void AMainPlayerController::SelectUnit()
     UpdateUnitsSelection();
 }
 
-void AMainPlayerController::SetTargetSelectUnit(UUnit* Unit)
+void AMainPlayerController::SetUISelectedUnit(UUnit* Unit)
 {
     if (UISelectedUnit == Unit)
         return;
 
     UISelectedUnit = Unit;
     bSelectionChanged = true;
+    OnUISelectedUnitChanged.Broadcast();
     ProcessSelectionChanges();
 }
 

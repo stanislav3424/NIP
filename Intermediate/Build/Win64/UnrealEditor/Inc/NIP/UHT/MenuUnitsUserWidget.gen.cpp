@@ -17,7 +17,6 @@ NIP_API UClass* Z_Construct_UClass_UUnitUserWidget_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UBorder_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UCanvasPanel_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UListView_NoRegister();
-UMG_API UClass* Z_Construct_UClass_USizeBox_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
 
@@ -35,11 +34,6 @@ struct Z_Construct_UClass_UMenuUnitsUserWidget_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 		{ "IncludePath", "MenuUnitsUserWidget.h" },
-		{ "ModuleRelativePath", "MenuUnitsUserWidget.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SizeBox_MetaData[] = {
-		{ "BindWidget", "" },
-		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "MenuUnitsUserWidget.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Background_MetaData[] = {
@@ -63,7 +57,6 @@ struct Z_Construct_UClass_UMenuUnitsUserWidget_Statics
 		{ "ModuleRelativePath", "MenuUnitsUserWidget.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_SizeBox;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Background;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CanvasPanel;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_UnitUserWidget;
@@ -75,13 +68,11 @@ struct Z_Construct_UClass_UMenuUnitsUserWidget_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_SizeBox = { "SizeBox", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UMenuUnitsUserWidget, SizeBox), Z_Construct_UClass_USizeBox_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SizeBox_MetaData), NewProp_SizeBox_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_Background = { "Background", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UMenuUnitsUserWidget, Background), Z_Construct_UClass_UBorder_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Background_MetaData), NewProp_Background_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_CanvasPanel = { "CanvasPanel", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UMenuUnitsUserWidget, CanvasPanel), Z_Construct_UClass_UCanvasPanel_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CanvasPanel_MetaData), NewProp_CanvasPanel_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_UnitUserWidget = { "UnitUserWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UMenuUnitsUserWidget, UnitUserWidget), Z_Construct_UClass_UUnitUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UnitUserWidget_MetaData), NewProp_UnitUserWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_ListView = { "ListView", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UMenuUnitsUserWidget, ListView), Z_Construct_UClass_UListView_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ListView_MetaData), NewProp_ListView_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UMenuUnitsUserWidget_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_SizeBox,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_Background,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_CanvasPanel,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMenuUnitsUserWidget_Statics::NewProp_UnitUserWidget,
@@ -129,10 +120,10 @@ UMenuUnitsUserWidget::~UMenuUnitsUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UMenuUnitsUserWidget, UMenuUnitsUserWidget::StaticClass, TEXT("UMenuUnitsUserWidget"), &Z_Registration_Info_UClass_UMenuUnitsUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMenuUnitsUserWidget), 2514235369U) },
+		{ Z_Construct_UClass_UMenuUnitsUserWidget, UMenuUnitsUserWidget::StaticClass, TEXT("UMenuUnitsUserWidget"), &Z_Registration_Info_UClass_UMenuUnitsUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMenuUnitsUserWidget), 2694701237U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_3166926510(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_1718942878(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MenuUnitsUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
