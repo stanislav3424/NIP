@@ -33,6 +33,12 @@
     <Filter Include="Source\NIP">
       <UniqueIdentifier>{AE7BC10F-C561-3161-9954-6DCA965AB1CB}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\NIP\ActorItem.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\ActorItem.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NIP\BaseUserWidget.cpp">
       <Filter>Source\NIP</Filter>
     </ClCompile>
@@ -49,6 +55,12 @@
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\CharacterUnit.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\CustomTest.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\CustomTest.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\Inventory.cpp">

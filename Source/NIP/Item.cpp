@@ -54,6 +54,16 @@ void UItem::SetContainerOwner(UItem* NewContainerOwner)
 
 // Spawn
 
+void UItem::SpawnRepresented(const FTransform& SpawnTransform)
+{
+    if (IsValid(Represented.GetObject()))
+        return;
+    if (GetWorld())
+        Represented = GetWorld()->SpawnActor<AActor>(ClassRepresentedActor, SpawnTransform);
+    if (IsValid(Represented.GetObject()))
+        Represented.GetInterface()->InitializationItem(this);
+}
+
 void UItem::SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots)
 {
     if (!IsValid(Unit))
@@ -65,7 +75,7 @@ void UItem::SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots)
     SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
     SpawnParameters.Owner = RepresentedActorTarget;
 
-    USkeletalMeshComponent* MeshRef = Unit->GetRepresented().GetInterface()->GetMesh();
+    USkeletalMeshComponent* MeshRef = Unit->GetRepresented().GetInterface()->GetMeshInterface();
     if (!MeshRef)
         return;
     FName SocketName = Unit->GetSocketName(EquipmentSlots);
@@ -77,9 +87,11 @@ void UItem::SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots)
     Represented = GetWorld()->SpawnActor<AActor>(GetClassRepresentedActor(), SpawnTransform, SpawnParameters);
 
     AActor* RepresentedActor = Cast<AActor>(Represented.GetObject());
-
     if (IsValid(RepresentedActor))
         RepresentedActor->AttachToComponent(MeshRef, FAttachmentTransformRules::SnapToTargetIncludingScale, SocketName);
+
+    if (Represented.GetInterface())
+    Represented.GetInterface()->SetCollision(false);
 }
 
 void UItem::RemoveRepresented()

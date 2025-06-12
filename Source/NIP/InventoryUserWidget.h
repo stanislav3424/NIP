@@ -22,9 +22,6 @@ class NIP_API UInventoryUserWidget : public UBaseUserWidget
     // NativeConstruct
 protected:
     virtual void NativeConstruct() override;
-
-private:
-    void SetupBackground();
 	
 	// Data
 private:
@@ -46,9 +43,12 @@ public:
     // Initialization
 public:
     UFUNCTION(BlueprintCallable, Category = "Item")
-    void InitializeUnit(UInventory* NewInventory);
+    void InitializeInventory(UInventory* NewInventory);
 
+    // Visualization
 private:
-    void SetupItems();
     void Reset();
+    void SetupSizeBox();
+    void SetupBackground();
+    void SetupItems();
 };

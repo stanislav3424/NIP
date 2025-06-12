@@ -7,6 +7,7 @@
 #include "CharacterUnit.h"
 #include "MainGameState.h"
 #include "MenuUnitsUserWidget.h"
+#include "Kismet/KismetMathLibrary.h"
 
 AMainPlayerController::AMainPlayerController() {}
 
@@ -22,10 +23,8 @@ void AMainPlayerController::BeginPlay()
         Subsystem->AddMappingContext(DefaultMappingContext, 0);
     }
 
-    if (!GetWorld())
-        return;
-
-    MainGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
+    if (GetWorld())
+        MainGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
     if (!MainGameState)
         return;
 
@@ -53,7 +52,7 @@ void AMainPlayerController::SetupInputComponent()
 
 void AMainPlayerController::Tick(float DeltaTime)
 {
-    if (bIsSelecting || bVaitingSelecting)
+    if (bIsSelecting || bWaitingSelecting)
     {
         FHitResult HitResult;
         this->GetHitResultUnderCursor(ECollisionChannel(ECC_Visibility), false, HitResult);
@@ -66,13 +65,13 @@ void AMainPlayerController::Tick(float DeltaTime)
     }
     if (bIsSelecting)
         UpdateUnitsSelection();
-    if (!bVaitingSelecting)
+    if (!bWaitingSelecting)
         return;
     float Distance = FVector2D::Distance(SelectionStart, SelectionEnd);
     if (Distance > 10.f)
     {
         bIsSelecting = true;
-        bVaitingSelecting = false;
+        bWaitingSelecting = false;
     }
 }
 
@@ -90,7 +89,7 @@ void AMainPlayerController::StartedSelection(const FInputActionValue& Value)
     if (this->ProjectWorldLocationToScreen(WorldLocation, SelectionStart, true))
     {
         SelectionEnd = SelectionStart;
-        bVaitingSelecting = true;
+        bWaitingSelecting = true;
     }
 }
 
@@ -98,11 +97,11 @@ void AMainPlayerController::TriggeredSelection(const FInputActionValue& Value) {
 
 void AMainPlayerController::CompletedSelection(const FInputActionValue& Value)
 {
-    if (!bIsSelecting && bVaitingSelecting)
+    if (!bIsSelecting && bWaitingSelecting)
         SelectUnit();
 
     bIsSelecting = false;
-    bVaitingSelecting = false;
+    bWaitingSelecting = false;
 }
 
 void AMainPlayerController::HandleCommand(const FInputActionValue& Value) { MoveToLocation(); }
@@ -171,7 +170,9 @@ void AMainPlayerController::SelectUnit()
             {
                 UUnit* Unit = CharacterUnit->GetUnit();
                 if (Unit)
+                {
                     NewSelectedUnits.Add(Unit);
+                }
             }
         }
     }

@@ -16,7 +16,7 @@ class UInventory;
 #define NIP_InventoryUserWidget_generated_h
 
 #define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execInitializeUnit);
+	DECLARE_FUNCTION(execInitializeInventory);
 
 
 #define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_20_INCLASS_NO_PURE_DECLS \

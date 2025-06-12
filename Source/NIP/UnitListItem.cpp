@@ -14,8 +14,7 @@ void UUnitListItem::NativeOnListItemObjectSet(UObject* ListItemObject)
 
     UpdateVisualization();
 
-    auto& ID = Unit->GetID();
-    TextBlock_Name->SetText(FText::FromName(ID));
+    TextBlock_Name->SetText(FText::FromName(Unit->GetID()));
 
     if (MainPlayerController)
         DelegateHandle =

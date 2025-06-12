@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeNIP_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x036FA351,
-				0xB7AB2DAA,
+				0x2088C844,
+				0x2668371A,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_NIP.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_NIP.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_NIP(Z_Construct_UPackage__Script_NIP, TEXT("/Script/NIP"), Z_Registration_Info_UPackage__Script_NIP, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x036FA351, 0xB7AB2DAA));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_NIP(Z_Construct_UPackage__Script_NIP, TEXT("/Script/NIP"), Z_Registration_Info_UPackage__Script_NIP, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x2088C844, 0x2668371A));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

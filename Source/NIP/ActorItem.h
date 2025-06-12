@@ -1,26 +1,41 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "RepresentableInterface.h"
+#include "ItemData.h"
 #include "ActorItem.generated.h"
 
+class UItem;
+class AMainGameState;
+
 UCLASS()
-class NIP_API AActorItem : public AActor
+class NIP_API AActorItem : public AActor, public IRepresentableInterface
 {
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AActorItem();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	// Data
+protected:
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    FDataTableRowHandle DataTableRowHandle;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    UItem* Item;
+
+public:
+    UItem* GetItem() { return Item; }
+
+    // RepresentableInterface
+protected:
+    virtual void InitializationItem(UItem* Item) override;
+    virtual void SetCollision(bool bEnableCollision) override;
 };

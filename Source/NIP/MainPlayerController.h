@@ -67,7 +67,7 @@ private:
     FVector2D SelectionStart;
     FVector2D SelectionEnd;
     bool bIsSelecting = false;
-    bool bVaitingSelecting = false;
+    bool bWaitingSelecting = false;
 
     UPROPERTY(BlueprintReadOnly, Category = "Selection", meta = (AllowPrivateAccess = "true"))
     TSet<UUnit*> SelectedUnits;

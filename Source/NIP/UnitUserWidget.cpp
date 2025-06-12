@@ -34,6 +34,25 @@ void UUnitUserWidget::InitializeUnit(UUnit* NewUnit)
         return;
 
     Unit = NewUnit;
+
+    if (!CanvasPanel || !TextBlock_Name || !InventoryUserWidget || !EquipmentBackpackUserWidget ||
+        !EquipmentWeaponUserWidget)
+        return;
+    TextBlock_Name->SetText(FText::FromName(Unit->GetID()));
+    CanvasPanel->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
+    InventoryUserWidget->InitializeInventory(Unit->GetEquipmentBySlot<UInventory>(EEquipmentSlots::Backpack));
+    EquipmentBackpackUserWidget->InitializeItemCustomSize(Unit->GetEquipmentBySlot(EEquipmentSlots::Backpack));
+    EquipmentWeaponUserWidget->InitializeItemCustomSize(Unit->GetEquipmentBySlot(EEquipmentSlots::Weapon));
 }
 
-void UUnitUserWidget::Reset() {}
+void UUnitUserWidget::Reset()
+{
+    if (!CanvasPanel || !TextBlock_Name || !InventoryUserWidget || !EquipmentBackpackUserWidget ||
+        !EquipmentWeaponUserWidget)
+        return;
+    Unit = nullptr;
+    CanvasPanel->SetVisibility(ESlateVisibility::Hidden);
+    InventoryUserWidget->InitializeInventory(nullptr);
+    EquipmentBackpackUserWidget->InitializeItemCustomSize(nullptr);
+    EquipmentWeaponUserWidget->InitializeItemCustomSize(nullptr);
+}

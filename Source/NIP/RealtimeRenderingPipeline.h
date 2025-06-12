@@ -51,7 +51,7 @@ private:
     UMaterial* MaterialBase;
 
 public:
-    UFUNCTION(BlueprintCallable)
+    void SetMaterialBase(UMaterial* SetMaterialBase) { MaterialBase = SetMaterialBase; };
     UMaterialInstanceDynamic* GetMaterialInstanceDynamic(UItem* ItemBase, FIntPoint Size);
 
 private:

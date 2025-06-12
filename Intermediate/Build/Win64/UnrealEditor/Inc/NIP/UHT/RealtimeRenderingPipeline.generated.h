@@ -9,16 +9,10 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class UItem;
-class UMaterialInstanceDynamic;
 #ifdef NIP_RealtimeRenderingPipeline_generated_h
 #error "RealtimeRenderingPipeline.generated.h already included, missing '#pragma once' in RealtimeRenderingPipeline.h"
 #endif
 #define NIP_RealtimeRenderingPipeline_generated_h
-
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execGetMaterialInstanceDynamic);
-
 
 #define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_19_INCLASS_NO_PURE_DECLS \
 private: \
@@ -45,7 +39,6 @@ public: \
 #define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_19_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_19_INCLASS_NO_PURE_DECLS \
 	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_19_ENHANCED_CONSTRUCTORS \
 private: \

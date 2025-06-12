@@ -12,32 +12,56 @@ void UInventoryUserWidget::NativeConstruct()
     SetupBackground();
 }
 
+void UInventoryUserWidget::InitializeInventory(UInventory* NewInventory)
+{
+    if (Inventory == NewInventory)
+        return;
+    Inventory = NewInventory;
+
+    Reset();
+}
+
+void UInventoryUserWidget::Reset()
+{
+    if (CanvasPanel)
+        CanvasPanel->ClearChildren();
+
+    SetupSizeBox();
+    SetupBackground();
+    SetupItems();
+}
+
+void UInventoryUserWidget::SetupSizeBox()
+{
+    if (!SizeBox || !Inventory)
+        return;
+
+    auto& InventorySize = Inventory->GetSizeInventory();
+
+    SizeBox->SetWidthOverride(InventorySize.X * InventoryCellSize);
+    SizeBox->SetHeightOverride(InventorySize.Y * InventoryCellSize);
+}
 
 void UInventoryUserWidget::SetupBackground()
 {
     if (!Background)
         return;
-    FSlateBrush Brush;
-    Brush.TintColor = FLinearColor(0.f, 0.f, 0.f, 0.4f);
-    Background->SetBrush(Brush);
-}
 
-void UInventoryUserWidget::InitializeUnit(UInventory* NewInventory)
-{
-    Reset();
-    if (!NewInventory)
-        return;
-
-    Inventory = NewInventory;
-    SetupItems();
+    if (Inventory)
+        Background->SetVisibility(ESlateVisibility::Collapsed);
+    else
+    {
+        Background->SetVisibility(ESlateVisibility::Visible);
+        //Background->SetBrushFromMaterial();
+    }
 }
 
 void UInventoryUserWidget::SetupItems()
 {
-    if (!SizeBox || !MainGameState || !Inventory)
+    if (!SizeBox || !Inventory)
         return;
 
-    const FIntPoint& ItemSize = Inventory->GetInventorySize();
+    const FIntPoint& ItemSize = Inventory->GetSizeInventory();
     SizeBox->SetWidthOverride(ItemSize.X * InventoryCellSize);
     SizeBox->SetHeightOverride(ItemSize.Y * InventoryCellSize);
 
@@ -55,11 +79,4 @@ void UInventoryUserWidget::SetupItems()
         ItemWidget->InitializeItem(Item.Item);
 
     }
-}
-
-void UInventoryUserWidget::Reset()
-{
-    if (CanvasPanel)
-        CanvasPanel->ClearChildren();
-    Inventory = nullptr;
 }

@@ -73,7 +73,7 @@ public:
     void InitializationRepresented(AActor* SetRepresented);
 
     // Spawn
-
+    virtual void SpawnRepresented(const FTransform& SpawnTransform);
     void SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots);
     void RemoveRepresented();
 

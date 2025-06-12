@@ -10,79 +10,20 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeRealtimeRenderingPipeline() {}
 
 // Begin Cross Module References
-COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FIntPoint();
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UMaterial_NoRegister();
-ENGINE_API UClass* Z_Construct_UClass_UMaterialInstanceDynamic_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USceneCaptureComponent2D_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USpotLightComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UTextureRenderTarget2D_NoRegister();
 NIP_API UClass* Z_Construct_UClass_ARealtimeRenderingPipeline();
 NIP_API UClass* Z_Construct_UClass_ARealtimeRenderingPipeline_NoRegister();
-NIP_API UClass* Z_Construct_UClass_UItem_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
-
-// Begin Class ARealtimeRenderingPipeline Function GetMaterialInstanceDynamic
-struct Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics
-{
-	struct RealtimeRenderingPipeline_eventGetMaterialInstanceDynamic_Parms
-	{
-		UItem* ItemBase;
-		FIntPoint Size;
-		UMaterialInstanceDynamic* ReturnValue;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "RealtimeRenderingPipeline.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_ItemBase;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_Size;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_ReturnValue;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::NewProp_ItemBase = { "ItemBase", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(RealtimeRenderingPipeline_eventGetMaterialInstanceDynamic_Parms, ItemBase), Z_Construct_UClass_UItem_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::NewProp_Size = { "Size", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(RealtimeRenderingPipeline_eventGetMaterialInstanceDynamic_Parms, Size), Z_Construct_UScriptStruct_FIntPoint, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(RealtimeRenderingPipeline_eventGetMaterialInstanceDynamic_Parms, ReturnValue), Z_Construct_UClass_UMaterialInstanceDynamic_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::NewProp_ItemBase,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::NewProp_Size,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::NewProp_ReturnValue,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ARealtimeRenderingPipeline, nullptr, "GetMaterialInstanceDynamic", nullptr, nullptr, Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::PropPointers), sizeof(Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::RealtimeRenderingPipeline_eventGetMaterialInstanceDynamic_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04820401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::Function_MetaDataParams), Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::RealtimeRenderingPipeline_eventGetMaterialInstanceDynamic_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(ARealtimeRenderingPipeline::execGetMaterialInstanceDynamic)
-{
-	P_GET_OBJECT(UItem,Z_Param_ItemBase);
-	P_GET_STRUCT(FIntPoint,Z_Param_Size);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	*(UMaterialInstanceDynamic**)Z_Param__Result=P_THIS->GetMaterialInstanceDynamic(Z_Param_ItemBase,Z_Param_Size);
-	P_NATIVE_END;
-}
-// End Class ARealtimeRenderingPipeline Function GetMaterialInstanceDynamic
 
 // Begin Class ARealtimeRenderingPipeline
 void ARealtimeRenderingPipeline::StaticRegisterNativesARealtimeRenderingPipeline()
 {
-	UClass* Class = ARealtimeRenderingPipeline::StaticClass();
-	static const FNameNativePtrPair Funcs[] = {
-		{ "GetMaterialInstanceDynamic", &ARealtimeRenderingPipeline::execGetMaterialInstanceDynamic },
-	};
-	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(ARealtimeRenderingPipeline);
 UClass* Z_Construct_UClass_ARealtimeRenderingPipeline_NoRegister()
@@ -135,10 +76,6 @@ struct Z_Construct_UClass_ARealtimeRenderingPipeline_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MaterialBase;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
-	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_ARealtimeRenderingPipeline_GetMaterialInstanceDynamic, "GetMaterialInstanceDynamic" }, // 1799515038
-	};
-	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ARealtimeRenderingPipeline>::IsAbstract,
 	};
@@ -173,11 +110,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_ARealtimeRenderingPipel
 	"Engine",
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	FuncInfo,
+	nullptr,
 	Z_Construct_UClass_ARealtimeRenderingPipeline_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	UE_ARRAY_COUNT(FuncInfo),
+	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_ARealtimeRenderingPipeline_Statics::PropPointers),
 	0,
 	0x009000A4u,
@@ -203,10 +140,10 @@ ARealtimeRenderingPipeline::~ARealtimeRenderingPipeline() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ARealtimeRenderingPipeline, ARealtimeRenderingPipeline::StaticClass, TEXT("ARealtimeRenderingPipeline"), &Z_Registration_Info_UClass_ARealtimeRenderingPipeline, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARealtimeRenderingPipeline), 2399955296U) },
+		{ Z_Construct_UClass_ARealtimeRenderingPipeline, ARealtimeRenderingPipeline::StaticClass, TEXT("ARealtimeRenderingPipeline"), &Z_Registration_Info_UClass_ARealtimeRenderingPipeline, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARealtimeRenderingPipeline), 889575957U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_1369097582(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_730704679(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_RealtimeRenderingPipeline_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

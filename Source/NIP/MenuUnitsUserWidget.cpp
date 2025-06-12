@@ -33,7 +33,6 @@ void UMenuUnitsUserWidget::ChangeUnits()
     if (!MainPlayerController || !ListView || !UnitUserWidget)
         return;
     ChangeListView();
-    UnitSelectionChanged();
 }
 
 void UMenuUnitsUserWidget::ChangeListView()

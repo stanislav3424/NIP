@@ -36,6 +36,19 @@ void UUnit::RemoveContainerFromOwner(UItem* Item)
     }
 }
 
+UItem* UUnit::GetEquipmentBySlot(EEquipmentSlots EquipmentSlots)
+{
+    switch (EquipmentSlots)
+    {
+    case EEquipmentSlots::Backpack:
+        return Backpack;
+    case EEquipmentSlots::Weapon:
+        return Weapon;
+    default:
+        return nullptr;
+    }
+}
+
 FName UUnit::GetSocketName(EEquipmentSlots EquipmentSlots)
 {
     FName SocketName;

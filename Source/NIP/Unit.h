@@ -34,6 +34,13 @@ private:
     UWeapon* Weapon;
 
 public:
+    UItem* GetEquipmentBySlot(EEquipmentSlots EquipmentSlots);
+    template <typename T>
+    T* GetEquipmentBySlot(EEquipmentSlots EquipmentSlots)
+    {
+        UItem* Item = GetEquipmentBySlot(EquipmentSlots);
+        return Cast<T>(Item);
+    }
     FName GetSocketName(EEquipmentSlots EquipmentSlots);
     bool EquipmentSlotAvailable(EEquipmentSlots EquipmentSlots);
     bool PutOnEquipment(UItem* ItemBase, EEquipmentSlots EquipmentSlots);

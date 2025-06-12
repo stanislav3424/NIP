@@ -17,12 +17,13 @@ struct FDataTableRowHandle;
 #endif
 #define NIP_MainGameState_generated_h
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execRunTest); \
 	DECLARE_FUNCTION(execSpawnRepresented); \
 	DECLARE_FUNCTION(execCreateItem);
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_20_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_21_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMainGameState(); \
 	friend struct Z_Construct_UClass_AMainGameState_Statics; \
@@ -31,7 +32,7 @@ public: \
 	DECLARE_SERIALIZER(AMainGameState)
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_20_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_21_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AMainGameState(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -45,13 +46,13 @@ public: \
 	NO_API virtual ~AMainGameState();
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_17_PROLOG
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_20_GENERATED_BODY \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_18_PROLOG
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_21_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_20_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_20_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_21_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_21_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_21_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

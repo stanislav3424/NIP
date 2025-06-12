@@ -21,7 +21,7 @@ protected:
     TArray<UItem*> Inventory;
 
 public:
-    const FIntPoint& GetInventorySize() const { return InventorySize; }
+    const FIntPoint& GetSizeInventory() const { return InventorySize; }
 
     UFUNCTION(BlueprintCallable)
     const TArray<FItemPositionData> GetItemsPositionData() const;

@@ -6,13 +6,20 @@
 #include "InventoryUserWidget.h"
 #include "UnitUserWidget.h"
 #include "MenuUnitsUserWidget.h"
+#include "CustomTest.h"
 
 void AMainGameState::BeginPlay()
 {
     Super::BeginPlay();
     CheckDataTable();
     if (GetWorld())
-        RealtimeRenderingPipeline = GetWorld()->SpawnActor<ARealtimeRenderingPipeline>();
+        RealtimeRenderingPipeline = GetWorld()->SpawnActor<ARealtimeRenderingPipeline>(ClassRealtimeRenderingPipeline);
+    if (IsValid(RealtimeRenderingPipeline))
+        RealtimeRenderingPipeline->SetMaterialBase(MaterialBase);
+
+    Test = NewObject<UCustomTest>(this);
+    if (Test)
+        Test->SetMainGameState(this);
 }
 
 UItem* AMainGameState::CreateItem(const FDataTableRowHandle& DataTableRowHandle)
@@ -22,18 +29,35 @@ UItem* AMainGameState::CreateItem(const FDataTableRowHandle& DataTableRowHandle)
         return nullptr;
 
     UItem* Item = NewObject<UItem>(this, ItemData->ClassItem);
-    Item->Initialization(DataTableRowHandle);
+    if (Item)
+        Item->Initialization(DataTableRowHandle);
     return Item;
 }
 
-AActor* AMainGameState::SpawnRepresented(const FDataTableRowHandle& DataTableRowHandle)
+UItem* AMainGameState::CreateItem(const FName& RowName)
 {
-    FItemData* ItemData = GetItemData(DataTableRowHandle);
-    if (!ItemData)
+    auto DataTableRowHandle = GetDataTableRowHandle(RowName);
+    return CreateItem(DataTableRowHandle);
+}
+
+AActor* AMainGameState::SpawnRepresented(const FDataTableRowHandle& DataTableRowHandle,
+                                         const FTransform& SpawnTransform)
+{
+    auto Item = CreateItem(DataTableRowHandle);
+    if (!Item)
         return nullptr;
 
-    return nullptr;
+    Item->SpawnRepresented(SpawnTransform);
+    return Cast<AActor>(Item->GetRepresented().GetObject());
 }
+
+AActor* AMainGameState::SpawnRepresented(const FName& RowName,
+                                         const FTransform& SpawnTransform)
+{
+    auto DataTableRowHandle = GetDataTableRowHandle(RowName);
+    return SpawnRepresented(DataTableRowHandle, SpawnTransform);
+}
+
 
 // DataTable
 
@@ -76,6 +100,41 @@ FItemData* AMainGameState::GetItemData(const FDataTableRowHandle& DataTableRowHa
     return ItemData;
 }
 
+FDataTableRowHandle AMainGameState::GetDataTableRowHandle(const FName& RowName)
+{
+    if (!RowName.IsValid() || RowName.IsNone())
+    {
+        UE_LOG(LogTemp, Warning, TEXT("GetItemDataByName: Invalid RowName!"));
+        return FDataTableRowHandle();
+    }
+
+    FDataTableRowHandle DataTableRowHandle;
+    DataTableRowHandle.RowName = RowName;
+
+    if (ItemsDataTable)
+        if (ItemsDataTable->GetRowNames().Contains<FName>(RowName))
+        {
+            DataTableRowHandle.DataTable = ItemsDataTable;
+            return DataTableRowHandle;
+        }
+    if (UnitsDataTable)
+        if (UnitsDataTable->GetRowNames().Contains<FName>(RowName))
+        {
+            DataTableRowHandle.DataTable = UnitsDataTable;
+            return DataTableRowHandle;
+        }
+    if (InventorysDataTable)
+        if (InventorysDataTable->GetRowNames().Contains<FName>(RowName))
+        {
+            DataTableRowHandle.DataTable = InventorysDataTable;
+            return DataTableRowHandle;
+        }
+
+    UE_LOG(LogTemp, Warning, TEXT("GetItemDataByName: Item with name '%s' not found in any DataTable!"),
+           *RowName.ToString());
+    return FDataTableRowHandle();
+}
+
 // Generate
 
 FName AMainGameState::GenerateUniqueName(const UObject* Object) const
@@ -102,3 +161,11 @@ UMaterialInstanceDynamic* AMainGameState::GetMaterialInstanceDynamic(UItem* Item
         return RealtimeRenderingPipeline->GetMaterialInstanceDynamic(Item, Size);
     return nullptr;
 }
+
+// Tests
+
+void AMainGameState::RunTest(int32 IndexTest)
+{
+    if (Test)
+        Test->RunTest(IndexTest);
+};
