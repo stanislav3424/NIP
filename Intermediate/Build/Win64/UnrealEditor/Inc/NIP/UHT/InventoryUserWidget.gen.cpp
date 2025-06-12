@@ -172,10 +172,17 @@ UInventoryUserWidget::~UInventoryUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
+<<<<<<< HEAD
 		{ Z_Construct_UClass_UInventoryUserWidget, UInventoryUserWidget::StaticClass, TEXT("UInventoryUserWidget"), &Z_Registration_Info_UClass_UInventoryUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryUserWidget), 1281024052U) },
 	};
 };
 static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_2976560205(TEXT("/Script/NIP"),
+=======
+		{ Z_Construct_UClass_UInventoryUserWidget, UInventoryUserWidget::StaticClass, TEXT("UInventoryUserWidget"), &Z_Registration_Info_UClass_UInventoryUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryUserWidget), 2446602300U) },
+	};
+};
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_524091598(TEXT("/Script/NIP"),
+>>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

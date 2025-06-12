@@ -77,6 +77,9 @@ public:
     void SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots);
     void RemoveRepresented();
 
+    void SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots);
+    void RemoveRepresented();
+
     // ContainerOwner
 public:
     virtual void RemoveContainerFromOwner(UItem* Item = nullptr);
