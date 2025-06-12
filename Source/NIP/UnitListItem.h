@@ -21,21 +21,14 @@ class NIP_API UUnitListItem : public UBaseUserWidget, public IUserObjectListEntr
 public:
     virtual void NativeOnListItemObjectSet(UObject* ListItemObject) override;
 
-<<<<<<< HEAD
-=======
 private:
     void SetupBackground();
-
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
-protected:
-    virtual void NativeDestruct() override;
 
     // Data
 private:
     UPROPERTY(BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     UUnit* Unit;
 
-<<<<<<< HEAD
     UPROPERTY(BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     FLinearColor BackgroundColor = {0.f, 0.f, 0.f, 0.4f};
 
@@ -47,8 +40,6 @@ private:
 
     FDelegateHandle DelegateHandle;
 
-=======
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
     // Slate
 public:
     UPROPERTY(meta = (BindWidget))
@@ -74,17 +65,10 @@ private:
 protected:
     virtual void UpdateVisualization();
 
-<<<<<<< HEAD
 private:
     void UnitSelectionChanged();
 
     // Interaction
 protected:
-     virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
-
-     //
-=======
-protected:
-    void UnitSelectionChanged();
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
+    virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 };

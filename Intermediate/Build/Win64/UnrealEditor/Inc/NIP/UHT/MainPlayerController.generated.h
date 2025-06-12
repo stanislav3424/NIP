@@ -14,13 +14,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NIP_MainPlayerController_generated_h
 
-<<<<<<< HEAD
-=======
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_19_DELEGATE \
-NIP_API void FOnUISelectedUnitChanged_DelegateWrapper(const FMulticastScriptDelegate& OnUISelectedUnitChanged);
-
-
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 #define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_24_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAMainPlayerController(); \

@@ -39,9 +39,4 @@ public:
 protected:
     virtual void InitializationItem(UItem* Item) override;
     virtual AAIController* GetAIController() override;
-<<<<<<< HEAD
-    virtual USkeletalMeshComponent* GetMeshInterface() override { return GetMesh(); };
-=======
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
-
 };

@@ -36,7 +36,6 @@ void UUnit::RemoveContainerFromOwner(UItem* Item)
     }
 }
 
-<<<<<<< HEAD
 UItem* UUnit::GetEquipmentBySlot(EEquipmentSlots EquipmentSlots)
 {
     switch (EquipmentSlots)
@@ -50,8 +49,6 @@ UItem* UUnit::GetEquipmentBySlot(EEquipmentSlots EquipmentSlots)
     }
 }
 
-=======
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 FName UUnit::GetSocketName(EEquipmentSlots EquipmentSlots)
 {
     FName SocketName;

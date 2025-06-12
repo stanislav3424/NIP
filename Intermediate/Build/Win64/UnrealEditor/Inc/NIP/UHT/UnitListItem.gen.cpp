@@ -10,10 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeUnitListItem() {}
 
 // Begin Cross Module References
-<<<<<<< HEAD
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
-=======
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 NIP_API UClass* Z_Construct_UClass_UBaseUserWidget();
 NIP_API UClass* Z_Construct_UClass_UUnit_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UUnitListItem();
@@ -47,7 +44,6 @@ struct Z_Construct_UClass_UUnitListItem_Statics
 		{ "Category", "Data" },
 		{ "ModuleRelativePath", "UnitListItem.h" },
 	};
-<<<<<<< HEAD
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BackgroundColor_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Data" },
@@ -63,8 +59,6 @@ struct Z_Construct_UClass_UUnitListItem_Statics
 		{ "Category", "Data" },
 		{ "ModuleRelativePath", "UnitListItem.h" },
 	};
-=======
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SizeBox_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
@@ -97,12 +91,9 @@ struct Z_Construct_UClass_UUnitListItem_Statics
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Unit;
-<<<<<<< HEAD
 	static const UECodeGen_Private::FStructPropertyParams NewProp_BackgroundColor;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_ModifierMouseEnterColor;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_ModifierSelectedUnitColor;
-=======
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SizeBox;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Background;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ItemImage;
@@ -119,12 +110,9 @@ struct Z_Construct_UClass_UUnitListItem_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitListItem_Statics::NewProp_Unit = { "Unit", nullptr, (EPropertyFlags)0x0040000000000014, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitListItem, Unit), Z_Construct_UClass_UUnit_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Unit_MetaData), NewProp_Unit_MetaData) };
-<<<<<<< HEAD
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UUnitListItem_Statics::NewProp_BackgroundColor = { "BackgroundColor", nullptr, (EPropertyFlags)0x0040000000000014, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitListItem, BackgroundColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BackgroundColor_MetaData), NewProp_BackgroundColor_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UUnitListItem_Statics::NewProp_ModifierMouseEnterColor = { "ModifierMouseEnterColor", nullptr, (EPropertyFlags)0x0040000000000014, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitListItem, ModifierMouseEnterColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ModifierMouseEnterColor_MetaData), NewProp_ModifierMouseEnterColor_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UUnitListItem_Statics::NewProp_ModifierSelectedUnitColor = { "ModifierSelectedUnitColor", nullptr, (EPropertyFlags)0x0040000000000014, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitListItem, ModifierSelectedUnitColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ModifierSelectedUnitColor_MetaData), NewProp_ModifierSelectedUnitColor_MetaData) };
-=======
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitListItem_Statics::NewProp_SizeBox = { "SizeBox", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitListItem, SizeBox), Z_Construct_UClass_USizeBox_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SizeBox_MetaData), NewProp_SizeBox_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitListItem_Statics::NewProp_Background = { "Background", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitListItem, Background), Z_Construct_UClass_UBorder_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Background_MetaData), NewProp_Background_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitListItem_Statics::NewProp_ItemImage = { "ItemImage", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitListItem, ItemImage), Z_Construct_UClass_UBorder_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ItemImage_MetaData), NewProp_ItemImage_MetaData) };
@@ -137,12 +125,9 @@ void Z_Construct_UClass_UUnitListItem_Statics::NewProp_bSelectedUnit_SetBit(void
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UUnitListItem_Statics::NewProp_bSelectedUnit = { "bSelectedUnit", nullptr, (EPropertyFlags)0x0040000000000014, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(UUnitListItem), &Z_Construct_UClass_UUnitListItem_Statics::NewProp_bSelectedUnit_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bSelectedUnit_MetaData), NewProp_bSelectedUnit_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUnitListItem_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitListItem_Statics::NewProp_Unit,
-<<<<<<< HEAD
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitListItem_Statics::NewProp_BackgroundColor,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitListItem_Statics::NewProp_ModifierMouseEnterColor,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitListItem_Statics::NewProp_ModifierSelectedUnitColor,
-=======
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitListItem_Statics::NewProp_SizeBox,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitListItem_Statics::NewProp_Background,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitListItem_Statics::NewProp_ItemImage,
@@ -195,17 +180,10 @@ UUnitListItem::~UUnitListItem() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-<<<<<<< HEAD
 		{ Z_Construct_UClass_UUnitListItem, UUnitListItem::StaticClass, TEXT("UUnitListItem"), &Z_Registration_Info_UClass_UUnitListItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitListItem), 2897733089U) },
 	};
 };
 static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_11197843(TEXT("/Script/NIP"),
-=======
-		{ Z_Construct_UClass_UUnitListItem, UUnitListItem::StaticClass, TEXT("UUnitListItem"), &Z_Registration_Info_UClass_UUnitListItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitListItem), 795364915U) },
-	};
-};
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_3178054269(TEXT("/Script/NIP"),
->>>>>>> 8109ca2ede52324330ba30f33c79a0a8097732e3
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
