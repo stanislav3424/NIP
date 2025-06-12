@@ -1,7 +1,6 @@
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\ActorItem.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\BaseUserWidget.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\Camera.h
-C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\CharacterUnit.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\CustomTest.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\Inventory.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\InventoryUserWidget.h
@@ -13,9 +12,10 @@ C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\MainHUD.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\MainPlayerController.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\MenuUnitsUserWidget.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\RealtimeRenderingPipeline.h
-C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\RepresentableInterface.h
-C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\Unit.h
-C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\UnitListItem.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\Weapon.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\UnitUserWidget.h
 C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\Item.h
+C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\RepresentableInterface.h
+C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\Unit.h
+C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\CharacterUnit.h
+C:\Users\Stas\Documents\Unreal Projects\NIP\Source\NIP\UnitListItem.h
