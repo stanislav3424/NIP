@@ -2,6 +2,9 @@
 #include "MainGameState.h"
 #include "Unit.h"
 #include "Engine/DataTable.h"
+#include "ItemData.h"
+#include "RepresentableInterface.h"
+#include "PayloadItem.h"
 
 // Initialization
 
@@ -44,11 +47,11 @@ void UItem::SetSelect(bool bNewSelect)
     bSelect = bNewSelect;
 }
 
-void UItem::RemoveContainerFromOwner(UItem* Item) { ContainerOwner = nullptr; }
+void UItem::SubRemoveContainerOwner(UItem* Item) { ContainerOwner = nullptr; }
 
 void UItem::SetContainerOwner(UItem* NewContainerOwner)
 {
-    RemoveContainerFromOwner();
+    RemoveContainerOwner();
     ContainerOwner = NewContainerOwner;
 }
 
@@ -93,7 +96,7 @@ void UItem::SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots)
         RepresentedActor->AttachToComponent(MeshRef, FAttachmentTransformRules::SnapToTargetIncludingScale, SocketName);
 
     if (Represented.GetInterface())
-    Represented.GetInterface()->SetCollision(false);
+        Represented.GetInterface()->SetCollision(false);
 }
 
 void UItem::RemoveRepresented()
@@ -102,3 +105,16 @@ void UItem::RemoveRepresented()
     if (IsValid(RepresentedActor))
         RepresentedActor->Destroy();
 }
+
+UPayloadItem* UItem::GetPayloadItem()
+{
+    auto PayloadItem = NewObject<UPayloadItem>(this);
+    if (PayloadItem)
+    {
+        PayloadItem->SetContainerOwner(ContainerOwner);
+        PayloadItem->SetItem(this);
+        PayloadItem->Initialization();
+    }
+    return PayloadItem;
+};
+

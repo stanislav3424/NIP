@@ -58,11 +58,21 @@ template<> NIP_API UScriptStruct* StaticStruct<struct FItemPositionData>();
 
 
 #define FOREACH_ENUM_EEQUIPMENTSLOTS(op) \
+	op(EEquipmentSlots::NoneIndex) \
 	op(EEquipmentSlots::Backpack) \
 	op(EEquipmentSlots::Weapon) 
 
 enum class EEquipmentSlots : uint8;
 template<> struct TIsUEnumClass<EEquipmentSlots> { enum { Value = true }; };
 template<> NIP_API UEnum* StaticEnum<EEquipmentSlots>();
+
+#define FOREACH_ENUM_EDATALASTPOSITION(op) \
+	op(EDataLastPosition::NoneIndex) \
+	op(EDataLastPosition::Inventory) \
+	op(EDataLastPosition::Equipment) 
+
+enum class EDataLastPosition : uint8;
+template<> struct TIsUEnumClass<EDataLastPosition> { enum { Value = true }; };
+template<> NIP_API UEnum* StaticEnum<EDataLastPosition>();
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -23,6 +23,36 @@ UMG_API UClass* Z_Construct_UClass_UTextBlock_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
 
+// Begin Class UUnitUserWidget Function EquipmentChanges
+struct Z_Construct_UFunction_UUnitUserWidget_EquipmentChanges_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Changes" },
+		{ "ModuleRelativePath", "UnitUserWidget.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UUnitUserWidget_EquipmentChanges_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UUnitUserWidget, nullptr, "EquipmentChanges", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UUnitUserWidget_EquipmentChanges_Statics::Function_MetaDataParams), Z_Construct_UFunction_UUnitUserWidget_EquipmentChanges_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UUnitUserWidget_EquipmentChanges()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UUnitUserWidget_EquipmentChanges_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UUnitUserWidget::execEquipmentChanges)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->EquipmentChanges();
+	P_NATIVE_END;
+}
+// End Class UUnitUserWidget Function EquipmentChanges
+
 // Begin Class UUnitUserWidget Function InitializeUnit
 struct Z_Construct_UFunction_UUnitUserWidget_InitializeUnit_Statics
 {
@@ -71,6 +101,7 @@ void UUnitUserWidget::StaticRegisterNativesUUnitUserWidget()
 {
 	UClass* Class = UUnitUserWidget::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "EquipmentChanges", &UUnitUserWidget::execEquipmentChanges },
 		{ "InitializeUnit", &UUnitUserWidget::execInitializeUnit },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -139,6 +170,7 @@ struct Z_Construct_UClass_UUnitUserWidget_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UUnitUserWidget_EquipmentChanges, "EquipmentChanges" }, // 367255843
 		{ &Z_Construct_UFunction_UUnitUserWidget_InitializeUnit, "InitializeUnit" }, // 1196335450
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -207,10 +239,10 @@ UUnitUserWidget::~UUnitUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUnitUserWidget, UUnitUserWidget::StaticClass, TEXT("UUnitUserWidget"), &Z_Registration_Info_UClass_UUnitUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitUserWidget), 610330469U) },
+		{ Z_Construct_UClass_UUnitUserWidget, UUnitUserWidget::StaticClass, TEXT("UUnitUserWidget"), &Z_Registration_Info_UClass_UUnitUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitUserWidget), 4180070191U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_3498493316(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_1237849385(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

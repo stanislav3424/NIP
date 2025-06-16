@@ -1,11 +1,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
-#include "Components/Border.h"
-#include "Components/CanvasPanel.h"
-#include "Components/SizeBox.h"
-#include "Materials/MaterialInstanceDynamic.h"
 #include "BaseUserWidget.h"
 #include "InventoryUserWidget.generated.h"
 
@@ -13,21 +8,33 @@ class AMainGameState;
 class UItem;
 class UInventory;
 class UItemUserWidget;
+class USizeBox;
+class UBorder;
+class UCanvasPanel;
 
 UCLASS()
 class NIP_API UInventoryUserWidget : public UBaseUserWidget
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
     // NativeConstruct
 protected:
     virtual void NativeConstruct() override;
-	
-	// Data
-private:
+    virtual int32 NativePaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
+                              const FSlateRect& MyClippingRect, FSlateWindowElementList& OutDrawElements, int32 LayerId,
+                              const FWidgetStyle& InWidgetStyle, bool bParentEnabled) const override;
 
+    // Data
+private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     UInventory* Inventory;
+
+    TArray<TArray<FVector2D>> GridLineSegments;
+    
+    int32 LayerIdLines = 0;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    FLinearColor BorderColor = FLinearColor::Gray;
 
     // Slate
 public:
@@ -42,13 +49,15 @@ public:
 
     // Initialization
 public:
-    UFUNCTION(BlueprintCallable, Category = "Item")
+    UFUNCTION(BlueprintCallable, Category = "Changes")
     void InitializeInventory(UInventory* NewInventory);
 
     // Visualization
 private:
-    void Reset();
+    UFUNCTION(BlueprintCallable, Category = "Changes")
+    void InventoryChanges();
     void SetupSizeBox();
     void SetupBackground();
     void SetupItems();
+    void CalculateGridLines();
 };

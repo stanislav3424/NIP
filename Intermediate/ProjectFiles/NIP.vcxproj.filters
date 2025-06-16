@@ -90,6 +90,9 @@
     <ClCompile Include="..\..\Source\NIP\ItemUserWidget.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\LogsMacros.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NIP\MainGameMode.cpp">
       <Filter>Source\NIP</Filter>
     </ClCompile>
@@ -127,6 +130,12 @@
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\NIP.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\PayloadItem.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\PayloadItem.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\RealtimeRenderingPipeline.cpp">

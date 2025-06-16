@@ -1,6 +1,10 @@
 #include "UnitListItem.h"
 #include "Unit.h"
 #include "MainPlayerController.h"
+#include "Components/Border.h"
+#include "Components/CanvasPanel.h"
+#include "Components/SizeBox.h"
+#include "Components/TextBlock.h"
 
 void UUnitListItem::NativeOnListItemObjectSet(UObject* ListItemObject)
 {

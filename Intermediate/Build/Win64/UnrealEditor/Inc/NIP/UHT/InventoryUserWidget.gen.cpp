@@ -10,6 +10,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeInventoryUserWidget() {}
 
 // Begin Cross Module References
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FLinearColor();
 NIP_API UClass* Z_Construct_UClass_UBaseUserWidget();
 NIP_API UClass* Z_Construct_UClass_UInventory_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UInventoryUserWidget();
@@ -29,7 +30,7 @@ struct Z_Construct_UFunction_UInventoryUserWidget_InitializeInventory_Statics
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "Category", "Item" },
+		{ "Category", "Changes" },
 		{ "ModuleRelativePath", "InventoryUserWidget.h" },
 	};
 #endif // WITH_METADATA
@@ -63,12 +64,43 @@ DEFINE_FUNCTION(UInventoryUserWidget::execInitializeInventory)
 }
 // End Class UInventoryUserWidget Function InitializeInventory
 
+// Begin Class UInventoryUserWidget Function InventoryChanges
+struct Z_Construct_UFunction_UInventoryUserWidget_InventoryChanges_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Changes" },
+		{ "ModuleRelativePath", "InventoryUserWidget.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UInventoryUserWidget_InventoryChanges_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UInventoryUserWidget, nullptr, "InventoryChanges", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UInventoryUserWidget_InventoryChanges_Statics::Function_MetaDataParams), Z_Construct_UFunction_UInventoryUserWidget_InventoryChanges_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UInventoryUserWidget_InventoryChanges()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UInventoryUserWidget_InventoryChanges_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UInventoryUserWidget::execInventoryChanges)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->InventoryChanges();
+	P_NATIVE_END;
+}
+// End Class UInventoryUserWidget Function InventoryChanges
+
 // Begin Class UInventoryUserWidget
 void UInventoryUserWidget::StaticRegisterNativesUInventoryUserWidget()
 {
 	UClass* Class = UInventoryUserWidget::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "InitializeInventory", &UInventoryUserWidget::execInitializeInventory },
+		{ "InventoryChanges", &UInventoryUserWidget::execInventoryChanges },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -85,6 +117,11 @@ struct Z_Construct_UClass_UInventoryUserWidget_Statics
 		{ "ModuleRelativePath", "InventoryUserWidget.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Inventory_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Data" },
+		{ "ModuleRelativePath", "InventoryUserWidget.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BorderColor_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Data" },
 		{ "ModuleRelativePath", "InventoryUserWidget.h" },
@@ -106,13 +143,15 @@ struct Z_Construct_UClass_UInventoryUserWidget_Statics
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Inventory;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_BorderColor;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SizeBox;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Background;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CanvasPanel;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UInventoryUserWidget_InitializeInventory, "InitializeInventory" }, // 1937097731
+		{ &Z_Construct_UFunction_UInventoryUserWidget_InitializeInventory, "InitializeInventory" }, // 2934134257
+		{ &Z_Construct_UFunction_UInventoryUserWidget_InventoryChanges, "InventoryChanges" }, // 1291371424
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -121,11 +160,13 @@ struct Z_Construct_UClass_UInventoryUserWidget_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_Inventory = { "Inventory", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryUserWidget, Inventory), Z_Construct_UClass_UInventory_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Inventory_MetaData), NewProp_Inventory_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_BorderColor = { "BorderColor", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryUserWidget, BorderColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BorderColor_MetaData), NewProp_BorderColor_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_SizeBox = { "SizeBox", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryUserWidget, SizeBox), Z_Construct_UClass_USizeBox_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SizeBox_MetaData), NewProp_SizeBox_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_Background = { "Background", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryUserWidget, Background), Z_Construct_UClass_UBorder_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Background_MetaData), NewProp_Background_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_CanvasPanel = { "CanvasPanel", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UInventoryUserWidget, CanvasPanel), Z_Construct_UClass_UCanvasPanel_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CanvasPanel_MetaData), NewProp_CanvasPanel_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UInventoryUserWidget_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_Inventory,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_BorderColor,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_SizeBox,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_Background,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UInventoryUserWidget_Statics::NewProp_CanvasPanel,
@@ -172,10 +213,10 @@ UInventoryUserWidget::~UInventoryUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UInventoryUserWidget, UInventoryUserWidget::StaticClass, TEXT("UInventoryUserWidget"), &Z_Registration_Info_UClass_UInventoryUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryUserWidget), 1281024052U) },
+		{ Z_Construct_UClass_UInventoryUserWidget, UInventoryUserWidget::StaticClass, TEXT("UInventoryUserWidget"), &Z_Registration_Info_UClass_UInventoryUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UInventoryUserWidget), 374656769U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_2976560205(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_469711286(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_InventoryUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

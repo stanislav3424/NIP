@@ -2,12 +2,14 @@
 
 #include "CoreMinimal.h"
 #include "Item.h"
-#include "ItemData.h"
 #include "Unit.generated.h"
 
 class AMainGameState;
 class UInventory;
 class UWeapon;
+enum class EEquipmentSlots : uint8;
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnChangesEquipment);
 
 UCLASS()
 class NIP_API UUnit : public UItem
@@ -15,16 +17,21 @@ class NIP_API UUnit : public UItem
     GENERATED_BODY()
 
     // Data
+private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     float Speed = 600.f;
+
+public:
+    FOnChangesEquipment OnChangesEquipment;
 
     // Initialization
 public:
     virtual void Initialization(const FDataTableRowHandle& InitializationDataTableRowHandle) override;
 
-   // Equipment
+    // Equipment
 public:
-    virtual void RemoveContainerFromOwner(UItem* Item) override;
+    virtual void SubRemoveContainerOwner(UItem* Item) override;
+    virtual void SetDataPayload(UPayloadItem* PayloadItem) override;
 
 private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Equipment", meta = (AllowPrivateAccess = "true"))
@@ -43,18 +50,21 @@ public:
     }
     FName GetSocketName(EEquipmentSlots EquipmentSlots);
     bool EquipmentSlotAvailable(EEquipmentSlots EquipmentSlots);
-    bool PutOnEquipment(UItem* ItemBase, EEquipmentSlots EquipmentSlots);
+    bool PutOnEquipment(UItem* Item, EEquipmentSlots EquipmentSlots);
 
 private:
     template <typename ItemType, ItemType* UUnit::* SlotMember, EEquipmentSlots SlotEnum>
     bool PutOnEquipmentInternal(UItem* Item);
 
 public:
-    bool TakeOffEquipment(UItem* ItemBase, EEquipmentSlots EquipmentSlots);
+    bool TakeOffEquipment(UItem* Item, EEquipmentSlots EquipmentSlots);
 
 private:
     template <typename ItemType, ItemType* UUnit::* SlotMember>
-    bool TakeOffEquipmentInternal(UItem* ItemBase);
+    bool TakeOffEquipmentInternal(UItem* Item);
+
+public:
+    EEquipmentSlots GetEquipmentSlotsItem(UItem* TargetItem);
 
     // Visualization
 private:

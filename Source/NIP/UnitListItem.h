@@ -2,15 +2,15 @@
 
 #include "CoreMinimal.h"
 #include "BaseUserWidget.h"
-#include "Components/Border.h"
-#include "Components/CanvasPanel.h"
-#include "Components/SizeBox.h"
-#include "Components/TextBlock.h"
 #include "Blueprint/IUserObjectListEntry.h"
 #include "UnitListItem.generated.h"
 
 class UUnit;
 class AMainPlayerController;
+class USizeBox;
+class UBorder;
+class UCanvasPanel;
+class UTextBlock;
 
 UCLASS()
 class NIP_API UUnitListItem : public UBaseUserWidget, public IUserObjectListEntry

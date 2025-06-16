@@ -2,10 +2,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "InputActionValue.h"
-#include "Containers/Set.h"
-#include "AIController.h"
-#include "NavigationSystem.h"
 #include "MainPlayerController.generated.h"
 
 class UInputAction;
@@ -15,6 +11,7 @@ class UUnit;
 class ACharacterUnit;
 class AMainGameState;
 class UMenuUnitsUserWidget;
+struct FInputActionValue;
 
 DECLARE_MULTICAST_DELEGATE(FOnUISelectedUnitChanged);
 

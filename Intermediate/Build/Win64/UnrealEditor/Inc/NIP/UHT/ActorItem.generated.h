@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NIP_ActorItem_generated_h
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAActorItem(); \
 	friend struct Z_Construct_UClass_AActorItem_Statics; \
@@ -24,7 +24,7 @@ public: \
 	virtual UObject* _getUObject() const override { return const_cast<AActorItem*>(this); }
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AActorItem(AActorItem&&); \
@@ -36,12 +36,12 @@ public: \
 	NO_API virtual ~AActorItem();
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_12_PROLOG
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_15_GENERATED_BODY \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_11_PROLOG
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_15_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_15_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_14_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ActorItem_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

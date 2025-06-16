@@ -7,19 +7,26 @@
 #include "UnitUserWidget.h"
 #include "MenuUnitsUserWidget.h"
 #include "CustomTest.h"
+#include "LogsMacros.h"
+#include "RepresentableInterface.h"
+#include "ItemData.h"
+
 
 void AMainGameState::BeginPlay()
 {
     Super::BeginPlay();
-    CheckDataTable();
+    
     if (GetWorld())
         RealtimeRenderingPipeline = GetWorld()->SpawnActor<ARealtimeRenderingPipeline>(ClassRealtimeRenderingPipeline);
     if (IsValid(RealtimeRenderingPipeline))
-        RealtimeRenderingPipeline->SetMaterialBase(MaterialBase);
+        RealtimeRenderingPipeline->SetMaterialBase(MaterialItemImage);
 
     Test = NewObject<UCustomTest>(this);
     if (Test)
         Test->SetMainGameState(this);
+
+    DragAndDropItemWidget = CreateWidget<UItemUserWidget>(GetWorld(), ClassItemUserWidget);
+    CheckValid();
 }
 
 UItem* AMainGameState::CreateItem(const FDataTableRowHandle& DataTableRowHandle)
@@ -61,14 +68,16 @@ AActor* AMainGameState::SpawnRepresented(const FName& RowName,
 
 // DataTable
 
-void AMainGameState::CheckDataTable()
+void AMainGameState::CheckValid()
 {
-    if (!ItemsDataTable)
-        UE_LOG(LogTemp, Error, TEXT("ItemsDataTable is nullptr!"));
-    if (!UnitsDataTable)
-        UE_LOG(LogTemp, Error, TEXT("UnitsDataTable is nullptr!"));
-    if (!InventorysDataTable)
-        UE_LOG(LogTemp, Error, TEXT("InventorysDataTable is nullptr!"));
+    CHECK_NULLPTR_LOG(ItemsDataTable);
+    CHECK_NULLPTR_LOG(UnitsDataTable);
+    CHECK_NULLPTR_LOG(InventorysDataTable);
+    CHECK_NULLPTR_LOG(MaterialItemImage);
+    CHECK_NULLPTR_LOG(MaterialBackgroundInventory);
+    CHECK_NULLPTR_LOG(RealtimeRenderingPipeline);
+    CHECK_NULLPTR_LOG(Test);
+    CHECK_NULLPTR_LOG(DragAndDropItemWidget);
 }
 
 template <typename T>
@@ -155,7 +164,8 @@ FName AMainGameState::GenerateUniqueName(const UObject* Object) const
 }
 
 // UserInterface
-UMaterialInstanceDynamic* AMainGameState::GetMaterialInstanceDynamic(UItem* Item, const FIntPoint& Size)
+
+UMaterialInstanceDynamic* AMainGameState::GetMIDItemImage(UItem* Item, const FIntPoint& Size)
 {
     if (IsValid(RealtimeRenderingPipeline))
         return RealtimeRenderingPipeline->GetMaterialInstanceDynamic(Item, Size);

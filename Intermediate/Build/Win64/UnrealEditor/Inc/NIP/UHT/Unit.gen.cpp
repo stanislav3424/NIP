@@ -15,8 +15,35 @@ NIP_API UClass* Z_Construct_UClass_UItem();
 NIP_API UClass* Z_Construct_UClass_UUnit();
 NIP_API UClass* Z_Construct_UClass_UUnit_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UWeapon_NoRegister();
+NIP_API UFunction* Z_Construct_UDelegateFunction_NIP_OnChangesEquipment__DelegateSignature();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
+
+// Begin Delegate FOnChangesEquipment
+struct Z_Construct_UDelegateFunction_NIP_OnChangesEquipment__DelegateSignature_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Unit.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NIP_OnChangesEquipment__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NIP, nullptr, "OnChangesEquipment__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NIP_OnChangesEquipment__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NIP_OnChangesEquipment__DelegateSignature_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UDelegateFunction_NIP_OnChangesEquipment__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NIP_OnChangesEquipment__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FOnChangesEquipment_DelegateWrapper(const FMulticastScriptDelegate& OnChangesEquipment)
+{
+	OnChangesEquipment.ProcessMulticastDelegate<UObject>(NULL);
+}
+// End Delegate FOnChangesEquipment
 
 // Begin Class UUnit
 void UUnit::StaticRegisterNativesUUnit()
@@ -37,13 +64,7 @@ struct Z_Construct_UClass_UUnit_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Speed_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Data" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "// Data\n" },
-#endif
 		{ "ModuleRelativePath", "Unit.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Data" },
-#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Backpack_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
@@ -116,10 +137,10 @@ UUnit::~UUnit() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUnit, UUnit::StaticClass, TEXT("UUnit"), &Z_Registration_Info_UClass_UUnit, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnit), 999171266U) },
+		{ Z_Construct_UClass_UUnit, UUnit::StaticClass, TEXT("UUnit"), &Z_Registration_Info_UClass_UUnit, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnit), 2087501428U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_2592184420(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_3146528149(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

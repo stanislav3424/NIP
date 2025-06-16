@@ -1,5 +1,8 @@
 #include "Inventory.h"
 #include "MainGameState.h"
+#include "ItemData.h"
+#include "PayloadItem.h"
+
 // Data
 
 const TArray<FItemPositionData> UInventory::GetItemsPositionData() const
@@ -45,6 +48,7 @@ void UInventory::Initialization(const FDataTableRowHandle& InitializationDataTab
         return;
 
     InventorySize = InventoryData->SizeInventory;
+    Inventory.Init(nullptr, InventorySize.X * InventorySize.Y);
 }
 
 // Add / Remove Item
@@ -95,6 +99,7 @@ void UInventory::AddToInventorySub(UItem* AddItem, int32 IndexInventory)
         Inventory[CurrentIndex] = AddItem;
     }
     CheckInventoryEmpty();
+    OnChangesInventory.Broadcast();
 }
 
 bool UInventory::TryAddToInventory(UItem* AddItem, int32 IndexInventory)
@@ -147,6 +152,7 @@ bool UInventory::RemoveItem(UItem* RemoveItem)
         return false;
     SubRemoveItem(RemoveItem);
     CheckInventoryEmpty();
+    OnChangesInventory.Broadcast();
     return true;
 }
 
@@ -224,7 +230,29 @@ FIntPoint UInventory::IntToPosition(int32 Index) const
     }
 
     Position.X = Index % InventoryWidth;
-    Position.Y = Index / InventoryHeight;
+    Position.Y = Index / InventoryWidth;
 
     return Position;
+}
+
+void UInventory::SetDataPayload(UPayloadItem* PayloadItem)
+{
+    if (PayloadItem)
+    {
+        PayloadItem->SetDataLastPosition(EDataLastPosition::Inventory);
+        PayloadItem->SetPosition(GetIndexItem(PayloadItem->GetItem()));
+        PayloadItem->SetRotation(GetRotationItem(PayloadItem->GetItem()));
+    }
+}
+
+int32 UInventory::GetIndexItem(UItem* TargetItem)
+{
+    return Inventory.Find(TargetItem);
+}
+
+bool UInventory::GetRotationItem(UItem* TargetItem)
+{
+    if (TargetItem)
+        return TargetItem->GetRotation();
+    return false;
 }

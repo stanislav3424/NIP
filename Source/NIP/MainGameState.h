@@ -1,10 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/DataTable.h"
 #include "GameFramework/GameStateBase.h"
-#include "ItemData.h"
-#include "RepresentableInterface.h"
 #include "MainGameState.generated.h"
 
 class UItem;
@@ -14,6 +11,8 @@ class UInventoryUserWidget;
 class UUnitUserWidget;
 class UMenuUnitsUserWidget;
 class UCustomTest;
+class IRepresentableInterface;
+struct FItemData;
 
 UCLASS()
 class NIP_API AMainGameState : public AGameStateBase
@@ -46,7 +45,7 @@ private:
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "DataTable", meta = (AllowPrivateAccess = "true"))
     UDataTable* InventorysDataTable;
 
-    void CheckDataTable();
+    void CheckValid();
 
 public:
     template <typename T>
@@ -76,8 +75,7 @@ private:
     float InventoryCellSize = 25.f;
 
 public:
-    float GetInventoryCellSize() { return InventoryCellSize; }
-    UMaterialInstanceDynamic* GetMaterialInstanceDynamic(UItem* Item, const FIntPoint& Size);
+    float GetInventoryCellSize() const { return InventoryCellSize; }
 
 private:
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UserInterface", meta = (AllowPrivateAccess = "true"))
@@ -100,7 +98,25 @@ public:
 
 private:
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UserInterface", meta = (AllowPrivateAccess = "true"))
-    UMaterial* MaterialBase;
+    UMaterial* MaterialItemImage;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "UserInterface", meta = (AllowPrivateAccess = "true"))
+    UMaterial* MaterialBackgroundInventory;
+
+public:
+    UMaterialInstanceDynamic* GetMIDItemImage(UItem* Item, const FIntPoint& Size);
+    UMaterialInstanceDynamic* GetMIDItemBackgroundInventory(UObject* InOuter)
+    {
+        return UMaterialInstanceDynamic::Create(MaterialBackgroundInventory, InOuter);
+    }
+
+private:
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    UItemUserWidget* DragAndDropItemWidget;
+
+public:
+    UItemUserWidget* GetDragAndDropItemWidget() const { return DragAndDropItemWidget; }
+ 
 
     // Tests
 private:

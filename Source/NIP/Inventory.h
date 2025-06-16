@@ -2,10 +2,12 @@
 
 #include "CoreMinimal.h"
 #include "Item.h"
-#include "ItemData.h"
 #include "Inventory.generated.h"
 
 class AMainGameState;
+struct FItemPositionData;
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnChangesInventory);
 
 UCLASS()
 class NIP_API UInventory : public UItem
@@ -21,6 +23,9 @@ protected:
     TArray<UItem*> Inventory;
 
 public:
+    FOnChangesInventory OnChangesInventory;
+
+public:
     const FIntPoint& GetSizeInventory() const { return InventorySize; }
 
     UFUNCTION(BlueprintCallable)
@@ -31,6 +36,9 @@ public:
     virtual void Initialization(const FDataTableRowHandle& InitializationDataTableRowHandle) override;
 
     // Add / Remove Item
+public:
+    virtual void SubRemoveContainerOwner(UItem* Item) override { RemoveItem(Item); };
+    virtual void SetDataPayload(UPayloadItem* PayloadItem) override;
 
 public:
     UFUNCTION(BlueprintCallable)
@@ -60,6 +68,9 @@ private:
 public:
     UFUNCTION(BlueprintCallable)
     UItem* GetItemIndex(int32 IndexInventory) const;
+
+    int32 GetIndexItem(UItem* TargetItem);
+    bool GetRotationItem(UItem* TargetItem);
 
 private:
     int32 PositionToInt(FIntPoint Position) const;

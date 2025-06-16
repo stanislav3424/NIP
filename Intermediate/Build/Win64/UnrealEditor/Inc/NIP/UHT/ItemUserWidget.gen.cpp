@@ -17,6 +17,7 @@ NIP_API UClass* Z_Construct_UClass_UItemUserWidget();
 NIP_API UClass* Z_Construct_UClass_UItemUserWidget_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UBorder_NoRegister();
 UMG_API UClass* Z_Construct_UClass_USizeBox_NoRegister();
+UMG_API UClass* Z_Construct_UClass_UTextBlock_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
 
@@ -56,6 +57,11 @@ struct Z_Construct_UClass_UItemUserWidget_Statics
 		{ "Category", "Data" },
 		{ "ModuleRelativePath", "ItemUserWidget.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BorderColor_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Data" },
+		{ "ModuleRelativePath", "ItemUserWidget.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SizeBox_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
@@ -71,15 +77,22 @@ struct Z_Construct_UClass_UItemUserWidget_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "ItemUserWidget.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TextBlock_Name_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "ItemUserWidget.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Item;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_BackgroundColor;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_ModifierMouseEnterColor;
 	static void NewProp_bCustomSize_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bCustomSize;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_BorderColor;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SizeBox;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Background;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ItemImage;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_TextBlock_Name;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -95,17 +108,21 @@ void Z_Construct_UClass_UItemUserWidget_Statics::NewProp_bCustomSize_SetBit(void
 	((UItemUserWidget*)Obj)->bCustomSize = 1;
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UItemUserWidget_Statics::NewProp_bCustomSize = { "bCustomSize", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(UItemUserWidget), &Z_Construct_UClass_UItemUserWidget_Statics::NewProp_bCustomSize_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bCustomSize_MetaData), NewProp_bCustomSize_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UItemUserWidget_Statics::NewProp_BorderColor = { "BorderColor", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UItemUserWidget, BorderColor), Z_Construct_UScriptStruct_FLinearColor, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BorderColor_MetaData), NewProp_BorderColor_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UItemUserWidget_Statics::NewProp_SizeBox = { "SizeBox", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UItemUserWidget, SizeBox), Z_Construct_UClass_USizeBox_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SizeBox_MetaData), NewProp_SizeBox_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UItemUserWidget_Statics::NewProp_Background = { "Background", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UItemUserWidget, Background), Z_Construct_UClass_UBorder_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Background_MetaData), NewProp_Background_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UItemUserWidget_Statics::NewProp_ItemImage = { "ItemImage", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UItemUserWidget, ItemImage), Z_Construct_UClass_UBorder_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ItemImage_MetaData), NewProp_ItemImage_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UItemUserWidget_Statics::NewProp_TextBlock_Name = { "TextBlock_Name", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UItemUserWidget, TextBlock_Name), Z_Construct_UClass_UTextBlock_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TextBlock_Name_MetaData), NewProp_TextBlock_Name_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UItemUserWidget_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_Item,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_BackgroundColor,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_ModifierMouseEnterColor,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_bCustomSize,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_BorderColor,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_SizeBox,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_Background,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_ItemImage,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UItemUserWidget_Statics::NewProp_TextBlock_Name,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UItemUserWidget_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UItemUserWidget_Statics::DependentSingletons[])() = {
@@ -149,10 +166,10 @@ UItemUserWidget::~UItemUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UItemUserWidget, UItemUserWidget::StaticClass, TEXT("UItemUserWidget"), &Z_Registration_Info_UClass_UItemUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UItemUserWidget), 2420778560U) },
+		{ Z_Construct_UClass_UItemUserWidget, UItemUserWidget::StaticClass, TEXT("UItemUserWidget"), &Z_Registration_Info_UClass_UItemUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UItemUserWidget), 4155203595U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemUserWidget_h_1922738551(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemUserWidget_h_263329900(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

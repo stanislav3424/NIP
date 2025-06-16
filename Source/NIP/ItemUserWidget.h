@@ -1,25 +1,29 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
-#include "Components/Border.h"
-#include "Components/CanvasPanel.h"
-#include "Components/SizeBox.h"
-#include "Materials/MaterialInstanceDynamic.h"
 #include "BaseUserWidget.h"
 #include "ItemUserWidget.generated.h"
 
 class AMainGameState;
 class UItem;
+class USizeBox;
+class UBorder;
+class UTextBlock;
 
 UCLASS()
 class NIP_API UItemUserWidget : public UBaseUserWidget
 {
     GENERATED_BODY()
 
-    // NativeConstruct
+    // Native
 protected:
     virtual void NativeConstruct() override;
+    virtual int32 NativePaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
+                              const FSlateRect& MyClippingRect, FSlateWindowElementList& OutDrawElements, int32 LayerId,
+                              const FWidgetStyle& InWidgetStyle, bool bParentEnabled) const override;
+    virtual FReply NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
+    virtual void NativeOnDragDetected(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent,
+                                      UDragDropOperation*& OutOperation) override;
 
     // Data
 private:
@@ -35,6 +39,9 @@ private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     bool bCustomSize = false;
 
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    FLinearColor BorderColor = FLinearColor::Black;
+
     // Slate
 public:
     UPROPERTY(meta = (BindWidget))
@@ -46,6 +53,9 @@ public:
     UPROPERTY(meta = (BindWidget))
     UBorder* ItemImage;
 
+    UPROPERTY(meta = (BindWidget))
+    UTextBlock* TextBlock_Name;
+
     // Initialization
 public:
     void InitializeItem(UItem* NewItem);
@@ -56,7 +66,9 @@ protected:
     virtual void UpdateVisualization();
 
 private:
+    void UpdateAllVisualization();
     void SetupSizeBox();
     void SetupBackground();
     void SetupItemImage();
+    void SetupTextBlock();
 };

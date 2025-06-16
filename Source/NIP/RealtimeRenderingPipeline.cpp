@@ -1,7 +1,11 @@
 #include "RealtimeRenderingPipeline.h"
 #include "Components/SceneCaptureComponent2D.h"
 #include "Components/SpotLightComponent.h"
+#include "Engine/TextureRenderTarget2D.h"
 #include "Item.h"
+#include "Materials/MaterialInstanceDynamic.h"
+#include "Math/UnrealMathUtility.h"
+#include "AIController.h"
 
 ARealtimeRenderingPipeline::ARealtimeRenderingPipeline()
 {

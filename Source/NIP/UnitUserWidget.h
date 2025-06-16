@@ -1,11 +1,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
-#include "Components/Border.h"
-#include "Components/CanvasPanel.h"
-#include "Components/SizeBox.h"
-#include "Components/TextBlock.h"
 #include "BaseUserWidget.h"
 #include "UnitUserWidget.generated.h"
 
@@ -14,6 +9,10 @@ class UInventory;
 class UUnit;
 class UInventoryUserWidget;
 class UItemUserWidget;
+class USizeBox;
+class UBorder;
+class UCanvasPanel;
+class UTextBlock;
 
 UCLASS()
 class NIP_API UUnitUserWidget : public UBaseUserWidget
@@ -61,7 +60,7 @@ public:
     void InitializeUnit(UUnit* NewUnit);
 
 private:
-    void Reset();
-
+    UFUNCTION(BlueprintCallable, Category = "Changes")
+    void EquipmentChanges();
     // Visualization
 };

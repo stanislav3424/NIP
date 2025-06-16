@@ -3,7 +3,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "RepresentableInterface.h"
-#include "ItemData.h"
 #include "CharacterUnit.generated.h"
 
 class UUnit;

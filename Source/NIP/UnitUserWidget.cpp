@@ -4,6 +4,11 @@
 #include "ItemUserWidget.h"
 #include "Unit.h"
 #include "InventoryUserWidget.h"
+#include "Components/Border.h"
+#include "Components/CanvasPanel.h"
+#include "Components/SizeBox.h"
+#include "Components/TextBlock.h"
+#include "ItemData.h"
 
 // NativeConstruct
 
@@ -11,7 +16,6 @@ void UUnitUserWidget::NativeConstruct()
 {
     Super::NativeConstruct();
     SetupBackground();
-    Reset();
 }
 
 void UUnitUserWidget::SetupBackground()
@@ -25,34 +29,41 @@ void UUnitUserWidget::SetupBackground()
 
 void UUnitUserWidget::InitializeUnit(UUnit* NewUnit)
 {
-    if (!NewUnit)
-    {
-        Reset();
+    if (Unit == NewUnit && NewUnit != nullptr)
         return;
-    }
-    if (Unit == NewUnit)
-        return;
+
+    if (Unit)
+        Unit->OnChangesEquipment.RemoveDynamic(this, &UUnitUserWidget::EquipmentChanges);
 
     Unit = NewUnit;
 
-    if (!CanvasPanel || !TextBlock_Name || !InventoryUserWidget || !EquipmentBackpackUserWidget ||
-        !EquipmentWeaponUserWidget)
-        return;
-    TextBlock_Name->SetText(FText::FromName(Unit->GetID()));
-    CanvasPanel->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
-    InventoryUserWidget->InitializeInventory(Unit->GetEquipmentBySlot<UInventory>(EEquipmentSlots::Backpack));
-    EquipmentBackpackUserWidget->InitializeItemCustomSize(Unit->GetEquipmentBySlot(EEquipmentSlots::Backpack));
-    EquipmentWeaponUserWidget->InitializeItemCustomSize(Unit->GetEquipmentBySlot(EEquipmentSlots::Weapon));
+    if (Unit)
+        Unit->OnChangesEquipment.AddDynamic(this, &UUnitUserWidget::EquipmentChanges);
+
+    EquipmentChanges();
 }
 
-void UUnitUserWidget::Reset()
+void UUnitUserWidget::EquipmentChanges()
 {
     if (!CanvasPanel || !TextBlock_Name || !InventoryUserWidget || !EquipmentBackpackUserWidget ||
         !EquipmentWeaponUserWidget)
         return;
-    Unit = nullptr;
-    CanvasPanel->SetVisibility(ESlateVisibility::Hidden);
-    InventoryUserWidget->InitializeInventory(nullptr);
-    EquipmentBackpackUserWidget->InitializeItemCustomSize(nullptr);
-    EquipmentWeaponUserWidget->InitializeItemCustomSize(nullptr);
+
+    if (!Unit)
+    {
+        CanvasPanel->SetVisibility(ESlateVisibility::Hidden);
+        InventoryUserWidget->InitializeInventory(nullptr);
+        EquipmentBackpackUserWidget->InitializeItemCustomSize(nullptr);
+        EquipmentWeaponUserWidget->InitializeItemCustomSize(nullptr);
+    }
+    else
+    {
+        TextBlock_Name->SetText(FText::FromName(Unit->GetID()));
+        CanvasPanel->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
+        InventoryUserWidget->InitializeInventory(Unit->GetEquipmentBySlot<UInventory>(EEquipmentSlots::Backpack));
+        EquipmentBackpackUserWidget->InitializeItemCustomSize(Unit->GetEquipmentBySlot(EEquipmentSlots::Backpack));
+        EquipmentWeaponUserWidget->InitializeItemCustomSize(Unit->GetEquipmentBySlot(EEquipmentSlots::Weapon));
+
+    }
+
 }

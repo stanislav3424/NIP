@@ -1,6 +1,8 @@
 #include "ActorItem.h"
 #include "Item.h"
 #include "MainGameState.h"
+#include "ItemData.h"
+
 
 AActorItem::AActorItem()
 {

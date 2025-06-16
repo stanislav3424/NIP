@@ -3,6 +3,10 @@
 #include "MainPlayerController.h"
 #include "Unit.h"
 #include "UnitUserWidget.h"
+#include "Components/Border.h"
+#include "Components/CanvasPanel.h"
+#include "Components/SizeBox.h"
+#include "Components/ListView.h"
 
 // NativeConstruct
 
@@ -15,6 +19,7 @@ void UMenuUnitsUserWidget::NativeConstruct()
         DelegateHandle =
             MainPlayerController->OnUISelectedUnitChanged.AddUObject(this, &UMenuUnitsUserWidget::UnitSelectionChanged);
     ChangeUnits();
+    UnitSelectionChanged();
 }
 
 void UMenuUnitsUserWidget::SetupBackground()

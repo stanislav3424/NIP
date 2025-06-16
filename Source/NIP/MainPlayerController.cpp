@@ -8,6 +8,9 @@
 #include "MainGameState.h"
 #include "MenuUnitsUserWidget.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "NavigationSystem.h"
+#include "InputActionValue.h"
+#include "AIController.h"
 
 AMainPlayerController::AMainPlayerController() {}
 

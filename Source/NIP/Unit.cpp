@@ -3,6 +3,8 @@
 #include "Inventory.h"
 #include "Weapon.h"
 #include "MainGameState.h"
+#include "ItemData.h"
+#include "PayloadItem.h"
 
 void UUnit::Initialization(const FDataTableRowHandle& InitializationDataTableRowHandle)
 {
@@ -19,7 +21,7 @@ void UUnit::Initialization(const FDataTableRowHandle& InitializationDataTableRow
 
 // Equipment
 
-void UUnit::RemoveContainerFromOwner(UItem* Item)
+void UUnit::SubRemoveContainerOwner(UItem* Item)
 {
     if (!Item)
         return;
@@ -28,11 +30,15 @@ void UUnit::RemoveContainerFromOwner(UItem* Item)
     {
         Backpack->RemoveRepresented();
         Backpack = nullptr;
+        OnChangesEquipment.Broadcast();
+        return;
     }
     else if (Weapon == Item)
     {
         Weapon->RemoveRepresented();
         Weapon = nullptr;
+        OnChangesEquipment.Broadcast();
+        return;
     }
 }
 
@@ -119,6 +125,7 @@ bool UUnit::PutOnEquipmentInternal(UItem* Item)
     Item->SetContainerOwner(this);
     this->*SlotMember = CastedItem;
     CastedItem->SpawnAndAttachSkeleton(this, SlotEnum);
+    OnChangesEquipment.Broadcast();
     return true;
 }
 
@@ -145,6 +152,7 @@ bool UUnit::TakeOffEquipmentInternal(UItem* ItemBase)
         ItemBase = Item;
         Item->RemoveRepresented();
         this->*SlotMember = nullptr;
+        OnChangesEquipment.Broadcast();
         return true;
     }
     return false;
@@ -167,4 +175,22 @@ void UUnit::CheckEquipmentVisualizationInternal(UItem* Item, EEquipmentSlots Equ
 
     if (Item)
         Item->SpawnAndAttachSkeleton(this, EquipmentSlots);
+}
+
+void UUnit::SetDataPayload(UPayloadItem* PayloadItem)
+{
+    if (PayloadItem)
+    {
+        PayloadItem->SetDataLastPosition(EDataLastPosition::Equipment);
+        PayloadItem->SetEquipmentSlots(GetEquipmentSlotsItem(PayloadItem->GetItem()));
+    }
+}
+
+EEquipmentSlots UUnit::GetEquipmentSlotsItem(UItem* TargetItem)
+{
+    if (TargetItem == Backpack)
+        return EEquipmentSlots::Backpack;
+    else if (TargetItem == Weapon)
+        return EEquipmentSlots::Weapon;
+    return EEquipmentSlots::NoneIndex;
 }

@@ -7,6 +7,7 @@
 class AMainGameState;
 class ANavigationData;
 class ACharacterUnit;
+class UInventory;
 class UUnit;
 
 UCLASS()

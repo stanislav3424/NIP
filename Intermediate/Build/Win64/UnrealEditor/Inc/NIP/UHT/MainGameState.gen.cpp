@@ -256,9 +256,20 @@ struct Z_Construct_UClass_AMainGameState_Statics
 		{ "Category", "UserInterface" },
 		{ "ModuleRelativePath", "MainGameState.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaterialBase_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaterialItemImage_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "UserInterface" },
+		{ "ModuleRelativePath", "MainGameState.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaterialBackgroundInventory_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "UserInterface" },
+		{ "ModuleRelativePath", "MainGameState.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DragAndDropItemWidget_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Data" },
+		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "MainGameState.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Test_MetaData[] = {
@@ -277,7 +288,9 @@ struct Z_Construct_UClass_AMainGameState_Statics
 	static const UECodeGen_Private::FClassPropertyParams NewProp_ClassInventoryUserWidget;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_ClassUnitUserWidget;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_ClassMenuUnitsUserWidget;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_MaterialBase;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_MaterialItemImage;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_MaterialBackgroundInventory;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_DragAndDropItemWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Test;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -302,7 +315,9 @@ const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AMainGameState_
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_ClassInventoryUserWidget = { "ClassInventoryUserWidget", nullptr, (EPropertyFlags)0x0044000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, ClassInventoryUserWidget), Z_Construct_UClass_UClass, Z_Construct_UClass_UInventoryUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ClassInventoryUserWidget_MetaData), NewProp_ClassInventoryUserWidget_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_ClassUnitUserWidget = { "ClassUnitUserWidget", nullptr, (EPropertyFlags)0x0044000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, ClassUnitUserWidget), Z_Construct_UClass_UClass, Z_Construct_UClass_UUnitUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ClassUnitUserWidget_MetaData), NewProp_ClassUnitUserWidget_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_ClassMenuUnitsUserWidget = { "ClassMenuUnitsUserWidget", nullptr, (EPropertyFlags)0x0044000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, ClassMenuUnitsUserWidget), Z_Construct_UClass_UClass, Z_Construct_UClass_UMenuUnitsUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ClassMenuUnitsUserWidget_MetaData), NewProp_ClassMenuUnitsUserWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_MaterialBase = { "MaterialBase", nullptr, (EPropertyFlags)0x0040000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, MaterialBase), Z_Construct_UClass_UMaterial_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaterialBase_MetaData), NewProp_MaterialBase_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_MaterialItemImage = { "MaterialItemImage", nullptr, (EPropertyFlags)0x0040000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, MaterialItemImage), Z_Construct_UClass_UMaterial_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaterialItemImage_MetaData), NewProp_MaterialItemImage_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_MaterialBackgroundInventory = { "MaterialBackgroundInventory", nullptr, (EPropertyFlags)0x0040000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, MaterialBackgroundInventory), Z_Construct_UClass_UMaterial_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaterialBackgroundInventory_MetaData), NewProp_MaterialBackgroundInventory_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_DragAndDropItemWidget = { "DragAndDropItemWidget", nullptr, (EPropertyFlags)0x00400000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, DragAndDropItemWidget), Z_Construct_UClass_UItemUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DragAndDropItemWidget_MetaData), NewProp_DragAndDropItemWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_Test = { "Test", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, Test), Z_Construct_UClass_UCustomTest_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Test_MetaData), NewProp_Test_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainGameState_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_ItemsDataTable,
@@ -315,7 +330,9 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainGame
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_ClassInventoryUserWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_ClassUnitUserWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_ClassMenuUnitsUserWidget,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_MaterialBase,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_MaterialItemImage,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_MaterialBackgroundInventory,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_DragAndDropItemWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_Test,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AMainGameState_Statics::PropPointers) < 2048);
@@ -360,10 +377,10 @@ AMainGameState::~AMainGameState() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainGameState, AMainGameState::StaticClass, TEXT("AMainGameState"), &Z_Registration_Info_UClass_AMainGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGameState), 786982188U) },
+		{ Z_Construct_UClass_AMainGameState, AMainGameState::StaticClass, TEXT("AMainGameState"), &Z_Registration_Info_UClass_AMainGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGameState), 3594775067U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_3123356384(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_360345595(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

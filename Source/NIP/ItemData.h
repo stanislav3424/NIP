@@ -73,6 +73,15 @@ struct FItemPositionData
 UENUM(BlueprintType)
 enum class EEquipmentSlots : uint8
 {
+    NoneIndex UMETA(DisplayName = "NoneIndex"),
     Backpack UMETA(DisplayName = "Backpack"),
     Weapon UMETA(DisplayName = "Weapon"),
+};
+
+UENUM(BlueprintType)
+enum class EDataLastPosition : uint8
+{
+    NoneIndex UMETA(DisplayName = "NoneIndex"),
+    Inventory UMETA(DisplayName = "Inventory"),
+    Equipment UMETA(DisplayName = "Equipment"),
 };

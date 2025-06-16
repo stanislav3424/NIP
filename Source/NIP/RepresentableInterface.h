@@ -2,10 +2,10 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "AIController.h"
 #include "RepresentableInterface.generated.h"
 
 class UItem;
+class AAIController;
 
 UINTERFACE(MinimalAPI)
 class URepresentableInterface : public UInterface

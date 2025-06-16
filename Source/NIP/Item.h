@@ -2,12 +2,13 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "ItemData.h"
-#include "RepresentableInterface.h"
 #include "Item.generated.h"
 
 class AMainGameState;
 class UUnit;
+class IRepresentableInterface;
+class UPayloadItem;
+enum class EEquipmentSlots : uint8;
 
 UCLASS()
 class NIP_API UItem : public UObject
@@ -64,8 +65,15 @@ public:
     void SetSelect(bool bNewSelect);
     const bool IsSelect() const { return bSelect; };
     const bool IsCanSelect() const { return bCanSelect; };
-
     const FName& GetID() const { return ID; };
+    bool IsCanPut() const { return bCanPut; };
+    FIntPoint GetSizeItem() const { return ItemSize; };
+    void SetContainerOwner(UItem* NewContainerOwner);
+    virtual void SubRemoveContainerOwner(UItem* Item);
+    void RemoveContainerOwner() { if (ContainerOwner) ContainerOwner->SubRemoveContainerOwner(this); };
+    UPayloadItem* GetPayloadItem();
+    virtual void SetDataPayload(UPayloadItem* PayloadItem) {};
+    bool GetRotation() const { return bRotation; };
 
     // Initialization
 public:
@@ -76,11 +84,4 @@ public:
     virtual void SpawnRepresented(const FTransform& SpawnTransform);
     void SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots);
     void RemoveRepresented();
-
-    // ContainerOwner
-public:
-    virtual void RemoveContainerFromOwner(UItem* Item = nullptr);
-    void SetContainerOwner(UItem* NewContainerOwner);
-    bool IsCanPut() { return bCanPut; };
-    FIntPoint GetSizeItem() { return ItemSize; };
 };

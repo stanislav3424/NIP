@@ -2,13 +2,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Materials/MaterialInstanceDynamic.h"
-#include "Engine/TextureRenderTarget2D.h"
-#include "Containers/Map.h"
-#include "Math/UnrealMathUtility.h"
 #include "RealtimeRenderingPipeline.generated.h"
 
-
+class UTextureRenderTarget2D;
+class UMaterialInstanceDynamic;
 class USceneCaptureComponent2D;
 class USpotLightComponent;
 class UItem;

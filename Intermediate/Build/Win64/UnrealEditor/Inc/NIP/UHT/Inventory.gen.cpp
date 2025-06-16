@@ -16,9 +16,36 @@ NIP_API UClass* Z_Construct_UClass_UInventory();
 NIP_API UClass* Z_Construct_UClass_UInventory_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UItem();
 NIP_API UClass* Z_Construct_UClass_UItem_NoRegister();
+NIP_API UFunction* Z_Construct_UDelegateFunction_NIP_OnChangesInventory__DelegateSignature();
 NIP_API UScriptStruct* Z_Construct_UScriptStruct_FItemPositionData();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
+
+// Begin Delegate FOnChangesInventory
+struct Z_Construct_UDelegateFunction_NIP_OnChangesInventory__DelegateSignature_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Inventory.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NIP_OnChangesInventory__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NIP, nullptr, "OnChangesInventory__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NIP_OnChangesInventory__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NIP_OnChangesInventory__DelegateSignature_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UDelegateFunction_NIP_OnChangesInventory__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NIP_OnChangesInventory__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FOnChangesInventory_DelegateWrapper(const FMulticastScriptDelegate& OnChangesInventory)
+{
+	OnChangesInventory.ProcessMulticastDelegate<UObject>(NULL);
+}
+// End Delegate FOnChangesInventory
 
 // Begin Class UInventory Function AddToInventory
 struct Z_Construct_UFunction_UInventory_AddToInventory_Statics

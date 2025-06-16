@@ -3,7 +3,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "RepresentableInterface.h"
-#include "ItemData.h"
 #include "ActorItem.generated.h"
 
 class UItem;

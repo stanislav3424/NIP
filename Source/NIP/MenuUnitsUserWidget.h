@@ -1,11 +1,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
-#include "Components/Border.h"
-#include "Components/CanvasPanel.h"
-#include "Components/SizeBox.h"
-#include "Components/ListView.h"
 #include "BaseUserWidget.h"
 #include "MenuUnitsUserWidget.generated.h"
 
@@ -13,6 +8,9 @@ class AMainGameState;
 class AMainPlayerController;
 class UUnit;
 class UUnitUserWidget;
+class UBorder;
+class UCanvasPanel;
+class UListView;
 
 UCLASS()
 class NIP_API UMenuUnitsUserWidget : public UBaseUserWidget

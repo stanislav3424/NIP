@@ -4,6 +4,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Navigation/PathFollowingComponent.h"
 #include "AIController.h"
+#include "ItemData.h"
 
 ACharacterUnit::ACharacterUnit()
 {
