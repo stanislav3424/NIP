@@ -84,6 +84,12 @@
     <ClCompile Include="..\..\Source\NIP\ItemData.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\ItemDragDropOperation.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\ItemDragDropOperation.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NIP\ItemUserWidget.cpp">
       <Filter>Source\NIP</Filter>
     </ClCompile>

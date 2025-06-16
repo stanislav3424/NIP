@@ -75,4 +75,8 @@ public:
 private:
     int32 PositionToInt(FIntPoint Position) const;
     FIntPoint IntToPosition(int32 Index) const;
+
+    // UI
+public:
+    const int32 GetTopLeftIndex(UItem* TestItem, FVector2D Vector2D) const;
 };

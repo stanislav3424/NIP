@@ -26,6 +26,16 @@ void AMainGameState::BeginPlay()
         Test->SetMainGameState(this);
 
     DragAndDropItemWidget = CreateWidget<UItemUserWidget>(GetWorld(), ClassItemUserWidget);
+    if (DragAndDropItemWidget)
+    {
+        DragAndDropItemWidget->AddToViewport();
+        DragAndDropItemWidget->SetVisibility(ESlateVisibility::Hidden);
+    }
+
+    NamedDataTables.Add("Item", ItemsDataTable);
+    NamedDataTables.Add("Unit", UnitsDataTable);
+    NamedDataTables.Add("Inventory", InventorysDataTable);
+
     CheckValid();
 }
 
@@ -83,25 +93,14 @@ void AMainGameState::CheckValid()
 template <typename T>
 T* AMainGameState::GetItemData(const FDataTableRowHandle& DataTableRowHandle)
 {
-    if (DataTableRowHandle.IsNull())
+    if (!DataTableRowHandle.DataTable || DataTableRowHandle.RowName.IsNone())
     {
-        UE_LOG(LogTemp, Warning, TEXT("GetItemData: Invalid DataTableRowHandle!"));
+        UE_LOG(LogTemp, Warning, TEXT("GetItemData: Invalid RowHandle"));
         return nullptr;
     }
 
-    if (!DataTableRowHandle.DataTable)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("GetItemData: DataTable is nullptr for row '%s'!"),
-               *DataTableRowHandle.RowName.ToString());
-        return nullptr;
-    }
-
-    return DataTableRowHandle.DataTable->FindRow<T>(DataTableRowHandle.RowName, "");
+    return DataTableRowHandle.DataTable->FindRow<T>(DataTableRowHandle.RowName, TEXT("GetItemData"));
 }
-
-template FItemData* AMainGameState::GetItemData<FItemData>(const FDataTableRowHandle&);
-template FUnitData* AMainGameState::GetItemData<FUnitData>(const FDataTableRowHandle&);
-template FInventoryData* AMainGameState::GetItemData<FInventoryData>(const FDataTableRowHandle&);
 
 FItemData* AMainGameState::GetItemData(const FDataTableRowHandle& DataTableRowHandle)
 {
@@ -113,33 +112,25 @@ FDataTableRowHandle AMainGameState::GetDataTableRowHandle(const FName& RowName)
 {
     if (!RowName.IsValid() || RowName.IsNone())
     {
-        UE_LOG(LogTemp, Warning, TEXT("GetItemDataByName: Invalid RowName!"));
+        UE_LOG(LogTemp, Warning, TEXT("GetDataTableRowHandle: Invalid RowName!"));
         return FDataTableRowHandle();
     }
 
-    FDataTableRowHandle DataTableRowHandle;
-    DataTableRowHandle.RowName = RowName;
+    for (const auto& Pair : NamedDataTables)
+    {
+        if (UDataTable* Table = Pair.Value)
+        {
+            if (Table->GetRowNames().Contains(RowName))
+            {
+                FDataTableRowHandle Handle;
+                Handle.DataTable = Table;
+                Handle.RowName = RowName;
+                return Handle;
+            }
+        }
+    }
 
-    if (ItemsDataTable)
-        if (ItemsDataTable->GetRowNames().Contains<FName>(RowName))
-        {
-            DataTableRowHandle.DataTable = ItemsDataTable;
-            return DataTableRowHandle;
-        }
-    if (UnitsDataTable)
-        if (UnitsDataTable->GetRowNames().Contains<FName>(RowName))
-        {
-            DataTableRowHandle.DataTable = UnitsDataTable;
-            return DataTableRowHandle;
-        }
-    if (InventorysDataTable)
-        if (InventorysDataTable->GetRowNames().Contains<FName>(RowName))
-        {
-            DataTableRowHandle.DataTable = InventorysDataTable;
-            return DataTableRowHandle;
-        }
-
-    UE_LOG(LogTemp, Warning, TEXT("GetItemDataByName: Item with name '%s' not found in any DataTable!"),
+    UE_LOG(LogTemp, Warning, TEXT("GetDataTableRowHandle: Row '%s' not found in any NamedDataTables!"),
            *RowName.ToString());
     return FDataTableRowHandle();
 }
@@ -179,3 +170,10 @@ void AMainGameState::RunTest(int32 IndexTest)
     if (Test)
         Test->RunTest(IndexTest);
 };
+
+UItemUserWidget* AMainGameState::GetDragAndDropItemWidget()
+{
+    DragAndDropItemWidget->SetVisibility(ESlateVisibility::Visible);
+    DragAndDropItemWidget->RemoveFromParent();
+    return DragAndDropItemWidget;
+}

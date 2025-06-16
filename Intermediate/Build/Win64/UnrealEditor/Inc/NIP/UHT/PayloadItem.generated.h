@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NIP_PayloadItem_generated_h
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_14_INCLASS_NO_PURE_DECLS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUPayloadItem(); \
 	friend struct Z_Construct_UClass_UPayloadItem_Statics; \
@@ -23,7 +23,7 @@ public: \
 	DECLARE_SERIALIZER(UPayloadItem)
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_14_ENHANCED_CONSTRUCTORS \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UPayloadItem(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -37,12 +37,12 @@ public: \
 	NO_API virtual ~UPayloadItem();
 
 
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_11_PROLOG
-#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_14_GENERATED_BODY \
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_13_PROLOG
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_14_INCLASS_NO_PURE_DECLS \
-	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_14_ENHANCED_CONSTRUCTORS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_16_INCLASS_NO_PURE_DECLS \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

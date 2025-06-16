@@ -194,3 +194,5 @@ EEquipmentSlots UUnit::GetEquipmentSlotsItem(UItem* TargetItem)
         return EEquipmentSlots::Weapon;
     return EEquipmentSlots::NoneIndex;
 }
+
+bool UUnit::AddAnywhere(UItem* Item) { return false; }

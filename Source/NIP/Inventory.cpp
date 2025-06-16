@@ -1,5 +1,6 @@
 #include "Inventory.h"
 #include "MainGameState.h"
+#include "MainPlayerController.h"
 #include "ItemData.h"
 #include "PayloadItem.h"
 
@@ -255,4 +256,36 @@ bool UInventory::GetRotationItem(UItem* TargetItem)
     if (TargetItem)
         return TargetItem->GetRotation();
     return false;
+}
+
+// UI
+
+const int32 UInventory::GetTopLeftIndex(UItem* TestItem, FVector2D Vector2D) const
+{
+    if (!TestItem || !MainGameState)
+        return INDEX_NONE;
+
+    const float SizeCell = MainGameState->GetInventoryCellSize();
+    if (SizeCell <= 0.f)
+        return INDEX_NONE;
+
+    const FIntPoint SizeTestItem = TestItem->GetItemSize();
+    if (SizeTestItem.X <= 0 || SizeTestItem.Y <= 0)
+        return INDEX_NONE;
+
+    const float HalfWidth = (SizeTestItem.X * SizeCell) / 2.f;
+    const float HalfHeight = (SizeTestItem.Y * SizeCell) / 2.f;
+
+    const float AdjustedX = Vector2D.X - HalfWidth + 0.5f * SizeCell;
+    const float AdjustedY = Vector2D.Y - HalfHeight + 0.5f * SizeCell;
+
+    int32 GridX = FMath::FloorToInt(AdjustedX / SizeCell);
+    int32 GridY = FMath::FloorToInt(AdjustedY / SizeCell);
+
+    if (GridX < 0 || GridY < 0 || GridX >= InventorySize.X || GridY >= InventorySize.Y)
+    {
+        return INDEX_NONE;
+    }
+
+    return GridY * InventorySize.X + GridX;
 }

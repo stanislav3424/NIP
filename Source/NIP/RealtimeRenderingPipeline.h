@@ -57,4 +57,5 @@ private:
     int32 GetID(UItem* ItemBase);
     void CheckWaitingMIDs();
     FVector2D NormalizeSize(FIntPoint Size);
+    bool AreMeshShadersReady(AActor* TargetActor);
 };

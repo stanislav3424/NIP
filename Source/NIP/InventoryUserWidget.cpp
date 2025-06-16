@@ -10,6 +10,8 @@
 #include "Components/SizeBox.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "ItemData.h"
+#include "PayloadItem.h"
+#include "Blueprint/DragDropOperation.h"
 
 // NativeConstruct
 
@@ -17,6 +19,42 @@ void UInventoryUserWidget::NativeConstruct()
 {
     Super::NativeConstruct();
     SetupBackground();
+}
+
+int32 UInventoryUserWidget::NativePaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
+                                        const FSlateRect& MyClippingRect, FSlateWindowElementList& OutDrawElements,
+                                        int32 LayerId, const FWidgetStyle& InWidgetStyle, bool bParentEnabled) const
+{
+    LayerId = Super::NativePaint(Args, AllottedGeometry, MyClippingRect, OutDrawElements, LayerId, InWidgetStyle,
+                                 bParentEnabled);
+
+    if (Inventory)
+        for (const TArray<FVector2D>& LineSegment : GridLineSegments)
+            FSlateDrawElement::MakeLines(OutDrawElements, LayerId - LayerIdLines * 7,
+                                         AllottedGeometry.ToPaintGeometry(), LineSegment, ESlateDrawEffect::None,
+                                         BorderColor, true, 1.f);
+
+    return LayerId + 1;
+}
+
+bool UInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
+                                        UDragDropOperation* InOperation)
+{
+    if (!InOperation)
+        return false;
+    UPayloadItem* PayloadItem = Cast<UPayloadItem>(InOperation->Payload);
+    if (!PayloadItem || !Inventory)
+        return false;
+    auto Item = PayloadItem->GetItem();
+    if (!Item)
+        return false;
+
+    FVector2D LocalPosition = InGeometry.AbsoluteToLocal(InDragDropEvent.GetScreenSpacePosition());
+
+    int32 Index = Inventory->GetTopLeftIndex(Item, LocalPosition);
+    if(!Inventory->AddToInventory(Item, Index))
+        return false;
+    return true;
 }
 
 void UInventoryUserWidget::InitializeInventory(UInventory* NewInventory)
@@ -30,7 +68,7 @@ void UInventoryUserWidget::InitializeInventory(UInventory* NewInventory)
 
     InventoryChanges();
     if (Inventory)
-    Inventory->OnChangesInventory.AddDynamic(this, &UInventoryUserWidget::InventoryChanges);
+        Inventory->OnChangesInventory.AddDynamic(this, &UInventoryUserWidget::InventoryChanges);
 }
 
 void UInventoryUserWidget::InventoryChanges() {
@@ -126,20 +164,4 @@ void UInventoryUserWidget::CalculateGridLines()
         HorzLine.Add(FVector2D(InventorySize.X * CellSize, Y * CellSize));
         GridLineSegments.Add(HorzLine);
     }
-}
-
-int32 UInventoryUserWidget::NativePaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
-                                        const FSlateRect& MyClippingRect, FSlateWindowElementList& OutDrawElements,
-                                        int32 LayerId, const FWidgetStyle& InWidgetStyle, bool bParentEnabled) const
-{
-    LayerId = Super::NativePaint(Args, AllottedGeometry, MyClippingRect, OutDrawElements, LayerId, InWidgetStyle,
-                                 bParentEnabled);
-
-    if (Inventory)
-        for (const TArray<FVector2D>& LineSegment : GridLineSegments)
-            FSlateDrawElement::MakeLines(OutDrawElements, LayerId - LayerIdLines * 7,
-                                         AllottedGeometry.ToPaintGeometry(), LineSegment, ESlateDrawEffect::None,
-                                         BorderColor, true, 1.f);
-
-    return LayerId + 1;
 }

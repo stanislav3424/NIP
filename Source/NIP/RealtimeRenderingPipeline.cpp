@@ -121,6 +121,13 @@ bool ARealtimeRenderingPipeline::RenderTexture()
         }
     }
 
+    if (!AreMeshShadersReady(RenderActor))
+    {
+        RenderQueue.Enqueue(Item);
+        RenderActor->Destroy();
+        return false;
+    }
+
     SceneCapture->ShowOnlyActors.Empty();
     SceneCapture->ShowOnlyActors.Add(RenderActor);
 
@@ -169,4 +176,41 @@ FVector2D ARealtimeRenderingPipeline::NormalizeSize(FIntPoint Size)
     float NormalizedY = static_cast<float>(Size.Y) / MinDimension;
 
     return FVector2D(NormalizedX, NormalizedY);
+}
+
+bool ARealtimeRenderingPipeline::AreMeshShadersReady(AActor* TargetActor)
+{
+    if (!TargetActor)
+        return false;
+
+    for (UActorComponent* Component : TargetActor->GetComponents())
+    {
+        UStaticMeshComponent* MeshComponent = Cast<UStaticMeshComponent>(Component);
+        if (!MeshComponent)
+            continue;
+
+        UStaticMesh* Mesh = MeshComponent->GetStaticMesh();
+        if (!Mesh)
+            continue;
+
+        if (Mesh->IsCompiling())
+        {
+            return false;
+        }
+
+        int32 NumMaterials = MeshComponent->GetNumMaterials();
+        for (int32 i = 0; i < NumMaterials; ++i)
+        {
+            UMaterialInterface* Material = MeshComponent->GetMaterial(i);
+            if (!Material)
+                continue;
+
+            if (Material->IsCompiling())
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }

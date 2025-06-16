@@ -17,12 +17,15 @@ class NIP_API UInventoryUserWidget : public UBaseUserWidget
 {
     GENERATED_BODY()
 
-    // NativeConstruct
+    // Native
 protected:
     virtual void NativeConstruct() override;
     virtual int32 NativePaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
                               const FSlateRect& MyClippingRect, FSlateWindowElementList& OutDrawElements, int32 LayerId,
                               const FWidgetStyle& InWidgetStyle, bool bParentEnabled) const override;
+
+    virtual bool NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
+                              UDragDropOperation* InOperation) override;
 
     // Data
 private:

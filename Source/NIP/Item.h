@@ -5,6 +5,7 @@
 #include "Item.generated.h"
 
 class AMainGameState;
+class AMainPlayerController;
 class UUnit;
 class IRepresentableInterface;
 class UPayloadItem;
@@ -74,6 +75,7 @@ public:
     UPayloadItem* GetPayloadItem();
     virtual void SetDataPayload(UPayloadItem* PayloadItem) {};
     bool GetRotation() const { return bRotation; };
+    void SetRotation(bool bNewRotation) { bRotation = bNewRotation; };
 
     // Initialization
 public:

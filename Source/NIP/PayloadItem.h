@@ -7,6 +7,8 @@
 
 enum class EEquipmentSlots : uint8;
 class UItem;
+class UInventory;
+class UUnit;
 
 UCLASS()
 class NIP_API UPayloadItem : public UObject
@@ -16,6 +18,14 @@ class NIP_API UPayloadItem : public UObject
     // Initialization
 public:
     void Initialization();
+
+    // DragCancelled
+public:
+    void DragCancelled();
+
+private:
+    void ThrowOnGround();
+
 
     // Data
 private:
@@ -28,23 +38,27 @@ private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     UItem* ContainerOwner;
 
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    FVector Location;
+
 public:
     void SetDataLastPosition(EDataLastPosition SetDataLastPosition) { DataLastPosition = SetDataLastPosition; };
     void SetItem(UItem* SetItem) { Item = SetItem; };
     void SetContainerOwner(UItem* NewContainerOwner) { ContainerOwner = NewContainerOwner; };
+    void SetLocation(const FVector& SetLocation) { Location = SetLocation; };
 
     UItem* GetItem() { return Item; };
 
     // Inventory
 private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
-    FIntPoint Position;
+    int32 IndexInventory;
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     bool bRotation = false;
 
 public:
-    void SetPosition(const FIntPoint& SetPosition) { Position = SetPosition; };
+    void SetPosition(int32 SetIndexInventory) { IndexInventory = SetIndexInventory; };
     void SetRotation(bool bSetRotation) { bRotation = bSetRotation; };
 
     // Equipment

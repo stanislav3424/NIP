@@ -11,7 +11,7 @@ void EmptyLinkFunctionForGeneratedCodePayloadItem() {}
 
 // Begin Cross Module References
 COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
-COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FIntPoint();
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 NIP_API UClass* Z_Construct_UClass_UItem_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UPayloadItem();
 NIP_API UClass* Z_Construct_UClass_UPayloadItem_NoRegister();
@@ -51,7 +51,12 @@ struct Z_Construct_UClass_UPayloadItem_Statics
 		{ "Category", "Data" },
 		{ "ModuleRelativePath", "PayloadItem.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Position_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Location_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Data" },
+		{ "ModuleRelativePath", "PayloadItem.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_IndexInventory_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Data" },
 		{ "ModuleRelativePath", "PayloadItem.h" },
@@ -71,7 +76,8 @@ struct Z_Construct_UClass_UPayloadItem_Statics
 	static const UECodeGen_Private::FEnumPropertyParams NewProp_DataLastPosition;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Item;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ContainerOwner;
-	static const UECodeGen_Private::FStructPropertyParams NewProp_Position;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_Location;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_IndexInventory;
 	static void NewProp_bRotation_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bRotation;
 	static const UECodeGen_Private::FBytePropertyParams NewProp_EquipmentSlots_Underlying;
@@ -87,7 +93,8 @@ const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UPayloadItem_Sta
 const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UPayloadItem_Statics::NewProp_DataLastPosition = { "DataLastPosition", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPayloadItem, DataLastPosition), Z_Construct_UEnum_NIP_EDataLastPosition, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DataLastPosition_MetaData), NewProp_DataLastPosition_MetaData) }; // 1428574845
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UPayloadItem_Statics::NewProp_Item = { "Item", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPayloadItem, Item), Z_Construct_UClass_UItem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Item_MetaData), NewProp_Item_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UPayloadItem_Statics::NewProp_ContainerOwner = { "ContainerOwner", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPayloadItem, ContainerOwner), Z_Construct_UClass_UItem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ContainerOwner_MetaData), NewProp_ContainerOwner_MetaData) };
-const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UPayloadItem_Statics::NewProp_Position = { "Position", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPayloadItem, Position), Z_Construct_UScriptStruct_FIntPoint, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Position_MetaData), NewProp_Position_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UPayloadItem_Statics::NewProp_Location = { "Location", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPayloadItem, Location), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Location_MetaData), NewProp_Location_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UPayloadItem_Statics::NewProp_IndexInventory = { "IndexInventory", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UPayloadItem, IndexInventory), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IndexInventory_MetaData), NewProp_IndexInventory_MetaData) };
 void Z_Construct_UClass_UPayloadItem_Statics::NewProp_bRotation_SetBit(void* Obj)
 {
 	((UPayloadItem*)Obj)->bRotation = 1;
@@ -100,7 +107,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UPayloadI
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_DataLastPosition,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_Item,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_ContainerOwner,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_Position,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_Location,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_IndexInventory,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_bRotation,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_EquipmentSlots_Underlying,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UPayloadItem_Statics::NewProp_EquipmentSlots,
@@ -147,10 +155,10 @@ UPayloadItem::~UPayloadItem() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UPayloadItem, UPayloadItem::StaticClass, TEXT("UPayloadItem"), &Z_Registration_Info_UClass_UPayloadItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPayloadItem), 3089417191U) },
+		{ Z_Construct_UClass_UPayloadItem, UPayloadItem::StaticClass, TEXT("UPayloadItem"), &Z_Registration_Info_UClass_UPayloadItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPayloadItem), 128384517U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_97431717(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_1445789255(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_PayloadItem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

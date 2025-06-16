@@ -51,6 +51,7 @@ public:
     FName GetSocketName(EEquipmentSlots EquipmentSlots);
     bool EquipmentSlotAvailable(EEquipmentSlots EquipmentSlots);
     bool PutOnEquipment(UItem* Item, EEquipmentSlots EquipmentSlots);
+    bool AddAnywhere(UItem* Item);
 
 private:
     template <typename ItemType, ItemType* UUnit::* SlotMember, EEquipmentSlots SlotEnum>

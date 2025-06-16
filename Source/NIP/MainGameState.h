@@ -36,6 +36,9 @@ public:
 
     // DataTable
 private:
+    UPROPERTY(EditDefaultsOnly, Category = "DataTable")
+    TMap<FName, UDataTable*> NamedDataTables;
+
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "DataTable", meta = (AllowPrivateAccess = "true"))
     UDataTable* ItemsDataTable;
 
@@ -115,8 +118,7 @@ private:
     UItemUserWidget* DragAndDropItemWidget;
 
 public:
-    UItemUserWidget* GetDragAndDropItemWidget() const { return DragAndDropItemWidget; }
- 
+    UItemUserWidget* GetDragAndDropItemWidget();
 
     // Tests
 private:

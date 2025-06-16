@@ -8,6 +8,7 @@
 #include "Components/TextBlock.h"
 #include "LogsMacros.h"
 #include "PayloadItem.h"
+#include "ItemDragDropOperation.h"
 
 // Native
 
@@ -27,15 +28,18 @@ int32 UItemUserWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
     LayerId = Super::NativePaint(Args, AllottedGeometry, MyClippingRect, OutDrawElements, LayerId, InWidgetStyle,
                                  bParentEnabled);
 
-    const FVector2D TopLeft = FVector2D(0.f, 0.f);
-    const FVector2D TopRight = FVector2D(AllottedGeometry.GetLocalSize().X, 0.f);
-    const FVector2D BottomRight = AllottedGeometry.GetLocalSize();
-    const FVector2D BottomLeft = FVector2D(0.f, AllottedGeometry.GetLocalSize().Y);
+    const float LineThickness = 1.0f;
+    const FVector2D HalfThickness(LineThickness * 0.5f, LineThickness * 0.5f);
+    const FVector2D Size = AllottedGeometry.GetLocalSize();
 
-    TArray<FVector2D> Points = {TopLeft, TopRight, BottomRight, BottomLeft, TopLeft};
+    TArray<FVector2D> Points = {FVector2D(0.f + HalfThickness.X, 0.f + HalfThickness.Y),
+                                FVector2D(Size.X - HalfThickness.X, 0.f + HalfThickness.Y),
+                                FVector2D(Size.X - HalfThickness.X, Size.Y - HalfThickness.Y),
+                                FVector2D(0.f + HalfThickness.X, Size.Y - HalfThickness.Y),
+                                FVector2D(0.f + HalfThickness.X, 0.f + HalfThickness.Y)};
 
     FSlateDrawElement::MakeLines(OutDrawElements, LayerId + 1, AllottedGeometry.ToPaintGeometry(), Points,
-                                 ESlateDrawEffect::None, BorderColor, true, 1.0f);
+                                 ESlateDrawEffect::None, BorderColor, true, LineThickness);
 
     return LayerId + 1;
 }
@@ -43,7 +47,8 @@ int32 UItemUserWidget::NativePaint(const FPaintArgs& Args, const FGeometry& Allo
 FReply UItemUserWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
     if (InMouseEvent.IsMouseButtonDown(EKeys::LeftMouseButton))
-        return UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton).NativeReply;
+        if (Item)
+            return UWidgetBlueprintLibrary::DetectDragIfPressed(InMouseEvent, this, EKeys::LeftMouseButton).NativeReply;
 
     return Super::NativeOnMouseButtonDown(InGeometry, InMouseEvent);
 }
@@ -51,28 +56,28 @@ FReply UItemUserWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, con
 void UItemUserWidget::NativeOnDragDetected(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent,
                                            UDragDropOperation*& OutOperation)
 {
-    UDragDropOperation* DragOp = NewObject<UDragDropOperation>();
+    UItemDragDropOperation* DragDropOperation = NewObject<UItemDragDropOperation>();
 
     if (!MainGameState)
         return;
 
     auto DragAndDropItemWidget = MainGameState->GetDragAndDropItemWidget();
 
-    if (!Item || !DragOp || !DragAndDropItemWidget)
+    if (!Item || !DragDropOperation || !DragAndDropItemWidget)
     {
         CHECK_NULLPTR_LOG(Item);
-        CHECK_NULLPTR_LOG(DragOp);
+        CHECK_NULLPTR_LOG(DragDropOperation);
         CHECK_NULLPTR_LOG(DragAndDropItemWidget);
         return;
     }
 
     DragAndDropItemWidget->InitializeItem(Item);
-    DragOp->DefaultDragVisual = DragAndDropItemWidget;
-    DragOp->Pivot = EDragPivot::CenterCenter;
-    DragOp->Payload = Item->GetPayloadItem();
+    DragDropOperation->DefaultDragVisual = DragAndDropItemWidget;
+    DragDropOperation->Pivot = EDragPivot::CenterCenter;
+    DragDropOperation->Payload = Item->GetPayloadItem();
 
     Item->RemoveContainerOwner();
-    OutOperation = DragOp;
+    OutOperation = DragDropOperation;
 }
 
 void UItemUserWidget::InitializeItem(UItem* NewItem)
