@@ -114,8 +114,8 @@ UPayloadItem* UItem::GetPayloadItem()
     {
         PayloadItem->SetContainerOwner(ContainerOwner);
         PayloadItem->SetItem(this);
+        PayloadItem->SetRotation(GetRotation());
         PayloadItem->Initialization();
     }
     return PayloadItem;
 };
-

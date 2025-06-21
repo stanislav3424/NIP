@@ -11,8 +11,8 @@ void EmptyLinkFunctionForGeneratedCodeUnitUserWidget() {}
 
 // Begin Cross Module References
 NIP_API UClass* Z_Construct_UClass_UBaseUserWidget();
+NIP_API UClass* Z_Construct_UClass_UEquipmentUserWidget_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UInventoryUserWidget_NoRegister();
-NIP_API UClass* Z_Construct_UClass_UItemUserWidget_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UUnit_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UUnitUserWidget();
 NIP_API UClass* Z_Construct_UClass_UUnitUserWidget_NoRegister();
@@ -185,8 +185,8 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidge
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_CanvasPanel = { "CanvasPanel", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, CanvasPanel), Z_Construct_UClass_UCanvasPanel_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CanvasPanel_MetaData), NewProp_CanvasPanel_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_TextBlock_Name = { "TextBlock_Name", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, TextBlock_Name), Z_Construct_UClass_UTextBlock_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TextBlock_Name_MetaData), NewProp_TextBlock_Name_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_InventoryUserWidget = { "InventoryUserWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, InventoryUserWidget), Z_Construct_UClass_UInventoryUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InventoryUserWidget_MetaData), NewProp_InventoryUserWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_EquipmentBackpackUserWidget = { "EquipmentBackpackUserWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, EquipmentBackpackUserWidget), Z_Construct_UClass_UItemUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentBackpackUserWidget_MetaData), NewProp_EquipmentBackpackUserWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_EquipmentWeaponUserWidget = { "EquipmentWeaponUserWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, EquipmentWeaponUserWidget), Z_Construct_UClass_UItemUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentWeaponUserWidget_MetaData), NewProp_EquipmentWeaponUserWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_EquipmentBackpackUserWidget = { "EquipmentBackpackUserWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, EquipmentBackpackUserWidget), Z_Construct_UClass_UEquipmentUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentBackpackUserWidget_MetaData), NewProp_EquipmentBackpackUserWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_EquipmentWeaponUserWidget = { "EquipmentWeaponUserWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnitUserWidget, EquipmentWeaponUserWidget), Z_Construct_UClass_UEquipmentUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentWeaponUserWidget_MetaData), NewProp_EquipmentWeaponUserWidget_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUnitUserWidget_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_Unit,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnitUserWidget_Statics::NewProp_SizeBox,
@@ -239,10 +239,10 @@ UUnitUserWidget::~UUnitUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUnitUserWidget, UUnitUserWidget::StaticClass, TEXT("UUnitUserWidget"), &Z_Registration_Info_UClass_UUnitUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitUserWidget), 4180070191U) },
+		{ Z_Construct_UClass_UUnitUserWidget, UUnitUserWidget::StaticClass, TEXT("UUnitUserWidget"), &Z_Registration_Info_UClass_UUnitUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitUserWidget), 2022257461U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_1237849385(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_667915901(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

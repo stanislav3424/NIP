@@ -63,6 +63,12 @@
     <ClCompile Include="..\..\Source\NIP\CustomTest.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\EquipmentUserWidget.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\EquipmentUserWidget.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NIP\Inventory.cpp">
       <Filter>Source\NIP</Filter>
     </ClCompile>
@@ -121,6 +127,12 @@
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\MainPlayerController.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\MapGeneration.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\MapGeneration.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\MenuUnitsUserWidget.cpp">

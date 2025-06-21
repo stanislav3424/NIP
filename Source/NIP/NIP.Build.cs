@@ -16,7 +16,8 @@ public class NIP : ModuleRules
             "EnhancedInput",
             "AIModule",
             "NavigationSystem",
-            "UMG"
+            "UMG",
+            "ProceduralMeshComponent"
         });
 
         PrivateDependencyModuleNames.AddRange(new string[] { });

@@ -88,8 +88,8 @@ void UInventory::AddToInventorySub(UItem* AddItem, int32 IndexInventory)
 
     AddItem->SetContainerOwner(this);
 
-    const int32 WidthItem = AddItem->GetSizeItem().X;
-    const int32 HeightItem = AddItem->GetSizeItem().Y;
+    const int32 WidthItem = AddItem->GetItemSize().X;
+    const int32 HeightItem = AddItem->GetItemSize().Y;
     const int32 InventoryWidth = InventorySize.X;
 
     for (int32 Index = 0; Index < WidthItem * HeightItem; ++Index)
@@ -113,8 +113,8 @@ bool UInventory::TryAddToInventory(UItem* AddItem, int32 IndexInventory)
 
     const int32 InventoryWidth = InventorySize.X;
     const int32 InventoryHeight = InventorySize.Y;
-    const int32 WidthItem = AddItem->GetSizeItem().X;
-    const int32 HeightItem = AddItem->GetSizeItem().Y;
+    const int32 WidthItem = AddItem->GetItemSize().X;
+    const int32 HeightItem = AddItem->GetItemSize().Y;
 
     FIntPoint StartPosition = IntToPosition(IndexInventory);
     if (StartPosition.X == INDEX_NONE || StartPosition.Y == INDEX_NONE)
@@ -242,7 +242,6 @@ void UInventory::SetDataPayload(UPayloadItem* PayloadItem)
     {
         PayloadItem->SetDataLastPosition(EDataLastPosition::Inventory);
         PayloadItem->SetPosition(GetIndexItem(PayloadItem->GetItem()));
-        PayloadItem->SetRotation(GetRotationItem(PayloadItem->GetItem()));
     }
 }
 

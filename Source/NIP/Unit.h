@@ -35,41 +35,19 @@ public:
 
 private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Equipment", meta = (AllowPrivateAccess = "true"))
-    UInventory* Backpack;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Equipment", meta = (AllowPrivateAccess = "true"))
-    UWeapon* Weapon;
+    TMap<EEquipmentSlots, UItem*> EquipmentMap;
 
 public:
-    UItem* GetEquipmentBySlot(EEquipmentSlots EquipmentSlots);
-    template <typename T>
-    T* GetEquipmentBySlot(EEquipmentSlots EquipmentSlots)
-    {
-        UItem* Item = GetEquipmentBySlot(EquipmentSlots);
-        return Cast<T>(Item);
-    }
+    UItem* GetEquipmentBySlot(EEquipmentSlots EquipmentSlots) const;
     FName GetSocketName(EEquipmentSlots EquipmentSlots);
-    bool EquipmentSlotAvailable(EEquipmentSlots EquipmentSlots);
+    bool EquipmentSlotAvailable(EEquipmentSlots EquipmentSlots) const;
     bool PutOnEquipment(UItem* Item, EEquipmentSlots EquipmentSlots);
     bool AddAnywhere(UItem* Item);
-
-private:
-    template <typename ItemType, ItemType* UUnit::* SlotMember, EEquipmentSlots SlotEnum>
-    bool PutOnEquipmentInternal(UItem* Item);
-
-public:
-    bool TakeOffEquipment(UItem* Item, EEquipmentSlots EquipmentSlots);
-
-private:
-    template <typename ItemType, ItemType* UUnit::* SlotMember>
-    bool TakeOffEquipmentInternal(UItem* Item);
-
-public:
-    EEquipmentSlots GetEquipmentSlotsItem(UItem* TargetItem);
+    bool TakeOffEquipment(EEquipmentSlots EquipmentSlots);
+    EEquipmentSlots GetSlotByItem(UItem* Item) const;
 
     // Visualization
 private:
     void CheckEquipmentVisualization();
-    void CheckEquipmentVisualizationInternal(UItem* Item, EEquipmentSlots EquipmentSlots);
 
 };

@@ -23,9 +23,22 @@ protected:
     virtual int32 NativePaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
                               const FSlateRect& MyClippingRect, FSlateWindowElementList& OutDrawElements, int32 LayerId,
                               const FWidgetStyle& InWidgetStyle, bool bParentEnabled) const override;
-
     virtual bool NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
                               UDragDropOperation* InOperation) override;
+    virtual void NativeOnDragEnter(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
+                                   UDragDropOperation* InOperation);
+    virtual void NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation);
+    virtual bool NativeOnDragOver(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
+                                  UDragDropOperation* InOperation);
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    UDragDropOperation* DragDropOperation;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
+    FVector2D DragMouseScreenPosition;
+
+private:
+    UBorder* DropHighlight = nullptr;
 
     // Data
 private:

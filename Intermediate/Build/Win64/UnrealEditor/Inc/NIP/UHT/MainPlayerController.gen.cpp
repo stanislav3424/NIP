@@ -61,6 +61,10 @@ struct Z_Construct_UClass_AMainPlayerController_Statics
 		{ "Category", "Input" },
 		{ "ModuleRelativePath", "MainPlayerController.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RotationItemAction_MetaData[] = {
+		{ "Category", "Input" },
+		{ "ModuleRelativePath", "MainPlayerController.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectedUnits_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Selection" },
@@ -92,6 +96,7 @@ struct Z_Construct_UClass_AMainPlayerController_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultMappingContext;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectionAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CommandAction;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_RotationItemAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectedUnits_ElementProp;
 	static const UECodeGen_Private::FSetPropertyParams NewProp_SelectedUnits;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_NewSelectedUnits_ElementProp;
@@ -113,6 +118,7 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayerCon
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayerController_Statics::NewProp_DefaultMappingContext = { "DefaultMappingContext", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayerController, DefaultMappingContext), Z_Construct_UClass_UInputMappingContext_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DefaultMappingContext_MetaData), NewProp_DefaultMappingContext_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayerController_Statics::NewProp_SelectionAction = { "SelectionAction", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayerController, SelectionAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectionAction_MetaData), NewProp_SelectionAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayerController_Statics::NewProp_CommandAction = { "CommandAction", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayerController, CommandAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CommandAction_MetaData), NewProp_CommandAction_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayerController_Statics::NewProp_RotationItemAction = { "RotationItemAction", nullptr, (EPropertyFlags)0x0040000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayerController, RotationItemAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RotationItemAction_MetaData), NewProp_RotationItemAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayerController_Statics::NewProp_SelectedUnits_ElementProp = { "SelectedUnits", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UUnit_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FSetPropertyParams Z_Construct_UClass_AMainPlayerController_Statics::NewProp_SelectedUnits = { "SelectedUnits", nullptr, (EPropertyFlags)0x0040000000000014, UECodeGen_Private::EPropertyGenFlags::Set, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainPlayerController, SelectedUnits), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectedUnits_MetaData), NewProp_SelectedUnits_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainPlayerController_Statics::NewProp_NewSelectedUnits_ElementProp = { "NewSelectedUnits", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UUnit_NoRegister, METADATA_PARAMS(0, nullptr) };
@@ -128,6 +134,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainPlay
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayerController_Statics::NewProp_DefaultMappingContext,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayerController_Statics::NewProp_SelectionAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayerController_Statics::NewProp_CommandAction,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayerController_Statics::NewProp_RotationItemAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayerController_Statics::NewProp_SelectedUnits_ElementProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayerController_Statics::NewProp_SelectedUnits,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainPlayerController_Statics::NewProp_NewSelectedUnits_ElementProp,
@@ -179,10 +186,10 @@ AMainPlayerController::~AMainPlayerController() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainPlayerController, AMainPlayerController::StaticClass, TEXT("AMainPlayerController"), &Z_Registration_Info_UClass_AMainPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayerController), 3654362501U) },
+		{ Z_Construct_UClass_AMainPlayerController, AMainPlayerController::StaticClass, TEXT("AMainPlayerController"), &Z_Registration_Info_UClass_AMainPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainPlayerController), 813689385U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_1803927295(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_2466718093(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainPlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

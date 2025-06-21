@@ -43,19 +43,23 @@ void UCustomTest::RandomSpawnAndAddStuff()
             auto Actor = MainGameState->SpawnRepresented(FName(TEXT("AutoUnit")), SpawnTransform);
 
             auto Item1 = MainGameState->CreateItem(FName(TEXT("TestInventorys")));
+            auto Item2 = MainGameState->CreateItem(FName(TEXT("TestWeapon")));
 
             ACharacterUnit* CharacterUnit = Cast<ACharacterUnit>(Actor);
             if (IsValid(CharacterUnit))
+            {
                 CharacterUnit->GetUnit()->PutOnEquipment(Item1, EEquipmentSlots::Backpack);
+                CharacterUnit->GetUnit()->PutOnEquipment(Item2, EEquipmentSlots::Weapon);
+            }
 
             for (int32 Index2 = 0; Index2 < 5; ++Index2)
             {
-                auto Item2 = MainGameState->CreateItem(FName(TEXT("TestInventorys")));
+                auto Item3 = MainGameState->CreateItem(FName(TEXT("TestInventorys")));
                 auto Backpack = Cast<UInventory>(Item1);
                 if (Backpack)
                 {
 
-                    Backpack->AddToInventory(Item2);
+                    Backpack->AddToInventory(Item3);
                 }
             }
         }

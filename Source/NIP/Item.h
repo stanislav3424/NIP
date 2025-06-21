@@ -11,6 +11,8 @@ class IRepresentableInterface;
 class UPayloadItem;
 enum class EEquipmentSlots : uint8;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnItemRotation);
+
 UCLASS()
 class NIP_API UItem : public UObject
 {
@@ -61,21 +63,37 @@ protected:
 public:
     const TSubclassOf<AActor>& GetClassRepresentedActor() const { return ClassRepresentedActor; };
     TScriptInterface<IRepresentableInterface> GetRepresented() const { return Represented; };
-    const FIntPoint& GetItemSize() const { return ItemSize; };
+    FIntPoint GetItemSize()
+    {
+        if (!bRotation)
+            return ItemSize;
+        else
+        {
+            FIntPoint RotationItemSize;
+            RotationItemSize.X = ItemSize.Y;
+            RotationItemSize.Y = ItemSize.X;
+            return RotationItemSize;
+        }
+    };
 
     void SetSelect(bool bNewSelect);
     const bool IsSelect() const { return bSelect; };
     const bool IsCanSelect() const { return bCanSelect; };
     const FName& GetID() const { return ID; };
     bool IsCanPut() const { return bCanPut; };
-    FIntPoint GetSizeItem() const { return ItemSize; };
     void SetContainerOwner(UItem* NewContainerOwner);
     virtual void SubRemoveContainerOwner(UItem* Item);
     void RemoveContainerOwner() { if (ContainerOwner) ContainerOwner->SubRemoveContainerOwner(this); };
     UPayloadItem* GetPayloadItem();
     virtual void SetDataPayload(UPayloadItem* PayloadItem) {};
     bool GetRotation() const { return bRotation; };
-    void SetRotation(bool bNewRotation) { bRotation = bNewRotation; };
+    void SetRotation(bool bNewRotation)
+    {
+        if (!bCanRotation)
+            return;
+        bRotation = bNewRotation;
+        OnItemRotation.Broadcast();
+    };
 
     // Initialization
 public:
@@ -86,4 +104,6 @@ public:
     virtual void SpawnRepresented(const FTransform& SpawnTransform);
     void SpawnAndAttachSkeleton(UUnit* Unit, EEquipmentSlots EquipmentSlots);
     void RemoveRepresented();
+
+    FOnItemRotation OnItemRotation;
 };

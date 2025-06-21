@@ -14,6 +14,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NIP_BaseUserWidget_generated_h
 
+#define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execUpdateVisualization);
+
+
 #define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_13_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUBaseUserWidget(); \
@@ -41,6 +45,7 @@ public: \
 #define FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_13_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
+	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_13_INCLASS_NO_PURE_DECLS \
 	FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_13_ENHANCED_CONSTRUCTORS \
 private: \

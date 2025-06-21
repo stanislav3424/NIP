@@ -18,9 +18,44 @@ UMG_API UClass* Z_Construct_UClass_UUserWidget();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
 
+// Begin Class UBaseUserWidget Function UpdateVisualization
+struct Z_Construct_UFunction_UBaseUserWidget_UpdateVisualization_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "Changes" },
+		{ "ModuleRelativePath", "BaseUserWidget.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UBaseUserWidget_UpdateVisualization_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UBaseUserWidget, nullptr, "UpdateVisualization", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04080400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UBaseUserWidget_UpdateVisualization_Statics::Function_MetaDataParams), Z_Construct_UFunction_UBaseUserWidget_UpdateVisualization_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UBaseUserWidget_UpdateVisualization()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UBaseUserWidget_UpdateVisualization_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UBaseUserWidget::execUpdateVisualization)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->UpdateVisualization();
+	P_NATIVE_END;
+}
+// End Class UBaseUserWidget Function UpdateVisualization
+
 // Begin Class UBaseUserWidget
 void UBaseUserWidget::StaticRegisterNativesUBaseUserWidget()
 {
+	UClass* Class = UBaseUserWidget::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "UpdateVisualization", &UBaseUserWidget::execUpdateVisualization },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UBaseUserWidget);
 UClass* Z_Construct_UClass_UBaseUserWidget_NoRegister()
@@ -62,6 +97,10 @@ struct Z_Construct_UClass_UBaseUserWidget_Statics
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bMouseEnter;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UBaseUserWidget_UpdateVisualization, "UpdateVisualization" }, // 2109424231
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UBaseUserWidget>::IsAbstract,
 	};
@@ -92,11 +131,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UBaseUserWidget_Statics
 	nullptr,
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
+	FuncInfo,
 	Z_Construct_UClass_UBaseUserWidget_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
 	UE_ARRAY_COUNT(Z_Construct_UClass_UBaseUserWidget_Statics::PropPointers),
 	0,
 	0x00B010A0u,
@@ -123,10 +162,10 @@ UBaseUserWidget::~UBaseUserWidget() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UBaseUserWidget, UBaseUserWidget::StaticClass, TEXT("UBaseUserWidget"), &Z_Registration_Info_UClass_UBaseUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseUserWidget), 3445983921U) },
+		{ Z_Construct_UClass_UBaseUserWidget, UBaseUserWidget::StaticClass, TEXT("UBaseUserWidget"), &Z_Registration_Info_UClass_UBaseUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UBaseUserWidget), 1161120674U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_12344056(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_2336957964(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_BaseUserWidget_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

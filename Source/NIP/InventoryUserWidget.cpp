@@ -11,6 +11,7 @@
 #include "Materials/MaterialInstanceDynamic.h"
 #include "ItemData.h"
 #include "PayloadItem.h"
+#include "Blueprint/WidgetTree.h"
 #include "Blueprint/DragDropOperation.h"
 
 // NativeConstruct
@@ -18,6 +19,20 @@
 void UInventoryUserWidget::NativeConstruct()
 {
     Super::NativeConstruct();
+
+
+    if (CanvasPanel && !DropHighlight)
+    {
+        DropHighlight = WidgetTree->ConstructWidget<UBorder>(UBorder::StaticClass(), TEXT("DropHighlight"));
+        if (DropHighlight)
+        {
+            if (UCanvasPanelSlot* NewSlot = Cast<UCanvasPanelSlot>(CanvasPanel->AddChild(DropHighlight)))
+            {
+                NewSlot->SetZOrder(1000);
+            }
+            DropHighlight->SetVisibility(ESlateVisibility::Collapsed);
+        }
+    }
     SetupBackground();
 }
 
@@ -34,12 +49,55 @@ int32 UInventoryUserWidget::NativePaint(const FPaintArgs& Args, const FGeometry&
                                          AllottedGeometry.ToPaintGeometry(), LineSegment, ESlateDrawEffect::None,
                                          BorderColor, true, 1.f);
 
+    if (DragDropOperation && Inventory && DropHighlight)
+    {
+        UPayloadItem* PayloadItem = Cast<UPayloadItem>(DragDropOperation->Payload);
+        if (PayloadItem)
+        {
+            UItem* Item = PayloadItem->GetItem();
+            if (Item)
+            {
+                int32 Index = Inventory->GetTopLeftIndex(Item, DragMouseScreenPosition);
+                bool bCanPlace = Inventory->TryAddToInventory(Item, Index);
+                FIntPoint ItemSize = Item->GetItemSize();
+                FIntPoint GridPosition = Inventory->IntToPosition(Index);
+
+                if (GridPosition != FIntPoint(INDEX_NONE, INDEX_NONE))
+                    DropHighlight->SetVisibility(ESlateVisibility::Visible);
+                else
+                    DropHighlight->SetVisibility(ESlateVisibility::Collapsed);
+                FVector2D WidgetPosition =
+                    FVector2D(GridPosition.X * InventoryCellSize, GridPosition.Y * InventoryCellSize);
+                FVector2D WidgetSize = FVector2D(ItemSize.X * InventoryCellSize, ItemSize.Y * InventoryCellSize);
+
+                if (DropHighlight && CanvasPanel)
+                {
+                    if (UCanvasPanelSlot* CanvasSlot = Cast<UCanvasPanelSlot>(DropHighlight->Slot))
+                    {
+                        CanvasSlot->SetPosition(WidgetPosition);
+                        CanvasSlot->SetSize(WidgetSize);
+                    }
+                    FLinearColor HighlightColor = bCanPlace ? FLinearColor::Green : FLinearColor::Red;
+                    HighlightColor.A = 0.3f;
+                    FSlateBrush Brush;
+                    Brush.TintColor = HighlightColor;
+                    DropHighlight->SetBrush(Brush);
+
+                   
+                }
+            }
+        }
+    }
+
     return LayerId + 1;
 }
 
 bool UInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
                                         UDragDropOperation* InOperation)
 {
+    DragDropOperation = nullptr;
+    if (DropHighlight)
+        DropHighlight->SetVisibility(ESlateVisibility::Collapsed);
     if (!InOperation)
         return false;
     UPayloadItem* PayloadItem = Cast<UPayloadItem>(InOperation->Payload);
@@ -54,6 +112,31 @@ bool UInventoryUserWidget::NativeOnDrop(const FGeometry& InGeometry, const FDrag
     int32 Index = Inventory->GetTopLeftIndex(Item, LocalPosition);
     if(!Inventory->AddToInventory(Item, Index))
         return false;
+    return true;
+}
+
+void UInventoryUserWidget::NativeOnDragEnter(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
+                                             UDragDropOperation* InOperation)
+{
+    Super::NativeOnDragEnter(InGeometry, InDragDropEvent, InOperation);
+    DragDropOperation = InOperation;
+}
+
+void UInventoryUserWidget::NativeOnDragLeave(const FDragDropEvent& InDragDropEvent, UDragDropOperation* InOperation)
+{
+    Super::NativeOnDragLeave(InDragDropEvent, InOperation);
+    DragDropOperation = nullptr;
+    if (DropHighlight)
+        DropHighlight->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+bool UInventoryUserWidget::NativeOnDragOver(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
+                                            UDragDropOperation* InOperation)
+{
+    Super::NativeOnDragOver(InGeometry, InDragDropEvent, InOperation);
+
+    DragMouseScreenPosition = InGeometry.AbsoluteToLocal(InDragDropEvent.GetScreenSpacePosition());
+    Invalidate(EInvalidateWidget::Paint);
     return true;
 }
 
@@ -74,6 +157,7 @@ void UInventoryUserWidget::InitializeInventory(UInventory* NewInventory)
 void UInventoryUserWidget::InventoryChanges() {
     if (CanvasPanel)
         CanvasPanel->ClearChildren();
+    CanvasPanel->AddChild(DropHighlight);
     SetupSizeBox();
     SetupBackground();
     CalculateGridLines();

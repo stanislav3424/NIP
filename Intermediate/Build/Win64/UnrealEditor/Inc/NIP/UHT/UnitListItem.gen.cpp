@@ -180,10 +180,10 @@ UUnitListItem::~UUnitListItem() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUnitListItem, UUnitListItem::StaticClass, TEXT("UUnitListItem"), &Z_Registration_Info_UClass_UUnitListItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitListItem), 2897733089U) },
+		{ Z_Construct_UClass_UUnitListItem, UUnitListItem::StaticClass, TEXT("UUnitListItem"), &Z_Registration_Info_UClass_UUnitListItem, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnitListItem), 1474360422U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_11197843(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_2498630403(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_UnitListItem_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

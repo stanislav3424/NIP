@@ -11,7 +11,6 @@
 #include "RepresentableInterface.h"
 #include "ItemData.h"
 
-
 void AMainGameState::BeginPlay()
 {
     Super::BeginPlay();
@@ -35,6 +34,7 @@ void AMainGameState::BeginPlay()
     NamedDataTables.Add("Item", ItemsDataTable);
     NamedDataTables.Add("Unit", UnitsDataTable);
     NamedDataTables.Add("Inventory", InventorysDataTable);
+    NamedDataTables.Add("Weapon", WeaponsDataTable);
 
     CheckValid();
 }
@@ -83,6 +83,7 @@ void AMainGameState::CheckValid()
     CHECK_NULLPTR_LOG(ItemsDataTable);
     CHECK_NULLPTR_LOG(UnitsDataTable);
     CHECK_NULLPTR_LOG(InventorysDataTable);
+    CHECK_NULLPTR_LOG(WeaponsDataTable);
     CHECK_NULLPTR_LOG(MaterialItemImage);
     CHECK_NULLPTR_LOG(MaterialBackgroundInventory);
     CHECK_NULLPTR_LOG(RealtimeRenderingPipeline);
@@ -102,11 +103,18 @@ T* AMainGameState::GetItemData(const FDataTableRowHandle& DataTableRowHandle)
     return DataTableRowHandle.DataTable->FindRow<T>(DataTableRowHandle.RowName, TEXT("GetItemData"));
 }
 
+template FInventoryData* AMainGameState::GetItemData<FInventoryData>(const FDataTableRowHandle&);
+template FUnitData* AMainGameState::GetItemData<FUnitData>(const FDataTableRowHandle&);
+template FItemData* AMainGameState::GetItemData<FItemData>(const FDataTableRowHandle&);
+template FWeaponData* AMainGameState::GetItemData<FWeaponData>(const FDataTableRowHandle&);
+
+
 FItemData* AMainGameState::GetItemData(const FDataTableRowHandle& DataTableRowHandle)
 {
     FItemData* ItemData = GetItemData<FItemData>(DataTableRowHandle);
     return ItemData;
 }
+
 
 FDataTableRowHandle AMainGameState::GetDataTableRowHandle(const FName& RowName)
 {

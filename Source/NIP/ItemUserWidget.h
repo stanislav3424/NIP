@@ -9,6 +9,7 @@ class UItem;
 class USizeBox;
 class UBorder;
 class UTextBlock;
+class UCanvasPanelSlot;
 
 UCLASS()
 class NIP_API UItemUserWidget : public UBaseUserWidget
@@ -37,9 +38,6 @@ private:
     FLinearColor ModifierMouseEnterColor = {0.f, 0.f, 0.f, -0.2f};
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
-    bool bCustomSize = false;
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     FLinearColor BorderColor = FLinearColor::Black;
 
     // Slate
@@ -59,13 +57,13 @@ public:
     // Initialization
 public:
     void InitializeItem(UItem* NewItem);
-    void InitializeItemCustomSize(UItem* NewItem);
 
     // Visualization
 protected:
     virtual void UpdateVisualization();
 
 private:
+    UFUNCTION(BlueprintCallable, Category = "Changes")
     void UpdateAllVisualization();
     void SetupSizeBox();
     void SetupBackground();

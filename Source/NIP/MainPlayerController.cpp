@@ -11,6 +11,9 @@
 #include "NavigationSystem.h"
 #include "InputActionValue.h"
 #include "AIController.h"
+#include "Blueprint/WidgetBlueprintLibrary.h"
+#include "ItemDragDropOperation.h"
+#include "PayloadItem.h"
 
 AMainPlayerController::AMainPlayerController() {}
 
@@ -50,6 +53,8 @@ void AMainPlayerController::SetupInputComponent()
                                            &AMainPlayerController::CompletedSelection);
         EnhancedInputComponent->BindAction(CommandAction, ETriggerEvent::Completed, this,
                                            &AMainPlayerController::HandleCommand);
+        EnhancedInputComponent->BindAction(RotationItemAction, ETriggerEvent::Completed, this,
+                                           &AMainPlayerController::RotationItem);
     }
 }
 
@@ -108,6 +113,21 @@ void AMainPlayerController::CompletedSelection(const FInputActionValue& Value)
 }
 
 void AMainPlayerController::HandleCommand(const FInputActionValue& Value) { MoveToLocation(); }
+
+void AMainPlayerController::RotationItem(const FInputActionValue& Value)
+{
+    if (UItemDragDropOperation* ItemDragDropOperation =
+            Cast<UItemDragDropOperation>(UWidgetBlueprintLibrary::GetDragDroppingContent()))
+    {
+        auto Payload = Cast<UPayloadItem>(ItemDragDropOperation->Payload);
+        if (Payload)
+        {
+            auto Item = Payload->GetItem();
+            if (Item)
+                Item->SetRotation(!Item->GetRotation());
+        }
+    }
+}
 
 // Selection
 

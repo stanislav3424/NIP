@@ -9,6 +9,7 @@ class UInventory;
 class UUnit;
 class UInventoryUserWidget;
 class UItemUserWidget;
+class UEquipmentUserWidget;
 class USizeBox;
 class UBorder;
 class UCanvasPanel;
@@ -49,10 +50,10 @@ public:
     UInventoryUserWidget* InventoryUserWidget;
 
     UPROPERTY(meta = (BindWidget))
-    UItemUserWidget* EquipmentBackpackUserWidget;
+    UEquipmentUserWidget* EquipmentBackpackUserWidget;
 
     UPROPERTY(meta = (BindWidget))
-    UItemUserWidget* EquipmentWeaponUserWidget;
+    UEquipmentUserWidget* EquipmentWeaponUserWidget;
 
     // Initialization
 public:

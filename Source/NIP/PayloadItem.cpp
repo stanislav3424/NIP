@@ -20,7 +20,7 @@ void UPayloadItem::DragCancelled()
         return;
     }
 
- 
+    Item->SetRotation(bRotation);
 
     UInventory* Inventory = nullptr;
     UUnit* Unit = nullptr;
@@ -34,7 +34,6 @@ void UPayloadItem::DragCancelled()
         Inventory = Cast<UInventory>(ContainerOwner);
         if (Inventory)
         {
-            Item->SetRotation(bRotation);
             if (Inventory->AddToInventory(Item, IndexInventory))
                 return;
             else if (Inventory->AddToInventory(Item))

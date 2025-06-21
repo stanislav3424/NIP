@@ -54,10 +54,14 @@ private:
     UPROPERTY(EditAnywhere, Category = "Input")
     UInputAction* CommandAction;
 
+    UPROPERTY(EditAnywhere, Category = "Input")
+    UInputAction* RotationItemAction;
+
     void StartedSelection(const FInputActionValue& Value);
     void TriggeredSelection(const FInputActionValue& Value);
     void CompletedSelection(const FInputActionValue& Value);
     void HandleCommand(const FInputActionValue& Value);
+    void RotationItem(const FInputActionValue& Value);
 
     // Selection
 private:

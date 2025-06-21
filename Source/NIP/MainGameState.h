@@ -36,7 +36,7 @@ public:
 
     // DataTable
 private:
-    UPROPERTY(EditDefaultsOnly, Category = "DataTable")
+    UPROPERTY(BlueprintReadOnly, Category = "DataTable", meta = (AllowPrivateAccess = "true"))
     TMap<FName, UDataTable*> NamedDataTables;
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "DataTable", meta = (AllowPrivateAccess = "true"))
@@ -47,6 +47,9 @@ private:
 
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "DataTable", meta = (AllowPrivateAccess = "true"))
     UDataTable* InventorysDataTable;
+
+    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "DataTable", meta = (AllowPrivateAccess = "true"))
+    UDataTable* WeaponsDataTable;
 
     void CheckValid();
 

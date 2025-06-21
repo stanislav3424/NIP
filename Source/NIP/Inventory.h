@@ -72,7 +72,6 @@ public:
     int32 GetIndexItem(UItem* TargetItem);
     bool GetRotationItem(UItem* TargetItem);
 
-private:
     int32 PositionToInt(FIntPoint Position) const;
     FIntPoint IntToPosition(int32 Index) const;
 

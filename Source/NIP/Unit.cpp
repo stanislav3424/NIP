@@ -9,9 +9,6 @@
 void UUnit::Initialization(const FDataTableRowHandle& InitializationDataTableRowHandle)
 {
     Super::Initialization(InitializationDataTableRowHandle);
-    MainGameState = Cast<AMainGameState>(GetWorld()->GetGameState());
-    if (!MainGameState)
-        return;
     FUnitData* UnitData = MainGameState->GetItemData<FUnitData>(DataTableRowHandle);
     if (!UnitData)
         return;
@@ -26,33 +23,16 @@ void UUnit::SubRemoveContainerOwner(UItem* Item)
     if (!Item)
         return;
 
-    if (Backpack == Item)
-    {
-        Backpack->RemoveRepresented();
-        Backpack = nullptr;
-        OnChangesEquipment.Broadcast();
-        return;
-    }
-    else if (Weapon == Item)
-    {
-        Weapon->RemoveRepresented();
-        Weapon = nullptr;
-        OnChangesEquipment.Broadcast();
-        return;
-    }
+    TakeOffEquipment(GetSlotByItem(Item));
 }
 
-UItem* UUnit::GetEquipmentBySlot(EEquipmentSlots EquipmentSlots)
+UItem* UUnit::GetEquipmentBySlot(EEquipmentSlots Slot) const
 {
-    switch (EquipmentSlots)
+    if (EquipmentMap.Contains(Slot))
     {
-    case EEquipmentSlots::Backpack:
-        return Backpack;
-    case EEquipmentSlots::Weapon:
-        return Weapon;
-    default:
-        return nullptr;
+        return EquipmentMap[Slot];
     }
+    return nullptr;
 }
 
 FName UUnit::GetSocketName(EEquipmentSlots EquipmentSlots)
@@ -74,88 +54,43 @@ FName UUnit::GetSocketName(EEquipmentSlots EquipmentSlots)
     return SocketName;
 }
 
-bool UUnit::EquipmentSlotAvailable(EEquipmentSlots EquipmentSlots)
+bool UUnit::EquipmentSlotAvailable(EEquipmentSlots EquipmentSlots) const
 {
-    switch (EquipmentSlots)
-    {
-    case (EEquipmentSlots::Backpack):
-        if (!Backpack)
-            return true;
-        break;
-
-    case (EEquipmentSlots::Weapon):
-        if (!Weapon)
-            return true;
-        break;
-
-    default:
-        break;
-    }
-    return false;
+    return !EquipmentMap.Contains(EquipmentSlots);
 }
 
 bool UUnit::PutOnEquipment(UItem* EquipItem, EEquipmentSlots EquipmentSlots)
 {
-    if (!EquipItem)
+    if (!EquipItem || EquipmentMap.Contains(EquipmentSlots))
         return false;
 
-    switch (EquipmentSlots)
-    {
-    case EEquipmentSlots::Backpack:
-        return PutOnEquipmentInternal<UInventory, &UUnit::Backpack, EEquipmentSlots::Backpack>(EquipItem);
-
-    case EEquipmentSlots::Weapon:
-        return PutOnEquipmentInternal<UWeapon, &UUnit::Weapon, EEquipmentSlots::Weapon>(EquipItem);
-
-    default:
-        return false;
-    }
-}
-
-template <typename ItemType, ItemType* UUnit::* SlotMember, EEquipmentSlots SlotEnum>
-bool UUnit::PutOnEquipmentInternal(UItem* Item)
-{
-    if (this->*SlotMember != nullptr)
-        return false;
-
-    ItemType* CastedItem = Cast<ItemType>(Item);
-    if (!CastedItem)
-        return false;
-
-    Item->SetContainerOwner(this);
-    this->*SlotMember = CastedItem;
-    CastedItem->SpawnAndAttachSkeleton(this, SlotEnum);
+    EquipItem->SetContainerOwner(this);
+    EquipmentMap.Add(EquipmentSlots, EquipItem);
+    EquipItem->SpawnAndAttachSkeleton(this, EquipmentSlots);
     OnChangesEquipment.Broadcast();
     return true;
 }
 
-bool UUnit::TakeOffEquipment(UItem* GetItem, EEquipmentSlots EquipmentSlots)
+bool UUnit::TakeOffEquipment(EEquipmentSlots EquipmentSlots)
 {
-    switch (EquipmentSlots)
+    if (UItem* Equipped = EquipmentMap.FindRef(EquipmentSlots))
     {
-    case EEquipmentSlots::Backpack:
-        return TakeOffEquipmentInternal<UInventory, &UUnit::Backpack>(GetItem);
-
-    case EEquipmentSlots::Weapon:
-        return TakeOffEquipmentInternal<UWeapon, &UUnit::Weapon>(GetItem);
-
-    default:
-        return false;
-    }
-}
-
-template <typename ItemType, ItemType* UUnit::* SlotMember>
-bool UUnit::TakeOffEquipmentInternal(UItem* ItemBase)
-{
-    if (auto* Item = this->*SlotMember)
-    {
-        ItemBase = Item;
-        Item->RemoveRepresented();
-        this->*SlotMember = nullptr;
+        Equipped->RemoveRepresented();
+        EquipmentMap.Remove(EquipmentSlots);
         OnChangesEquipment.Broadcast();
         return true;
     }
     return false;
+}
+
+EEquipmentSlots UUnit::GetSlotByItem(UItem* Item) const
+{
+    for (const auto& Pair : EquipmentMap)
+    {
+        if (Pair.Value == Item)
+            return Pair.Key;
+    }
+    return EEquipmentSlots::NoneIndex;
 }
 
 // Visualization
@@ -164,17 +99,14 @@ void UUnit::CheckEquipmentVisualization()
 {
     if (!IsValid(Represented.GetObject()))
         return;
-    CheckEquipmentVisualizationInternal(Backpack, EEquipmentSlots::Backpack);
-    CheckEquipmentVisualizationInternal(Weapon, EEquipmentSlots::Weapon);
-}
 
-void UUnit::CheckEquipmentVisualizationInternal(UItem* Item, EEquipmentSlots EquipmentSlots)
-{
-    if (!IsValid(Represented.GetObject()))
-        return;
-
-    if (Item)
-        Item->SpawnAndAttachSkeleton(this, EquipmentSlots);
+    for (const auto& Pair : EquipmentMap)
+    {
+        if (Pair.Value)
+        {
+            Pair.Value->SpawnAndAttachSkeleton(this, Pair.Key);
+        }
+    }
 }
 
 void UUnit::SetDataPayload(UPayloadItem* PayloadItem)
@@ -182,17 +114,24 @@ void UUnit::SetDataPayload(UPayloadItem* PayloadItem)
     if (PayloadItem)
     {
         PayloadItem->SetDataLastPosition(EDataLastPosition::Equipment);
-        PayloadItem->SetEquipmentSlots(GetEquipmentSlotsItem(PayloadItem->GetItem()));
+        PayloadItem->SetEquipmentSlots(GetSlotByItem(PayloadItem->GetItem()));
     }
 }
 
-EEquipmentSlots UUnit::GetEquipmentSlotsItem(UItem* TargetItem)
+bool UUnit::AddAnywhere(UItem* Item)
 {
-    if (TargetItem == Backpack)
-        return EEquipmentSlots::Backpack;
-    else if (TargetItem == Weapon)
-        return EEquipmentSlots::Weapon;
-    return EEquipmentSlots::NoneIndex;
-}
+    if (!Item)
+        return false;
 
-bool UUnit::AddAnywhere(UItem* Item) { return false; }
+    for (const auto& Pair : EquipmentMap)
+    {
+        EEquipmentSlots Slot = Pair.Key;
+
+        if (!EquipmentMap[Slot])
+        {
+            return PutOnEquipment(Item, Slot);
+        }
+    }
+
+    return false;
+}

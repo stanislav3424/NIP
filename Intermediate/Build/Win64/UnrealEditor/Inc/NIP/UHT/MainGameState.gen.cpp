@@ -207,6 +207,7 @@ struct Z_Construct_UClass_AMainGameState_Statics
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_NamedDataTables_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
 		{ "Category", "DataTable" },
 		{ "ModuleRelativePath", "MainGameState.h" },
 	};
@@ -221,6 +222,11 @@ struct Z_Construct_UClass_AMainGameState_Statics
 		{ "ModuleRelativePath", "MainGameState.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InventorysDataTable_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "DataTable" },
+		{ "ModuleRelativePath", "MainGameState.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WeaponsDataTable_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "DataTable" },
 		{ "ModuleRelativePath", "MainGameState.h" },
@@ -288,6 +294,7 @@ struct Z_Construct_UClass_AMainGameState_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ItemsDataTable;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_UnitsDataTable;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_InventorysDataTable;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_WeaponsDataTable;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_ClassRealtimeRenderingPipeline;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_RealtimeRenderingPipeline;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_InventoryCellSize;
@@ -312,12 +319,13 @@ struct Z_Construct_UClass_AMainGameState_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_NamedDataTables_ValueProp = { "NamedDataTables", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_NamedDataTables_Key_KeyProp = { "NamedDataTables_Key", nullptr, (EPropertyFlags)0x0000000000000001, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_NamedDataTables = { "NamedDataTables", nullptr, (EPropertyFlags)0x0040000000010001, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, NamedDataTables), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NamedDataTables_MetaData), NewProp_NamedDataTables_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_NamedDataTables_ValueProp = { "NamedDataTables", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_NamedDataTables_Key_KeyProp = { "NamedDataTables_Key", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_NamedDataTables = { "NamedDataTables", nullptr, (EPropertyFlags)0x0040000000000014, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, NamedDataTables), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NamedDataTables_MetaData), NewProp_NamedDataTables_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_ItemsDataTable = { "ItemsDataTable", nullptr, (EPropertyFlags)0x0040000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, ItemsDataTable), Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ItemsDataTable_MetaData), NewProp_ItemsDataTable_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_UnitsDataTable = { "UnitsDataTable", nullptr, (EPropertyFlags)0x0040000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, UnitsDataTable), Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UnitsDataTable_MetaData), NewProp_UnitsDataTable_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_InventorysDataTable = { "InventorysDataTable", nullptr, (EPropertyFlags)0x0040000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, InventorysDataTable), Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InventorysDataTable_MetaData), NewProp_InventorysDataTable_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_WeaponsDataTable = { "WeaponsDataTable", nullptr, (EPropertyFlags)0x0040000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, WeaponsDataTable), Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WeaponsDataTable_MetaData), NewProp_WeaponsDataTable_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_ClassRealtimeRenderingPipeline = { "ClassRealtimeRenderingPipeline", nullptr, (EPropertyFlags)0x0044000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, ClassRealtimeRenderingPipeline), Z_Construct_UClass_UClass, Z_Construct_UClass_ARealtimeRenderingPipeline_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ClassRealtimeRenderingPipeline_MetaData), NewProp_ClassRealtimeRenderingPipeline_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_RealtimeRenderingPipeline = { "RealtimeRenderingPipeline", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, RealtimeRenderingPipeline), Z_Construct_UClass_ARealtimeRenderingPipeline_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RealtimeRenderingPipeline_MetaData), NewProp_RealtimeRenderingPipeline_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMainGameState_Statics::NewProp_InventoryCellSize = { "InventoryCellSize", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMainGameState, InventoryCellSize), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InventoryCellSize_MetaData), NewProp_InventoryCellSize_MetaData) };
@@ -336,6 +344,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMainGame
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_ItemsDataTable,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_UnitsDataTable,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_InventorysDataTable,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_WeaponsDataTable,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_ClassRealtimeRenderingPipeline,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_RealtimeRenderingPipeline,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMainGameState_Statics::NewProp_InventoryCellSize,
@@ -390,10 +399,10 @@ AMainGameState::~AMainGameState() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainGameState, AMainGameState::StaticClass, TEXT("AMainGameState"), &Z_Registration_Info_UClass_AMainGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGameState), 2573005044U) },
+		{ Z_Construct_UClass_AMainGameState, AMainGameState::StaticClass, TEXT("AMainGameState"), &Z_Registration_Info_UClass_AMainGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGameState), 1293301217U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_866638082(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_1281813791(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

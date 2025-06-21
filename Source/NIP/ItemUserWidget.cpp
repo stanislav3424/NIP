@@ -9,6 +9,7 @@
 #include "LogsMacros.h"
 #include "PayloadItem.h"
 #include "ItemDragDropOperation.h"
+#include "Components/CanvasPanelSlot.h"
 
 // Native
 
@@ -82,28 +83,18 @@ void UItemUserWidget::NativeOnDragDetected(const FGeometry& InGeometry, const FP
 
 void UItemUserWidget::InitializeItem(UItem* NewItem)
 {
-    bCustomSize = false;
+    if (Item)
+        Item->OnItemRotation.RemoveDynamic(this, &UItemUserWidget::UpdateAllVisualization);
     if (!NewItem)
     {
         RemoveFromParent();
         return;
     }
-    if (Item == NewItem)
-        return;
 
     Item = NewItem;
     UpdateAllVisualization();
-}
-
-void UItemUserWidget::InitializeItemCustomSize(UItem* NewItem)
-{
-    bCustomSize = true;
-
-    if (Item == NewItem && NewItem)
-        return;
-
-    Item = NewItem;
-    UpdateAllVisualization();
+    if (Item)
+        Item->OnItemRotation.AddDynamic(this, &UItemUserWidget::UpdateAllVisualization);
 }
 
 // Visualization
@@ -118,13 +109,14 @@ void UItemUserWidget::UpdateAllVisualization() {
     SetupItemImage();
     UpdateVisualization();
     SetupTextBlock();
+
 }
 
 void UItemUserWidget::SetupSizeBox()
 {
-    if (!SizeBox || !Item || bCustomSize)
+    if (!SizeBox || !Item)
         return;
-    auto& ItemSize = Item->GetItemSize();
+    auto ItemSize = Item->GetItemSize();
     SizeBox->SetWidthOverride(ItemSize.X * InventoryCellSize);
     SizeBox->SetHeightOverride(ItemSize.Y * InventoryCellSize);
 }
@@ -150,11 +142,12 @@ void UItemUserWidget::SetupItemImage()
     }
     if (!ItemImage || !SizeBox || !MainGameState || !Item)
         return;
-
-    auto& ItemSize = Item->GetItemSize();
+    FIntPoint ItemSize{0, 0};
+    ItemSize = Item->GetItemSize();
     UMaterialInstanceDynamic* MID = MainGameState->GetMIDItemImage(Item, ItemSize);
     if (MID)
     {
+        MID->SetScalarParameterValue(FName(TEXT("Rotation")), Item->GetRotation());
         ItemImage->SetVisibility(ESlateVisibility::Visible);
         ItemImage->SetBrushFromMaterial(MID);
     }

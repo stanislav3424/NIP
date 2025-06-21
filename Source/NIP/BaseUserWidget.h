@@ -38,5 +38,6 @@ protected:
 
     // Visualization
 protected:
+    UFUNCTION(BlueprintCallable, Category = "Changes")
     virtual void UpdateVisualization() {};
 };
