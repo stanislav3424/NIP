@@ -17,6 +17,7 @@ NIP_API UClass* Z_Construct_UClass_ACharacterUnit();
 NIP_API UClass* Z_Construct_UClass_ACharacterUnit_NoRegister();
 NIP_API UClass* Z_Construct_UClass_URepresentableInterface_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UUnit_NoRegister();
+NIP_API UClass* Z_Construct_UClass_UVisibilityControl_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
 
@@ -37,6 +38,12 @@ struct Z_Construct_UClass_ACharacterUnit_Statics
 		{ "IncludePath", "CharacterUnit.h" },
 		{ "ModuleRelativePath", "CharacterUnit.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_VisibilityControl_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Components" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "CharacterUnit.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_DataTableRowHandle_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Data" },
@@ -48,6 +55,7 @@ struct Z_Construct_UClass_ACharacterUnit_Statics
 		{ "ModuleRelativePath", "CharacterUnit.h" },
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_VisibilityControl;
 	static const UECodeGen_Private::FStructPropertyParams NewProp_DataTableRowHandle;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Unit;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -58,9 +66,11 @@ struct Z_Construct_UClass_ACharacterUnit_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACharacterUnit_Statics::NewProp_VisibilityControl = { "VisibilityControl", nullptr, (EPropertyFlags)0x00200800000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACharacterUnit, VisibilityControl), Z_Construct_UClass_UVisibilityControl_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VisibilityControl_MetaData), NewProp_VisibilityControl_MetaData) };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ACharacterUnit_Statics::NewProp_DataTableRowHandle = { "DataTableRowHandle", nullptr, (EPropertyFlags)0x0020080000010015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACharacterUnit, DataTableRowHandle), Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DataTableRowHandle_MetaData), NewProp_DataTableRowHandle_MetaData) }; // 1360917958
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACharacterUnit_Statics::NewProp_Unit = { "Unit", nullptr, (EPropertyFlags)0x0020080000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACharacterUnit, Unit), Z_Construct_UClass_UUnit_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Unit_MetaData), NewProp_Unit_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACharacterUnit_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACharacterUnit_Statics::NewProp_VisibilityControl,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACharacterUnit_Statics::NewProp_DataTableRowHandle,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACharacterUnit_Statics::NewProp_Unit,
 };
@@ -108,10 +118,10 @@ ACharacterUnit::~ACharacterUnit() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_CharacterUnit_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACharacterUnit, ACharacterUnit::StaticClass, TEXT("ACharacterUnit"), &Z_Registration_Info_UClass_ACharacterUnit, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACharacterUnit), 383468627U) },
+		{ Z_Construct_UClass_ACharacterUnit, ACharacterUnit::StaticClass, TEXT("ACharacterUnit"), &Z_Registration_Info_UClass_ACharacterUnit, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACharacterUnit), 932441143U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_CharacterUnit_h_3561351747(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_CharacterUnit_h_1677113354(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_CharacterUnit_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_CharacterUnit_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

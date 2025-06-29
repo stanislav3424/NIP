@@ -11,6 +11,7 @@ class UBorder;
 class UTextBlock;
 class UCanvasPanelSlot;
 class UItemUserWidget;
+class UUnitUserWidget;
 enum class EEquipmentSlots : uint8;
 
 UCLASS()
@@ -63,8 +64,7 @@ public:
 
     // Initialization
 public:
-    void InitializeItem(UItem* NewItem);
-    void InitializeEquipmentSlots(EEquipmentSlots SetEquipmentSlots) { EquipmentSlots = EquipmentSlots; };
+    void InitializeItem(UItem* NewItem, EEquipmentSlots SetEquipmentSlots);
 
     // Visualization
 protected:

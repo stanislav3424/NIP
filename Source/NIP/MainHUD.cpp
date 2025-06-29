@@ -3,6 +3,8 @@
 #include "Engine/Canvas.h"
 #include "MainPlayerController.h"
 #include "CharacterUnit.h"
+#include "Unit.h"
+#include "ItemData.h"
 
 void AMainHUD::DrawHUD()
 {
@@ -33,7 +35,8 @@ void AMainHUD::DrawHUD()
             {
                 UUnit* Unit = RepresentedUnitBase->GetUnit();
                 if (Unit)
-                    SelectedUnits.Add(Unit);
+                    if (Unit->GetTeam() == ETeams::Player)
+                        SelectedUnits.Add(Unit);
             }
 
         MainPlayerController->NewSelectedUnits = SelectedUnits;

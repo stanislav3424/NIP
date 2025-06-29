@@ -57,7 +57,7 @@ UItem* AMainGameState::CreateItem(const FName& RowName)
     return CreateItem(DataTableRowHandle);
 }
 
-AActor* AMainGameState::SpawnRepresented(const FDataTableRowHandle& DataTableRowHandle,
+UItem* AMainGameState::SpawnRepresented(const FDataTableRowHandle& DataTableRowHandle,
                                          const FTransform& SpawnTransform)
 {
     auto Item = CreateItem(DataTableRowHandle);
@@ -65,10 +65,10 @@ AActor* AMainGameState::SpawnRepresented(const FDataTableRowHandle& DataTableRow
         return nullptr;
 
     Item->SpawnRepresented(SpawnTransform);
-    return Cast<AActor>(Item->GetRepresented().GetObject());
+    return Item;
 }
 
-AActor* AMainGameState::SpawnRepresented(const FName& RowName,
+UItem* AMainGameState::SpawnRepresented(const FName& RowName,
                                          const FTransform& SpawnTransform)
 {
     auto DataTableRowHandle = GetDataTableRowHandle(RowName);

@@ -5,6 +5,42 @@
 #include "MainGameState.h"
 #include "ItemData.h"
 #include "PayloadItem.h"
+#include "LogsMacros.h"
+
+TMap<EEquipmentSlots, TSubclassOf<UItem>> UUnit::SlotClassMap;
+
+UUnit::UUnit() : Team{ETeams::NoneIndex}
+{
+    struct FUnitStaticInitializer
+    {
+        FUnitStaticInitializer()
+        {
+            UUnit::SlotClassMap.Add(EEquipmentSlots::Weapon, UWeapon::StaticClass());
+            UUnit::SlotClassMap.Add(EEquipmentSlots::Backpack, UInventory::StaticClass());
+        }
+    };
+
+    static FUnitStaticInitializer StaticInitializer;
+}
+
+void UUnit::SetTeam(ETeams SetTeam)
+{
+    Team = SetTeam;
+    OnChangesTeam.Broadcast();
+    CheckValidTeam();
+}
+
+ETeams UUnit::GetTeam()
+{
+    CheckValidTeam();
+    return Team;
+}
+
+void UUnit::CheckValidTeam() const
+{
+    if (Team == ETeams::NoneIndex)
+        LINE_LOG_MSG("NoneTeam");
+}
 
 void UUnit::Initialization(const FDataTableRowHandle& InitializationDataTableRowHandle)
 {
@@ -14,6 +50,29 @@ void UUnit::Initialization(const FDataTableRowHandle& InitializationDataTableRow
         return;
 
     Speed = UnitData->Speed;
+
+    SlotClassMap.Add(EEquipmentSlots::Weapon, UWeapon::StaticClass());
+    SlotClassMap.Add(EEquipmentSlots::Backpack, UInventory::StaticClass());
+}
+
+bool UUnit::IsEquipmentMapComplete() const
+{
+    for (const auto& SlotPair : SlotClassMap)
+    {
+        EEquipmentSlots Slot = SlotPair.Key;
+
+        if (Slot == EEquipmentSlots::NoneIndex)
+            continue;
+
+        if (!EquipmentMap.Contains(Slot) || !IsValid(EquipmentMap[Slot]))
+        {
+            UE_LOG(LogTemp, Error, TEXT("Equipment slot '%s' is not filled on unit '%s'."),
+                   *UEnum::GetValueAsString(Slot), *GetName());
+            return false;
+        }
+    }
+
+    return true;
 }
 
 // Equipment
@@ -62,6 +121,10 @@ bool UUnit::EquipmentSlotAvailable(EEquipmentSlots EquipmentSlots) const
 bool UUnit::PutOnEquipment(UItem* EquipItem, EEquipmentSlots EquipmentSlots)
 {
     if (!EquipItem || EquipmentMap.Contains(EquipmentSlots))
+        return false;
+
+    TSubclassOf<UItem>* ExpectedClass = SlotClassMap.Find(EquipmentSlots);
+    if (ExpectedClass && !EquipItem->IsA(*ExpectedClass))
         return false;
 
     EquipItem->SetContainerOwner(this);

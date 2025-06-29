@@ -1,5 +1,6 @@
 #include "EquipmentUserWidget.h"
 #include "Item.h"
+#include "ItemData.h"
 #include "MainGameState.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Components/Border.h"
@@ -11,16 +12,15 @@
 #include "ItemDragDropOperation.h"
 #include "Components/CanvasPanelSlot.h"
 #include "ItemUserWidget.h"
+#include "UnitUserWidget.h"
+#include "Unit.h"
 
 // Native
 
 void UEquipmentUserWidget::NativeConstruct()
 {
     Super::NativeConstruct();
-    CHECK_NULLPTR_LOG(SizeBox);
-    CHECK_NULLPTR_LOG(Background);
-    CHECK_NULLPTR_LOG(ItemImage);
-    CHECK_NULLPTR_LOG(TextBlock_Name);
+    CHECK_MULTI(SizeBox, Background, ItemImage, TextBlock_Name);
 }
 
 int32 UEquipmentUserWidget::NativePaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry,
@@ -56,50 +56,50 @@ FReply UEquipmentUserWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry
 }
 
 void UEquipmentUserWidget::NativeOnDragDetected(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent,
-                                           UDragDropOperation*& OutOperation)
+                                                UDragDropOperation*& OutOperation)
 {
-    UItemDragDropOperation* DragDropOperation = NewObject<UItemDragDropOperation>();
-
-    if (!MainGameState)
-        return;
-
-    auto DragAndDropItemWidget = MainGameState->GetDragAndDropItemWidget();
-
-    if (!Item || !DragDropOperation || !DragAndDropItemWidget)
+    if (Item)
     {
-        CHECK_NULLPTR_LOG(Item);
-        CHECK_NULLPTR_LOG(DragDropOperation);
-        CHECK_NULLPTR_LOG(DragAndDropItemWidget);
-        return;
+        CHECK(MainGameState);
+        UItemDragDropOperation* DragDropOperation = NewObject<UItemDragDropOperation>();
+        CHECK(DragDropOperation);
+        auto DragAndDropItemWidget = MainGameState->GetDragAndDropItemWidget();
+        CHECK(DragAndDropItemWidget);
+        DragAndDropItemWidget->InitializeItem(Item);
+        DragDropOperation->DefaultDragVisual = DragAndDropItemWidget;
+        DragDropOperation->Pivot = EDragPivot::CenterCenter;
+        DragDropOperation->Payload = Item->GetPayloadItem();
+
+        Item->RemoveContainerOwner();
+        OutOperation = DragDropOperation;
     }
-
-    DragAndDropItemWidget->InitializeItem(Item);
-    DragDropOperation->DefaultDragVisual = DragAndDropItemWidget;
-    DragDropOperation->Pivot = EDragPivot::CenterCenter;
-    DragDropOperation->Payload = Item->GetPayloadItem();
-
-    Item->RemoveContainerOwner();
-    OutOperation = DragDropOperation;
 }
 
 bool UEquipmentUserWidget::NativeOnDrop(const FGeometry& InGeometry, const FDragDropEvent& InDragDropEvent,
                                         UDragDropOperation* InOperation)
 {
-    if (!InOperation || Item)
+    
+    if (Item)
         return false;
+
+    CHECK_F(InOperation);
     UPayloadItem* PayloadItem = Cast<UPayloadItem>(InOperation->Payload);
-    if (!PayloadItem)
-        return false;
+    CHECK_F(PayloadItem);
     auto ItemDrop = PayloadItem->GetItem();
     if (!ItemDrop)
         return false;
 
-    return true;
+    UUnitUserWidget* CreatorWidget = GetTypedOuter<UUnitUserWidget>();
+    CHECK_F(CreatorWidget);
+    auto Unit = CreatorWidget->GetUnit();
+    CHECK_F(Unit);
+    return Unit->PutOnEquipment(ItemDrop, EquipmentSlots);
 }
 
-void UEquipmentUserWidget::InitializeItem(UItem* NewItem)
+void UEquipmentUserWidget::InitializeItem(UItem* NewItem, EEquipmentSlots SetEquipmentSlots)
 {
     Item = NewItem;
+    EquipmentSlots = SetEquipmentSlots;
     UpdateAllVisualization();
 }
 
@@ -110,14 +110,13 @@ void UEquipmentUserWidget::UpdateVisualization() { SetupBackground(); }
 void UEquipmentUserWidget::UpdateAllVisualization()
 {
     SetupItemImage();
-    UpdateVisualization();
+    SetupBackground();
     SetupTextBlock();
 }
 
 void UEquipmentUserWidget::SetupBackground()
 {
-    if (!Background)
-        return;
+    CHECK(Background);
     FLinearColor FinalColor = BackgroundColor;
     if (bMouseEnter)
         FinalColor += ModifierMouseEnterColor;
@@ -128,14 +127,12 @@ void UEquipmentUserWidget::SetupBackground()
 
 void UEquipmentUserWidget::SetupItemImage()
 {
+    CHECK_MULTI(ItemImage, MainGameState);
     if (!Item)
     {
-        if (ItemImage)
-            ItemImage->SetVisibility(ESlateVisibility::Hidden);
+        ItemImage->SetVisibility(ESlateVisibility::Hidden);
         return;
     }
-    if (!ItemImage || !SizeBox || !MainGameState || !Item)
-        return;
     FIntPoint ItemSize{0, 0};
     if (UCanvasPanelSlot* CanvasSlot = Cast<UCanvasPanelSlot>(this->Slot))
     {
@@ -143,8 +140,7 @@ void UEquipmentUserWidget::SetupItemImage()
         ItemSize.X = Size.X;
         ItemSize.Y = Size.Y;
     }
-    UMaterialInstanceDynamic* MID = MainGameState->GetMIDItemImage(Item, ItemSize);
-    if (MID)
+    if (UMaterialInstanceDynamic* MID = MainGameState->GetMIDItemImage(Item, ItemSize))
     {
         ItemImage->SetVisibility(ESlateVisibility::Visible);
         ItemImage->SetBrushFromMaterial(MID);
@@ -153,7 +149,8 @@ void UEquipmentUserWidget::SetupItemImage()
 
 void UEquipmentUserWidget::SetupTextBlock()
 {
-    if (!TextBlock_Name || !Item)
+    CHECK(TextBlock_Name);
+    if (!Item)
         return;
     TextBlock_Name->SetText(FText::FromName(Item->GetID()));
 }

@@ -17,6 +17,7 @@ ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTableRowBase();
 NIP_API UClass* Z_Construct_UClass_UItem_NoRegister();
 NIP_API UEnum* Z_Construct_UEnum_NIP_EDataLastPosition();
 NIP_API UEnum* Z_Construct_UEnum_NIP_EEquipmentSlots();
+NIP_API UEnum* Z_Construct_UEnum_NIP_ETeams();
 NIP_API UScriptStruct* Z_Construct_UScriptStruct_FInventoryData();
 NIP_API UScriptStruct* Z_Construct_UScriptStruct_FItemData();
 NIP_API UScriptStruct* Z_Construct_UScriptStruct_FItemPositionData();
@@ -507,12 +508,73 @@ UEnum* Z_Construct_UEnum_NIP_EDataLastPosition()
 }
 // End Enum EDataLastPosition
 
+// Begin Enum ETeams
+static FEnumRegistrationInfo Z_Registration_Info_UEnum_ETeams;
+static UEnum* ETeams_StaticEnum()
+{
+	if (!Z_Registration_Info_UEnum_ETeams.OuterSingleton)
+	{
+		Z_Registration_Info_UEnum_ETeams.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_NIP_ETeams, (UObject*)Z_Construct_UPackage__Script_NIP(), TEXT("ETeams"));
+	}
+	return Z_Registration_Info_UEnum_ETeams.OuterSingleton;
+}
+template<> NIP_API UEnum* StaticEnum<ETeams>()
+{
+	return ETeams_StaticEnum();
+}
+struct Z_Construct_UEnum_NIP_ETeams_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+		{ "Enemy.DisplayName", "Enemy" },
+		{ "Enemy.Name", "ETeams::Enemy" },
+		{ "ModuleRelativePath", "ItemData.h" },
+		{ "Neutral.DisplayName", "Neutral" },
+		{ "Neutral.Name", "ETeams::Neutral" },
+		{ "NoneIndex.DisplayName", "NoneIndex" },
+		{ "NoneIndex.Name", "ETeams::NoneIndex" },
+		{ "Player.DisplayName", "Player" },
+		{ "Player.Name", "ETeams::Player" },
+	};
+#endif // WITH_METADATA
+	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
+		{ "ETeams::NoneIndex", (int64)ETeams::NoneIndex },
+		{ "ETeams::Player", (int64)ETeams::Player },
+		{ "ETeams::Enemy", (int64)ETeams::Enemy },
+		{ "ETeams::Neutral", (int64)ETeams::Neutral },
+	};
+	static const UECodeGen_Private::FEnumParams EnumParams;
+};
+const UECodeGen_Private::FEnumParams Z_Construct_UEnum_NIP_ETeams_Statics::EnumParams = {
+	(UObject*(*)())Z_Construct_UPackage__Script_NIP,
+	nullptr,
+	"ETeams",
+	"ETeams",
+	Z_Construct_UEnum_NIP_ETeams_Statics::Enumerators,
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	UE_ARRAY_COUNT(Z_Construct_UEnum_NIP_ETeams_Statics::Enumerators),
+	EEnumFlags::None,
+	(uint8)UEnum::ECppForm::EnumClass,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_NIP_ETeams_Statics::Enum_MetaDataParams), Z_Construct_UEnum_NIP_ETeams_Statics::Enum_MetaDataParams)
+};
+UEnum* Z_Construct_UEnum_NIP_ETeams()
+{
+	if (!Z_Registration_Info_UEnum_ETeams.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_ETeams.InnerSingleton, Z_Construct_UEnum_NIP_ETeams_Statics::EnumParams);
+	}
+	return Z_Registration_Info_UEnum_ETeams.InnerSingleton;
+}
+// End Enum ETeams
+
 // Begin Registration
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemData_h_Statics
 {
 	static constexpr FEnumRegisterCompiledInInfo EnumInfo[] = {
 		{ EEquipmentSlots_StaticEnum, TEXT("EEquipmentSlots"), &Z_Registration_Info_UEnum_EEquipmentSlots, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2378091645U) },
 		{ EDataLastPosition_StaticEnum, TEXT("EDataLastPosition"), &Z_Registration_Info_UEnum_EDataLastPosition, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1428574845U) },
+		{ ETeams_StaticEnum, TEXT("ETeams"), &Z_Registration_Info_UEnum_ETeams, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2804549265U) },
 	};
 	static constexpr FStructRegisterCompiledInInfo ScriptStructInfo[] = {
 		{ FItemData::StaticStruct, Z_Construct_UScriptStruct_FItemData_Statics::NewStructOps, TEXT("ItemData"), &Z_Registration_Info_UScriptStruct_ItemData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FItemData), 888641964U) },
@@ -522,7 +584,7 @@ struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source
 		{ FItemPositionData::StaticStruct, Z_Construct_UScriptStruct_FItemPositionData_Statics::NewStructOps, TEXT("ItemPositionData"), &Z_Registration_Info_UScriptStruct_ItemPositionData, CONSTRUCT_RELOAD_VERSION_INFO(FStructReloadVersionInfo, sizeof(FItemPositionData), 3703416842U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemData_h_1472631563(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemData_h_140501999(TEXT("/Script/NIP"),
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemData_h_Statics::ScriptStructInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemData_h_Statics::ScriptStructInfo),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemData_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_ItemData_h_Statics::EnumInfo));

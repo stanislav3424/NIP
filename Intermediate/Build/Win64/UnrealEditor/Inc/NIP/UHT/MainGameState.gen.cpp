@@ -13,7 +13,6 @@ void EmptyLinkFunctionForGeneratedCodeMainGameState() {}
 // Begin Cross Module References
 COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FTransform();
-ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_AGameStateBase();
 ENGINE_API UClass* Z_Construct_UClass_UDataTable_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UMaterial_NoRegister();
@@ -130,7 +129,7 @@ struct Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics
 	{
 		FDataTableRowHandle DataTableRowHandle;
 		FTransform SpawnTransform;
-		AActor* ReturnValue;
+		UItem* ReturnValue;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
@@ -152,7 +151,7 @@ struct Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics
 };
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics::NewProp_DataTableRowHandle = { "DataTableRowHandle", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MainGameState_eventSpawnRepresented_Parms, DataTableRowHandle), Z_Construct_UScriptStruct_FDataTableRowHandle, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_DataTableRowHandle_MetaData), NewProp_DataTableRowHandle_MetaData) }; // 1360917958
 const UECodeGen_Private::FStructPropertyParams Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics::NewProp_SpawnTransform = { "SpawnTransform", nullptr, (EPropertyFlags)0x0010000008000182, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MainGameState_eventSpawnRepresented_Parms, SpawnTransform), Z_Construct_UScriptStruct_FTransform, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SpawnTransform_MetaData), NewProp_SpawnTransform_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MainGameState_eventSpawnRepresented_Parms, ReturnValue), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(MainGameState_eventSpawnRepresented_Parms, ReturnValue), Z_Construct_UClass_UItem_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics::NewProp_DataTableRowHandle,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AMainGameState_SpawnRepresented_Statics::NewProp_SpawnTransform,
@@ -176,7 +175,7 @@ DEFINE_FUNCTION(AMainGameState::execSpawnRepresented)
 	P_GET_STRUCT_REF(FTransform,Z_Param_Out_SpawnTransform);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	*(AActor**)Z_Param__Result=P_THIS->SpawnRepresented(Z_Param_Out_DataTableRowHandle,Z_Param_Out_SpawnTransform);
+	*(UItem**)Z_Param__Result=P_THIS->SpawnRepresented(Z_Param_Out_DataTableRowHandle,Z_Param_Out_SpawnTransform);
 	P_NATIVE_END;
 }
 // End Class AMainGameState Function SpawnRepresented
@@ -311,7 +310,7 @@ struct Z_Construct_UClass_AMainGameState_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AMainGameState_CreateItem, "CreateItem" }, // 2065181384
 		{ &Z_Construct_UFunction_AMainGameState_RunTest, "RunTest" }, // 3681078442
-		{ &Z_Construct_UFunction_AMainGameState_SpawnRepresented, "SpawnRepresented" }, // 3334322756
+		{ &Z_Construct_UFunction_AMainGameState_SpawnRepresented, "SpawnRepresented" }, // 2218756848
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -399,10 +398,10 @@ AMainGameState::~AMainGameState() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMainGameState, AMainGameState::StaticClass, TEXT("AMainGameState"), &Z_Registration_Info_UClass_AMainGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGameState), 1293301217U) },
+		{ Z_Construct_UClass_AMainGameState, AMainGameState::StaticClass, TEXT("AMainGameState"), &Z_Registration_Info_UClass_AMainGameState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMainGameState), 15187838U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_1281813791(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_1975377499(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_MainGameState_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

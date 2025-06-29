@@ -9,6 +9,9 @@
 
 #define LINE_LOG UE_LOG(LogTemp, Error, TEXT("Error in the file: %s, line: %d"), TEXT(__FILE__), __LINE__);
 
+#define LINE_LOG_MSG(Message)                                                                                          \
+    UE_LOG(LogTemp, Error, TEXT("%s | File: %s, Line: %d"), TEXT(Message), TEXT(__FILE__), __LINE__)
+
 #define EXPAND(x) x
 
 #define FOR_EACH_1(action, x1) action(x1)
@@ -40,3 +43,30 @@
 #define CHECK_MULTI(...) CHECK_NULLPTR_LOG_MULTI(__VA_ARGS__)
 
 #define CHECK(Var) CHECK_NULLPTR_LOG(Var)
+
+#define CHECK_NULL_LOG_BASE(Var)                                                                                       \
+    if (!(Var))                                                                                                        \
+    {                                                                                                                  \
+        UE_LOG(LogTemp, Error, TEXT(#Var " is nullptr! File: %s, line: %d"), TEXT(__FILE__), __LINE__);
+
+#define CHECK_RETURN_VOID(Var)                                                                                         \
+    CHECK_NULL_LOG_BASE(Var)                                                                                           \
+    return;                                                                                                            \
+    }
+
+#define CHECK_RETURN_FALSE(Var)                                                                                        \
+    CHECK_NULL_LOG_BASE(Var)                                                                                           \
+    return false;                                                                                                      \
+    }
+
+#define CHECK_F(Var) CHECK_RETURN_FALSE(Var)
+
+#define LOG_IF(Var)                                                                                                    \
+    if ((Var))                                                                                                         \
+    {                                                                                                                  \
+        UE_LOG(LogTemp, Error, TEXT(#Var " True! File: %s, line: %d"), TEXT(__FILE__), __LINE__);                      \
+    }                                                                                                                  \
+    else                                                                                                               \
+    {                                                                                                                  \
+        UE_LOG(LogTemp, Error, TEXT(#Var " False! File: %s, line: %d"), TEXT(__FILE__), __LINE__);                     \
+    }

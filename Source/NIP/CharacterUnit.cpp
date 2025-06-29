@@ -5,9 +5,13 @@
 #include "Navigation/PathFollowingComponent.h"
 #include "AIController.h"
 #include "ItemData.h"
+#include "VisibilityControl.h"
+#include "Perception/PawnSensingComponent.h"
 
 ACharacterUnit::ACharacterUnit()
 {
+    SetupComponents();
+
     PrimaryActorTick.bCanEverTick = true;
     AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 
@@ -25,11 +29,9 @@ ACharacterUnit::ACharacterUnit()
     GetCharacterMovement()->BrakingDecelerationWalking = 1000.f;
     GetCharacterMovement()->SetFixedBrakingDistance(200.0f);
     GetCharacterMovement()->UseAccelerationForPathFollowing();
-    //bUseAccelerationForPaths
 }
 
-void ACharacterUnit::Tick(float DeltaTime)
-{
+void ACharacterUnit::Tick(float DeltaTime) {
     Super::Tick(DeltaTime);
 }
 
@@ -53,6 +55,13 @@ void ACharacterUnit::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
     Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
+// Components
+
+void ACharacterUnit::SetupComponents()
+{
+    VisibilityControl = CreateDefaultSubobject<UVisibilityControl>(TEXT("VisibilityControl")); 
+}
+
 // RepresentableInterface
 
 void ACharacterUnit::InitializationItem(UItem* Item)
@@ -69,4 +78,13 @@ AAIController* ACharacterUnit::GetAIController()
     return AIController;
 
     GetMesh();
+}
+
+void ACharacterUnit::SetVisibility(bool AddVisibilityControl, UActorComponent* RefVisibilityControl)
+{
+    if (Unit)
+        if (Unit->GetTeam() == ETeams::Player)
+            return;
+
+    IRepresentableInterface::SetVisibility(AddVisibilityControl, RefVisibilityControl);
 }

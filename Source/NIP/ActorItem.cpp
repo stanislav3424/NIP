@@ -47,3 +47,4 @@ void AActorItem::SetCollision(bool bEnableCollision)
         }
     }
 }
+

@@ -32,6 +32,9 @@ private:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
     UUnit* Unit;
 
+public:
+    UUnit* GetUnit() { return Unit; };
+
     // Slate
 public:
     UPROPERTY(meta = (BindWidget))

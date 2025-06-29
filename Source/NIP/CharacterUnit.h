@@ -5,8 +5,10 @@
 #include "RepresentableInterface.h"
 #include "CharacterUnit.generated.h"
 
+class UVisibilityControl;
 class UUnit;
 class AMainGameState;
+class UPawnSensingComponent;
 
 UCLASS()
 class NIP_API ACharacterUnit : public ACharacter, public IRepresentableInterface
@@ -23,6 +25,13 @@ public:
     virtual void Tick(float DeltaTime) override;
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+    // Components
+protected:
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+    UVisibilityControl* VisibilityControl;
+
+    void SetupComponents();
+
     // Data
 protected:
     UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Data", meta = (AllowPrivateAccess = "true"))
@@ -38,5 +47,6 @@ public:
 protected:
     virtual void InitializationItem(UItem* Item) override;
     virtual AAIController* GetAIController() override;
-    virtual USkeletalMeshComponent* GetMeshInterface() { return GetMesh(); };
+    virtual USkeletalMeshComponent* GetMeshInterface() override { return GetMesh(); };
+    virtual void SetVisibility(bool AddVisibilityControl, UActorComponent* RefVisibilityControl) override;
 };

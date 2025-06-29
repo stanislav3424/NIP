@@ -15,7 +15,9 @@ NIP_API UClass* Z_Construct_UClass_UItem_NoRegister();
 NIP_API UClass* Z_Construct_UClass_UUnit();
 NIP_API UClass* Z_Construct_UClass_UUnit_NoRegister();
 NIP_API UEnum* Z_Construct_UEnum_NIP_EEquipmentSlots();
+NIP_API UEnum* Z_Construct_UEnum_NIP_ETeams();
 NIP_API UFunction* Z_Construct_UDelegateFunction_NIP_OnChangesEquipment__DelegateSignature();
+NIP_API UFunction* Z_Construct_UDelegateFunction_NIP_OnChangesTeam__DelegateSignature();
 UPackage* Z_Construct_UPackage__Script_NIP();
 // End Cross Module References
 
@@ -45,6 +47,32 @@ void FOnChangesEquipment_DelegateWrapper(const FMulticastScriptDelegate& OnChang
 }
 // End Delegate FOnChangesEquipment
 
+// Begin Delegate FOnChangesTeam
+struct Z_Construct_UDelegateFunction_NIP_OnChangesTeam__DelegateSignature_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Unit.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NIP_OnChangesTeam__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NIP, nullptr, "OnChangesTeam__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NIP_OnChangesTeam__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NIP_OnChangesTeam__DelegateSignature_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UDelegateFunction_NIP_OnChangesTeam__DelegateSignature()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NIP_OnChangesTeam__DelegateSignature_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+void FOnChangesTeam_DelegateWrapper(const FMulticastScriptDelegate& OnChangesTeam)
+{
+	OnChangesTeam.ProcessMulticastDelegate<UObject>(NULL);
+}
+// End Delegate FOnChangesTeam
+
 // Begin Class UUnit
 void UUnit::StaticRegisterNativesUUnit()
 {
@@ -61,6 +89,11 @@ struct Z_Construct_UClass_UUnit_Statics
 		{ "IncludePath", "Unit.h" },
 		{ "ModuleRelativePath", "Unit.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Team_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Data" },
+		{ "ModuleRelativePath", "Unit.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Speed_MetaData[] = {
 		{ "AllowPrivateAccess", "true" },
 		{ "Category", "Data" },
@@ -72,6 +105,8 @@ struct Z_Construct_UClass_UUnit_Statics
 		{ "ModuleRelativePath", "Unit.h" },
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FBytePropertyParams NewProp_Team_Underlying;
+	static const UECodeGen_Private::FEnumPropertyParams NewProp_Team;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_Speed;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_EquipmentMap_ValueProp;
 	static const UECodeGen_Private::FBytePropertyParams NewProp_EquipmentMap_Key_KeyProp_Underlying;
@@ -84,12 +119,16 @@ struct Z_Construct_UClass_UUnit_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UUnit_Statics::NewProp_Team_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UUnit_Statics::NewProp_Team = { "Team", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnit, Team), Z_Construct_UEnum_NIP_ETeams, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Team_MetaData), NewProp_Team_MetaData) }; // 2804549265
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UUnit_Statics::NewProp_Speed = { "Speed", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnit, Speed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Speed_MetaData), NewProp_Speed_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UUnit_Statics::NewProp_EquipmentMap_ValueProp = { "EquipmentMap", nullptr, (EPropertyFlags)0x0000000000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UItem_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UUnit_Statics::NewProp_EquipmentMap_Key_KeyProp_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UUnit_Statics::NewProp_EquipmentMap_Key_KeyProp = { "EquipmentMap_Key", nullptr, (EPropertyFlags)0x0000000000020001, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UEnum_NIP_EEquipmentSlots, METADATA_PARAMS(0, nullptr) }; // 2378091645
 const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UUnit_Statics::NewProp_EquipmentMap = { "EquipmentMap", nullptr, (EPropertyFlags)0x0040000000020015, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UUnit, EquipmentMap), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EquipmentMap_MetaData), NewProp_EquipmentMap_MetaData) }; // 2378091645
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UUnit_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnit_Statics::NewProp_Team_Underlying,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnit_Statics::NewProp_Team,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnit_Statics::NewProp_Speed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnit_Statics::NewProp_EquipmentMap_ValueProp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UUnit_Statics::NewProp_EquipmentMap_Key_KeyProp_Underlying,
@@ -129,7 +168,6 @@ template<> NIP_API UClass* StaticClass<UUnit>()
 {
 	return UUnit::StaticClass();
 }
-UUnit::UUnit(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 DEFINE_VTABLE_PTR_HELPER_CTOR(UUnit);
 UUnit::~UUnit() {}
 // End Class UUnit
@@ -138,10 +176,10 @@ UUnit::~UUnit() {}
 struct Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UUnit, UUnit::StaticClass, TEXT("UUnit"), &Z_Registration_Info_UClass_UUnit, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnit), 4064563176U) },
+		{ Z_Construct_UClass_UUnit, UUnit::StaticClass, TEXT("UUnit"), &Z_Registration_Info_UClass_UUnit, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UUnit), 3528816782U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_381076599(TEXT("/Script/NIP"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_1847444956(TEXT("/Script/NIP"),
 	Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_Stas_Documents_Unreal_Projects_NIP_Source_NIP_Unit_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

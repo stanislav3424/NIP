@@ -5,6 +5,7 @@
 #include "MainGameState.generated.h"
 
 class UItem;
+class UUnit;
 class ARealtimeRenderingPipeline;
 class UItemUserWidget;
 class UInventoryUserWidget;
@@ -31,8 +32,8 @@ public:
     UItem* CreateItem(const FName& RowName);
 
     UFUNCTION(BlueprintCallable, Category = "Create")
-    AActor* SpawnRepresented(const FDataTableRowHandle& DataTableRowHandle, const FTransform& SpawnTransform);
-    AActor* SpawnRepresented(const FName& RowName, const FTransform& SpawnTransform);
+    UItem* SpawnRepresented(const FDataTableRowHandle& DataTableRowHandle, const FTransform& SpawnTransform);
+    UItem* SpawnRepresented(const FName& RowName, const FTransform& SpawnTransform);
 
     // DataTable
 private:

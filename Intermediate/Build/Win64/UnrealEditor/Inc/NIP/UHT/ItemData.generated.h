@@ -75,4 +75,14 @@ enum class EDataLastPosition : uint8;
 template<> struct TIsUEnumClass<EDataLastPosition> { enum { Value = true }; };
 template<> NIP_API UEnum* StaticEnum<EDataLastPosition>();
 
+#define FOREACH_ENUM_ETEAMS(op) \
+	op(ETeams::NoneIndex) \
+	op(ETeams::Player) \
+	op(ETeams::Enemy) \
+	op(ETeams::Neutral) 
+
+enum class ETeams : uint8;
+template<> struct TIsUEnumClass<ETeams> { enum { Value = true }; };
+template<> NIP_API UEnum* StaticEnum<ETeams>();
+
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

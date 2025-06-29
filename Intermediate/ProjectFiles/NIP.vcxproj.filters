@@ -162,6 +162,9 @@
     <ClCompile Include="..\..\Source\NIP\RealtimeRenderingPipeline.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\RepresentableInterface.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NIP\RepresentableInterface.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
@@ -181,6 +184,12 @@
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\UnitUserWidget.h">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\VisibilityControl.cpp">
+      <Filter>Source\NIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NIP\VisibilityControl.h">
       <Filter>Source\NIP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NIP\Weapon.cpp">

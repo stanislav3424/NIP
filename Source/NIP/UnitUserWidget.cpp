@@ -21,8 +21,6 @@ void UUnitUserWidget::NativeConstruct()
           EquipmentWeaponUserWidget);
 
     SetupBackground();
-    EquipmentBackpackUserWidget->InitializeEquipmentSlots(EEquipmentSlots::Backpack);
-    EquipmentWeaponUserWidget->InitializeEquipmentSlots(EEquipmentSlots::Weapon);
 }
 
 void UUnitUserWidget::SetupBackground()
@@ -54,17 +52,17 @@ void UUnitUserWidget::EquipmentChanges()
     {
         CanvasPanel->SetVisibility(ESlateVisibility::Hidden);
         InventoryUserWidget->InitializeInventory(nullptr);
-        EquipmentBackpackUserWidget->InitializeItem(nullptr);
-        EquipmentWeaponUserWidget->InitializeItem(nullptr);
+        EquipmentBackpackUserWidget->InitializeItem(nullptr, EEquipmentSlots::NoneIndex);
+        EquipmentWeaponUserWidget->InitializeItem(nullptr, EEquipmentSlots::NoneIndex);
     }
     else
     {
         TextBlock_Name->SetText(FText::FromName(Unit->GetID()));
         CanvasPanel->SetVisibility(ESlateVisibility::SelfHitTestInvisible);
         InventoryUserWidget->InitializeInventory(Cast<UInventory>(Unit->GetEquipmentBySlot(EEquipmentSlots::Backpack)));
-        EquipmentBackpackUserWidget->InitializeItem(Unit->GetEquipmentBySlot(EEquipmentSlots::Backpack));
-        EquipmentWeaponUserWidget->InitializeItem(Unit->GetEquipmentBySlot(EEquipmentSlots::Weapon));
-
+        EquipmentBackpackUserWidget->InitializeItem(Unit->GetEquipmentBySlot(EEquipmentSlots::Backpack),
+                                                    EEquipmentSlots::Backpack);
+        EquipmentWeaponUserWidget->InitializeItem(Unit->GetEquipmentBySlot(EEquipmentSlots::Weapon),
+                                                  EEquipmentSlots::Weapon);
     }
-
 }

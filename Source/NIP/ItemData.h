@@ -85,3 +85,12 @@ enum class EDataLastPosition : uint8
     Inventory UMETA(DisplayName = "Inventory"),
     Equipment UMETA(DisplayName = "Equipment"),
 };
+
+UENUM(BlueprintType)
+enum class ETeams : uint8
+{
+    NoneIndex UMETA(DisplayName = "NoneIndex"),
+    Player UMETA(DisplayName = "Player"),
+    Enemy UMETA(DisplayName = "Enemy"),
+    Neutral UMETA(DisplayName = "Neutral"),
+};
